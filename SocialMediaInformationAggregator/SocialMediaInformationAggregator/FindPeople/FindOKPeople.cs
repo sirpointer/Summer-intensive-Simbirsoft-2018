@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SocialMediaInformationAggregator.FindPeople
 {
-    public partial class FindPeople
+    public partial class FindPeople : IFindPeople
     {
         private List<PersonInformation> _peopleFromOK;
 

@@ -49,7 +49,7 @@ namespace SocialMediaInformationAggregator
             };
             SetSerachOptions(options);
 
-            /*IWebDriver webDriver;
+            IWebDriver webDriver;
 
             try
             {
@@ -57,27 +57,27 @@ namespace SocialMediaInformationAggregator
             }
             catch
             {
-                webDriver = new FirefoxDriver("/WebDrivers/");
-            }*/
-            /*
+                webDriver = new FirefoxDriver(@"C:\Users\User\OneDrive\летний интенсив\", new FirefoxOptions() { BrowserExecutableLocation = @"C:\Program Files\Mozilla Firefox\firefox.exe" });
+            }
+            
             FindPeople.IFindPeople find = new FindPeople.FindPeople();
 
             find.FindPeopleOnVK(webDriver, options);
-            find.FindPeopleOnFacebook(webDriver, options);
-            find.FindPeopleOnOK(webDriver, options);
-            */
+            //find.FindPeopleOnFacebook(webDriver, options);
+           // find.FindPeopleOnOK(webDriver, options);
+            
             App.PersonInformation = new List<FindPeople.PersonInformation>();
-            /*
+            
             foreach (var person in find.PeopleFromVK)
                 App.PersonInformation.Add(person);
 
-            foreach (var person in find.PeopleFromFacebook)
+            /*foreach (var person in find.PeopleFromFacebook)
                 App.PersonInformation.Add(person);
 
             foreach (var person in find.PeopleFromOK)
-                App.PersonInformation.Add(person);
+                App.PersonInformation.Add(person);*/
 
-            webDriver.Quit();*/
+            webDriver.Quit();
 
             foreach (var ui in (Application.Current.MainWindow.Content as Grid).Children)
             {
