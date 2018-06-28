@@ -138,5 +138,13 @@
     <Folder Include="AppData\" />
     <Folder Include="DatabaseInteraction\" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\app.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\iconFacebook.png" />
+    <Resource Include="Assets\iconOK.png" />
+    <Resource Include="Assets\iconVK.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

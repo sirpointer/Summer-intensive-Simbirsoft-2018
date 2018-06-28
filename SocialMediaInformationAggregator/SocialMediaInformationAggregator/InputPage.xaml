@@ -9,6 +9,6 @@
       Title="InputPage">
 
     <Grid>
-        <TextBlock Text="hljhklj" Width="200" Height="100" />
+        
     </Grid>
 </Page>

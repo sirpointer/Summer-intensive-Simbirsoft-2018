@@ -12,7 +12,7 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <Frame Grid.Row="1" Source="InputPage.xaml">
+        <Frame Grid.Row="1" Source="ListOfPeoplePage.xaml">
             
         </Frame>
     </Grid>

@@ -19,6 +19,7 @@ namespace SocialMediaInformationAggregator.FindPeople
             this.Cities = new List<string>();
             this.Education = new List<string>();
             this.Photo = new Image();
+            this.SocialNetwork = SocialNetwork.VK;
         }
         
         public string Name { get; set; }
@@ -38,5 +39,9 @@ namespace SocialMediaInformationAggregator.FindPeople
         public List<string> Education { get; set; }
 
         public Image Photo { get; set; }
+
+        public SocialNetwork SocialNetwork { get; set; }
     }
+
+    public enum SocialNetwork { VK, OK, Facebook }
 }

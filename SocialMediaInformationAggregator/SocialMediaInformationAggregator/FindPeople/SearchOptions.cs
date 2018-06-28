@@ -57,8 +57,13 @@ namespace SocialMediaInformationAggregator.FindPeople
         public string City { get; set; }
 
         /// <summary>
-        /// Место учебы искомого человека.
+        /// Место учебы искомого человека (университет).
         /// </summary>
         public string Education { get; set; }
+
+        /// <summary>
+        /// Школа, в которой обучался искомый человек.
+        /// </summary>
+        public string Schools { get; set; }
     }
 }
