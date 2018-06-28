@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialMediaInformationAggregator", "SocialMediaInformationAggregator\SocialMediaInformationAggregator.csproj", "{02536680-6EEB-4623-AA1C-1329964A1046}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{02536680-6EEB-4623-AA1C-1329964A1046}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02536680-6EEB-4623-AA1C-1329964A1046}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02536680-6EEB-4623-AA1C-1329964A1046}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02536680-6EEB-4623-AA1C-1329964A1046}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6D9870CA-13DC-4744-9EB3-88403EA1F5DF}
+	EndGlobalSection
+EndGlobal
