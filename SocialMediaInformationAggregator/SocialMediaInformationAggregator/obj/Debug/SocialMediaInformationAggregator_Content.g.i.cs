@@ -8,8 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/iconfacebook.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/iconok.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/iconvk.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("webdrivers/geckodriver.exe")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("webdrivers/microsoftwebdriver.exe")]
 
 

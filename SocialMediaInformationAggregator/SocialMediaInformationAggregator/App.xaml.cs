@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using SocialMediaInformationAggregator.FindPeople;
 
 namespace SocialMediaInformationAggregator
 {
@@ -13,7 +14,9 @@ namespace SocialMediaInformationAggregator
     /// </summary>
     public partial class App : Application
     {
-    }
+        private static List<FindPeople.PersonInformation> personInformation;
 
+        public static List<PersonInformation> PersonInformation { get => personInformation; set => personInformation = value; }
+    }
 
 }

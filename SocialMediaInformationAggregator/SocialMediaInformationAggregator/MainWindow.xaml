@@ -12,7 +12,15 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <Frame Grid.Row="1" Source="ListOfPeoplePage.xaml">
+        <Button Name="BackButton" Click="BackButton_Click" Content="&#xe0a6;" FontFamily="Segoe MDL2 Assets" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5" Margin="5" />
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 10, 0">
+            <TextBlock Text="Login" Margin="15, 5"/>
+            <Button Content="Войти"  />
+        </StackPanel>
+        
+
+        <Frame Grid.Row="1" Source="InputPage.xaml" Name="PagesFrame" NavigationUIVisibility="Hidden">
             
         </Frame>
     </Grid>

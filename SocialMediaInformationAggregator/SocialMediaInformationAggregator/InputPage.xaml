@@ -9,6 +9,40 @@
       Title="InputPage">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="Имя" Margin="40, 0, 0, 0" FontSize="10"/>
+            <TextBox Name="NameTextBox" HorizontalAlignment="Left" MinWidth="100" Margin="40, 0, 10, 10" />
+            <TextBox Name="LastNameTextBox" MinWidth="100" Margin="40, 10, 10, 10" HorizontalAlignment="Left" />
+
+            <TextBlock Text="Год рождения" Margin="30, 0, 0, 0" FontSize="10"/>
+            <StackPanel Orientation="Horizontal" Margin="10, 0, 0, 10">
+                <TextBlock Text="+" Name="YearFromOption" PreviewMouseDown="OptionTB_PreviewMouseDown" />
+                <TextBlock Margin="20, 0, 0, 0" Text="от" />
+                <ComboBox Name="FromYearCB" Margin="10, 0" MaxDropDownHeight="100" MinWidth="60"/>
+                <TextBlock Name="YearToOption" Text="+" Margin="20, 0, 0 ,0" PreviewMouseDown="OptionTB_PreviewMouseDown" />
+                <TextBlock Margin="10, 0, 0, 0" Text="от" />
+                <ComboBox Name="ToYearCB" Margin="10, 0" MaxDropDownHeight="100" MinWidth="60"/>
+            </StackPanel>
+
+            <TextBlock Text="Город" Margin="30, 0, 0, 0" FontSize="10"/>
+            <StackPanel Orientation="Horizontal" Margin="10, 0, 0, 10">
+                <TextBlock Name="CityOption" Text="+" PreviewMouseDown="OptionTB_PreviewMouseDown" />
+                <TextBox Name="CityTB" MinWidth="100" Margin="20, 0" />
+            </StackPanel>
+
+            <TextBlock Text="Место учебы" Margin="30, 0, 0, 0" FontSize="10"/>
+            <StackPanel Orientation="Horizontal" Margin="10, 0, 0, 10">
+                <TextBlock Name="EducationOption" Text="+" PreviewMouseDown="OptionTB_PreviewMouseDown" />
+                <TextBox Name="EducationTB" MinWidth="100" Margin="20, 0" />
+            </StackPanel>
+
+            <Button Name="FindButton" Content="Найти" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="20" Padding="10, 5" Click="FindButton_Click" />
+        </StackPanel>
     </Grid>
 </Page>

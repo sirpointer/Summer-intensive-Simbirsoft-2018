@@ -24,6 +24,8 @@ namespace SocialMediaInformationAggregator
         {
             InitializeComponent();
 
+            PeopleListBox.SelectionChanged += PeopleListBox_SelectionChanged;
+
             AddPersonToListBox(new FindPeople.PersonInformation()
             {
                 Name = "Nikita",
@@ -33,6 +35,14 @@ namespace SocialMediaInformationAggregator
                 SocialNetwork = FindPeople.SocialNetwork.Facebook,
                 YearOfBirth = 1998
             });
+
+            foreach (var person in App.PersonInformation)
+                AddPersonToListBox(person);
+        }
+
+        private void PeopleListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         public void AddPersonToListBox(FindPeople.PersonInformation person)

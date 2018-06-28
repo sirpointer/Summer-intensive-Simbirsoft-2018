@@ -24,5 +24,11 @@ namespace SocialMediaInformationAggregator
         {
             InitializeComponent();
         }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (PagesFrame.CanGoBack)
+                PagesFrame.GoBack();
+        }
     }
 }
