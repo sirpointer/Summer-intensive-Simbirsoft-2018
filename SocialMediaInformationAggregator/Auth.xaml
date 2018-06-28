@@ -17,7 +17,7 @@
         <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="305,161,0,0" VerticalAlignment="Top" Width="156"/>
         <Label Content="Логин" HorizontalAlignment="Left" Margin="211,123,0,0" VerticalAlignment="Top"/>
         <Label Content="Пароль" HorizontalAlignment="Left" Margin="211,161,0,0" VerticalAlignment="Top"/>
-        <Button Content="Регистрация" HorizontalAlignment="Left" Margin="27,74,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.488,-0.304"/>
+        <Button Content="Регистрация" HorizontalAlignment="Left" Margin="27,74,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.488,-0.304" Click="Button_Click_3"/>
 
     </Grid>
 </Window>

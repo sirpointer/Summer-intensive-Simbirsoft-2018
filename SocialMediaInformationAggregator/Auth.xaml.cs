@@ -77,7 +77,14 @@ namespace SocialMediaInformationAggregator
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
+            RemakePass remakePass = new RemakePass();
+            remakePass.Show();
+        }
 
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
         }
     }
 }

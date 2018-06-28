@@ -82,3 +82,7 @@ C:\Users\user\Documents\GitHub\Social-media-information-aggregator\SocialMediaIn
 C:\Users\user\Documents\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\obj\Debug\SocialMediaInformationAggregator.csproj.CopyComplete
 C:\Users\user\Documents\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\obj\Debug\SocialMediaInformationAggregator.exe
 C:\Users\user\Documents\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\obj\Debug\SocialMediaInformationAggregator.pdb
+C:\Users\user\Documents\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\obj\Debug\RemakePass.g.cs
+C:\Users\user\Documents\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\obj\Debug\RemakePass.baml
+C:\Users\user\Documents\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\obj\Debug\ChangePass.g.cs
+C:\Users\user\Documents\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\obj\Debug\ChangePass.baml
