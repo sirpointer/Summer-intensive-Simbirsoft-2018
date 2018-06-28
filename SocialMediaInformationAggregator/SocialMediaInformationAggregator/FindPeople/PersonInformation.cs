@@ -20,13 +20,14 @@ namespace SocialMediaInformationAggregator.FindPeople
             this.Education = new List<string>();
             this.Photo = new Image();
             this.SocialNetwork = SocialNetwork.VK;
+            this.YearOfBirth = DateTime.Now.Year - 1;
         }
         
         public string Name { get; set; }
 
         public string LastName { get; set; }
 
-        public int YearOfBirth { get; set; }
+        public int? YearOfBirth { get; set; }
 
         /// <summary>
         /// Все города, в которых он жил или живёт.
