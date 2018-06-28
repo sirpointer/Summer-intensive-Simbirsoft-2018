@@ -12,6 +12,7 @@ namespace SocialMediaInformationAggregator.FindPeople
     public class SearchOptions
     {
         private Nullable<int> _yearOfBirth;
+        private int? _forThisYear;
 
         /// <summary>
         /// Инициализирует новый экземпляр класса SearchOptions.
@@ -24,6 +25,7 @@ namespace SocialMediaInformationAggregator.FindPeople
             this.YearOfBirth = null;
             this.City = null;
             this.Education = null;
+            this.ForThisYear = null;
         }
 
         /// <summary>
@@ -49,6 +51,12 @@ namespace SocialMediaInformationAggregator.FindPeople
 
                 _yearOfBirth = value;
             }
+        }
+        
+        public int? ForThisYear
+        {
+            get => _forThisYear;
+            set => _forThisYear = value;
         }
 
         /// <summary>
