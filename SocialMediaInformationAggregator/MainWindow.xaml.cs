@@ -41,12 +41,13 @@ namespace SocialMediaInformationAggregator
                 using (SqlCommand comm = new SqlCommand(query, conn))
                 {
                     comm.Parameters.AddWithValue("@login", TextBoxLogin.Text);
-                    comm.Parameters.AddWithValue("@password", TextBoxPassword.Text);
+                    comm.Parameters.AddWithValue("@password", passwordBox.Password);
                     comm.Parameters.AddWithValue("@mail", TextBoxmail.Text);
                     comm.Parameters.AddWithValue("@name", TextBoxName.Text);
                     comm.Parameters.AddWithValue("@firstname", TextBoxFirstName.Text);
                     comm.ExecuteNonQuery();
                 }
+                conn.Close();
             }
             catch (Exception ex)
             {
@@ -63,9 +64,9 @@ namespace SocialMediaInformationAggregator
             int buf_3 = 0;
             int buf_4 = 0;
             int buf_5 = 0;
-            if (TextBoxPassword.Text.ToCharArray().Count() >= 6)
+            if (passwordBox.Password.ToCharArray().Count() >= 6)
             {
-                foreach (var k in TextBoxPassword.Text.ToCharArray())
+                foreach (var k in passwordBox.Password.ToCharArray())
                 {
                     if (Char.IsDigit(k)) buf = 1;
                     if (Char.IsLetter(k)) buf_1 = 1;
@@ -175,7 +176,7 @@ namespace SocialMediaInformationAggregator
         {
             if (PasswordIsCorrect() == true && EmailISUnique() == true && LoginISUnique() == true)
             {
-                if (TextBoxPassword.Text == TextBoxRepeat.Text)
+                if (passwordBox.Password.ToString() == repeatPasswordBox.Password.ToString())
                 {
                     InsertUserIntoDb();
                     Questions questions = new Questions(TextBoxLogin.Text, connectionString);

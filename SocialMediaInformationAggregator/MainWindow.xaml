@@ -7,14 +7,23 @@
         mc:Ignorable="d"
               Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button x:Name="button" Content="Регистрация" HorizontalAlignment="Left" Margin="159,247,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.716,0.406" Click="button_Click"/>
-        <TextBox x:Name="TextBoxName" HorizontalAlignment="Left" Height="23" Margin="159,59,0,0" TextWrapping="Wrap" Text="Имя" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="TextBoxFirstName" HorizontalAlignment="Left" Height="23" Margin="159,99,0,0" TextWrapping="Wrap" Text="Фамилия" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="TextBoxLogin" HorizontalAlignment="Left" Height="23" Margin="159,138,0,0" TextWrapping="Wrap" Text="Логин" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="TextBoxPassword" HorizontalAlignment="Left" Height="23" Margin="159,179,0,0" TextWrapping="Wrap" Text="Пароль" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="TextBoxRepeat" HorizontalAlignment="Left" Height="23" Margin="299,179,0,0" TextWrapping="Wrap" Text="Повторите пароль" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="TextBoxmail" HorizontalAlignment="Left" Height="23" Margin="159,207,0,0" TextWrapping="Wrap" Text="e-mail" VerticalAlignment="Top" Width="120"/>
-        <Label x:Name="label" Content="Регистрация" HorizontalAlignment="Left" Margin="159,22,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="button" Content="Далее" HorizontalAlignment="Left" Margin="346,293,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.716,0.406" Click="button_Click"/>
+        <TextBox x:Name="TextBoxName" HorizontalAlignment="Left" Height="23" Margin="188,100,0,0" TextWrapping="Wrap" Text="Имя" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TextBoxFirstName" HorizontalAlignment="Left" Height="23" Margin="188,140,0,0" TextWrapping="Wrap" Text="Фамилия" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TextBoxLogin" HorizontalAlignment="Left" Height="23" Margin="188,178,0,0" TextWrapping="Wrap" Text="Логин" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TextBoxmail" HorizontalAlignment="Left" Height="23" Margin="188,225,0,0" TextWrapping="Wrap" Text="e-mail" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="label" Content="Регистрация" HorizontalAlignment="Left" Margin="346,20,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="0.424,-0.225"/>
+        <PasswordBox x:Name="repeatPasswordBox" HorizontalAlignment="Left" Margin="541,225,0,0" VerticalAlignment="Top" Width="104"/>
+        <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="541,179,0,0" VerticalAlignment="Top" Width="104"/>
+        <Label Content="Имя" HorizontalAlignment="Left" Margin="99,100,0,0" VerticalAlignment="Top"/>
+        <Label Content="Фамилия" HorizontalAlignment="Left" Margin="99,138,0,0" VerticalAlignment="Top"/>
+        <Label Content="Логин" HorizontalAlignment="Left" Margin="99,178,0,0" VerticalAlignment="Top"/>
+        <Label Content="e-mail" HorizontalAlignment="Left" Margin="99,225,0,0" VerticalAlignment="Top"/>
+        <Label Content="Введите пароль еще раз" HorizontalAlignment="Left" Margin="366,221,0,0" VerticalAlignment="Top"/>
+        <Label Content="Введите пароль" HorizontalAlignment="Left" Margin="366,176,0,0" VerticalAlignment="Top"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="67" Margin="0,0,-0.4,0" VerticalAlignment="Top" Width="794"/>
+        <Button Content="Войти" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="На главную" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top" Width="75"/>
 
     </Grid>
 </Window>

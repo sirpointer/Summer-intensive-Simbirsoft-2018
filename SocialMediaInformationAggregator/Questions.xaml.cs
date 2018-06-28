@@ -27,8 +27,6 @@ namespace SocialMediaInformationAggregator
             login = log;
             connectionString = connect;
             InitializeComponent();
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Close();
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
@@ -44,6 +42,9 @@ namespace SocialMediaInformationAggregator
                 SqlCommand comm = new SqlCommand(query, conn);
 
                 comm.ExecuteNonQuery();
+                conn.Close();
+                Auth auth = new Auth();
+                auth.Show();
 
             }
             catch (Exception ex)
