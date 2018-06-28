@@ -22,3 +22,63 @@ C:\Users\sirpo\OneDrive\SocialMediaInformationAggregator\SocialMediaInformationA
 C:\Users\sirpo\OneDrive\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\SocialMediaInformationAggregator.csproj.CopyComplete
 C:\Users\sirpo\OneDrive\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\SocialMediaInformationAggregator.exe
 C:\Users\sirpo\OneDrive\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\SocialMediaInformationAggregator.pdb
+C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\bin\Debug\SocialMediaInformationAggregator.exe.config
+C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\bin\Debug\SocialMediaInformationAggregator.exe
+C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\bin\Debug\SocialMediaInformationAggregator.pdb
+C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\bin\Debug\Selenium.WebDriverBackedSelenium.dll
+C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\bin\Debug\ThoughtWorks.Selenium.Core.dll
+C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\bin\Debug\WebDriver.dll
+C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\bin\Debug\WebDriver.Support.dll
+C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\bin\Debug\Selenium.WebDriverBackedSelenium.xml
+C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\bin\Debug\ThoughtWorks.Selenium.Core.xml
+C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\bin\Debug\WebDriver.xml
+C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\bin\Debug\WebDriver.Support.xml
+C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\SocialMediaInformationAggregator.csprojAssemblyReference.cache
+C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\InputPage.g.cs
+C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\MainWindow.g.cs
+C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\App.g.cs
+C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\SocialMediaInformationAggregator_MarkupCompile.cache
+C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\SocialMediaInformationAggregator_MarkupCompile.lref
+C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\MainWindow.baml
+C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\InputPage.baml
+C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\SocialMediaInformationAggregator.g.resources
+C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\SocialMediaInformationAggregator.Properties.Resources.resources
+C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\SocialMediaInformationAggregator.csproj.GenerateResource.cache
+C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\SocialMediaInformationAggregator.csproj.CoreCompileInputs.cache
+C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\SocialMediaInformationAggregator.csproj.CopyComplete
+C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\SocialMediaInformationAggregator.exe
+C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\SocialMediaInformationAggregator.pdb
+C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\ListOfPeoplePage.g.cs
+C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\PersonPage.g.cs
+C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\ListOfPeoplePage.baml
+C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\PersonPage.baml
+C:\Users\User\OneDrive\летний интенсив\Social-media-information-aggregator-master\SocialMediaInformationAggregator\SocialMediaInformationAggregator\bin\Debug\SocialMediaInformationAggregator.exe.config
+C:\Users\User\OneDrive\летний интенсив\Social-media-information-aggregator-master\SocialMediaInformationAggregator\SocialMediaInformationAggregator\bin\Debug\SocialMediaInformationAggregator.exe
+C:\Users\User\OneDrive\летний интенсив\Social-media-information-aggregator-master\SocialMediaInformationAggregator\SocialMediaInformationAggregator\bin\Debug\SocialMediaInformationAggregator.pdb
+C:\Users\User\OneDrive\летний интенсив\Social-media-information-aggregator-master\SocialMediaInformationAggregator\SocialMediaInformationAggregator\bin\Debug\Selenium.WebDriverBackedSelenium.dll
+C:\Users\User\OneDrive\летний интенсив\Social-media-information-aggregator-master\SocialMediaInformationAggregator\SocialMediaInformationAggregator\bin\Debug\ThoughtWorks.Selenium.Core.dll
+C:\Users\User\OneDrive\летний интенсив\Social-media-information-aggregator-master\SocialMediaInformationAggregator\SocialMediaInformationAggregator\bin\Debug\WebDriver.dll
+C:\Users\User\OneDrive\летний интенсив\Social-media-information-aggregator-master\SocialMediaInformationAggregator\SocialMediaInformationAggregator\bin\Debug\WebDriver.Support.dll
+C:\Users\User\OneDrive\летний интенсив\Social-media-information-aggregator-master\SocialMediaInformationAggregator\SocialMediaInformationAggregator\bin\Debug\Selenium.WebDriverBackedSelenium.xml
+C:\Users\User\OneDrive\летний интенсив\Social-media-information-aggregator-master\SocialMediaInformationAggregator\SocialMediaInformationAggregator\bin\Debug\ThoughtWorks.Selenium.Core.xml
+C:\Users\User\OneDrive\летний интенсив\Social-media-information-aggregator-master\SocialMediaInformationAggregator\SocialMediaInformationAggregator\bin\Debug\WebDriver.xml
+C:\Users\User\OneDrive\летний интенсив\Social-media-information-aggregator-master\SocialMediaInformationAggregator\SocialMediaInformationAggregator\bin\Debug\WebDriver.Support.xml
+C:\Users\User\OneDrive\летний интенсив\Social-media-information-aggregator-master\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\SocialMediaInformationAggregator.csprojAssemblyReference.cache
+C:\Users\User\OneDrive\летний интенсив\Social-media-information-aggregator-master\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\InputPage.g.cs
+C:\Users\User\OneDrive\летний интенсив\Social-media-information-aggregator-master\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\ListOfPeoplePage.g.cs
+C:\Users\User\OneDrive\летний интенсив\Social-media-information-aggregator-master\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\MainWindow.g.cs
+C:\Users\User\OneDrive\летний интенсив\Social-media-information-aggregator-master\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\PersonPage.g.cs
+C:\Users\User\OneDrive\летний интенсив\Social-media-information-aggregator-master\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\App.g.cs
+C:\Users\User\OneDrive\летний интенсив\Social-media-information-aggregator-master\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\SocialMediaInformationAggregator_MarkupCompile.cache
+C:\Users\User\OneDrive\летний интенсив\Social-media-information-aggregator-master\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\SocialMediaInformationAggregator_MarkupCompile.lref
+C:\Users\User\OneDrive\летний интенсив\Social-media-information-aggregator-master\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\InputPage.baml
+C:\Users\User\OneDrive\летний интенсив\Social-media-information-aggregator-master\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\ListOfPeoplePage.baml
+C:\Users\User\OneDrive\летний интенсив\Social-media-information-aggregator-master\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\MainWindow.baml
+C:\Users\User\OneDrive\летний интенсив\Social-media-information-aggregator-master\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\PersonPage.baml
+C:\Users\User\OneDrive\летний интенсив\Social-media-information-aggregator-master\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\SocialMediaInformationAggregator.g.resources
+C:\Users\User\OneDrive\летний интенсив\Social-media-information-aggregator-master\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\SocialMediaInformationAggregator.Properties.Resources.resources
+C:\Users\User\OneDrive\летний интенсив\Social-media-information-aggregator-master\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\SocialMediaInformationAggregator.csproj.GenerateResource.cache
+C:\Users\User\OneDrive\летний интенсив\Social-media-information-aggregator-master\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\SocialMediaInformationAggregator.csproj.CoreCompileInputs.cache
+C:\Users\User\OneDrive\летний интенсив\Social-media-information-aggregator-master\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\SocialMediaInformationAggregator.csproj.CopyComplete
+C:\Users\User\OneDrive\летний интенсив\Social-media-information-aggregator-master\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\SocialMediaInformationAggregator.exe
+C:\Users\User\OneDrive\летний интенсив\Social-media-information-aggregator-master\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\SocialMediaInformationAggregator.pdb
