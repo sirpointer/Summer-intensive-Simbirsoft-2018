@@ -97,7 +97,7 @@ namespace SocialMediaInformationAggregator
 
         private static void SetSocialNetworkSP(FindPeople.PersonInformation person, StackPanel socialNetworkSP)
         {
-            Image socialNetworkIcon = new Image();
+            Image socialNetworkIcon = person.Photo;
             TextBlock socialNetworkNameTB = new TextBlock()
             {
                 Margin = new Thickness(10, 0, 0, 0),
