@@ -29,6 +29,7 @@ namespace SocialMediaInformationAggregator.FindPeople
                 //ввод пароля
                 IWebElement password = webDriver.FindElement(By.Id("field_password"));
                 password.SendKeys("seleniumtest[]{}" + Keys.Enter);
+                Thread.Sleep(1000);
                 //переход к поиску
                 webDriver.Navigate().GoToUrl("https://ok.ru/search?st.mode=Users");
 

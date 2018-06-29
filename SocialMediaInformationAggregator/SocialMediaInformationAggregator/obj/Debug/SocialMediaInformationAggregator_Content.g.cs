@@ -8,6 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("webdrivers/chromedriver.exe")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("webdrivers/geckodriver.exe")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("webdrivers/microsoftwebdriver.exe")]
 

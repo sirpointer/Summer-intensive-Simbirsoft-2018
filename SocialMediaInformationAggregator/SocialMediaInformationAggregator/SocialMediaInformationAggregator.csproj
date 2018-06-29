@@ -67,10 +67,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ForgottenPasswordPage.xaml.cs">
+      <DependentUpon>ForgottenPasswordPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RegistrationPage.xaml.cs">
       <DependentUpon>RegistrationPage.xaml</DependentUpon>
     </Compile>
     <Page Include="AuthorizationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ForgottenPasswordPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -161,6 +168,7 @@
     <Resource Include="Assets\iconVK.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="WebDrivers\chromedriver.exe" />
     <Content Include="WebDrivers\geckodriver.exe" />
     <Content Include="WebDrivers\MicrosoftWebDriver.exe" />
   </ItemGroup>

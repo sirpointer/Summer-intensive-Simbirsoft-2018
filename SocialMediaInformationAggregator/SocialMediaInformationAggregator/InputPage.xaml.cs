@@ -64,7 +64,7 @@ namespace SocialMediaInformationAggregator
 
             find.FindPeopleOnVK(webDriver, options);
             //find.FindPeopleOnFacebook(webDriver, options);
-           // find.FindPeopleOnOK(webDriver, options);
+            find.FindPeopleOnOK(webDriver, options);
             
             App.PersonInformation = new List<FindPeople.PersonInformation>();
             
@@ -72,10 +72,10 @@ namespace SocialMediaInformationAggregator
                 App.PersonInformation.Add(person);
 
             /*foreach (var person in find.PeopleFromFacebook)
-                App.PersonInformation.Add(person);
+                App.PersonInformation.Add(person);*/
 
             foreach (var person in find.PeopleFromOK)
-                App.PersonInformation.Add(person);*/
+                App.PersonInformation.Add(person);
 
             webDriver.Quit();
 
