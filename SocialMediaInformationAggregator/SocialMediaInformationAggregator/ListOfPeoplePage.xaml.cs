@@ -54,9 +54,9 @@ namespace SocialMediaInformationAggregator
             personGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(100) });
             personGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
 
-            ImageSource source = new ImageSourceConverter().ConvertFromString(@"pack://application:,,,/Assets/app.ico") as ImageSource;
+            //ImageSource source = new ImageSourceConverter().ConvertFromString(@"pack://application:,,,/Assets/app.ico") as ImageSource;
 
-            Image photo = new Image() { Source = source };
+            Image photo = person.Photo; //new Image() { Source = source };
 
             StackPanel PersonInformationSP = new StackPanel() { Margin = new Thickness(0, 0, 10, 0) };
             SetPersonInfoSP(person, PersonInformationSP);
@@ -97,7 +97,7 @@ namespace SocialMediaInformationAggregator
 
         private static void SetSocialNetworkSP(FindPeople.PersonInformation person, StackPanel socialNetworkSP)
         {
-            Image socialNetworkIcon = person.Photo;
+            Image socialNetworkIcon = new Image();
             TextBlock socialNetworkNameTB = new TextBlock()
             {
                 Margin = new Thickness(10, 0, 0, 0),
