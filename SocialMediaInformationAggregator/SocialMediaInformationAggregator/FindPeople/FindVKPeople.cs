@@ -45,27 +45,33 @@ namespace SocialMediaInformationAggregator.FindPeople
              IWebElement cityFind = webDriver.FindElement(By.XPath("//*[@id='option_list_options_container_2_3']"));
              cityFind.Click();
              */
-            for (int i = 0; i < 5; i++)
+            try
             {
-                Thread.Sleep(1000);
-                //Переход на конкретного человека
-                IWebElement people = webDriver.FindElements(By.ClassName("name"))[i];
-                webDriver.FindElements(By.LinkText(people.Text))[i].Click();
+                for (int i = 0; i < 5; i++)
+                {
+                    Thread.Sleep(1000);
+                    //Переход на конкретного человека
+                    IWebElement people = webDriver.FindElements(By.ClassName("name"))[i];
+                    webDriver.FindElements(By.LinkText(people.Text))[i].Click();
 
-                PersonInformation personInformation = new PersonInformation();
-                personInformation.Name = searchOptions.Name;
-                personInformation.LastName = searchOptions.LastName;
-                personInformation.YearOfBirth = YearBirth(webDriver);
-                personInformation.Cities = new List<string>() { LiveCity(webDriver) };
-                personInformation.Education = new List<string>() { Educations(webDriver) };
-                personInformation.SocialNetwork = SocialNetwork.VK;
-                personInformation.Photo = Photo(webDriver, i);
+                    PersonInformation personInformation = new PersonInformation();
+                    personInformation.Name = searchOptions.Name;
+                    personInformation.LastName = searchOptions.LastName;
+                    personInformation.YearOfBirth = YearBirth(webDriver);
+                    personInformation.Cities = new List<string>() { LiveCity(webDriver) };
+                    personInformation.Education = new List<string>() { Educations(webDriver) };
+                    personInformation.SocialNetwork = SocialNetwork.VK;
+                    personInformation.Photo = Photo(webDriver, i);
 
-                PeopleFromVK.Add(personInformation);
+                    PeopleFromVK.Add(personInformation);
 
-                webDriver.Navigate().Back();
+                    webDriver.Navigate().Back();
+                }
             }
-
+            catch
+            {
+                
+            }
         }
 
         private int? YearBirth(IWebDriver webDriver)
