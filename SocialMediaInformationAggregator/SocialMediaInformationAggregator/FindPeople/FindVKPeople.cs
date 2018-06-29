@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,10 +24,10 @@ namespace SocialMediaInformationAggregator.FindPeople
 
             //Ищет человека в поисковике по имени, добавить TextBox, переделать по-человечески
             IWebElement querName = webDriver.FindElement(By.Id("search_query"));
-            querName.SendKeys("Никита" + " " + "Новиков" + "\n");
+            querName.SendKeys(searchOptions.Name + " " + searchOptions.LastName + "\n");
 
             WebDriverWait element = new WebDriverWait(webDriver, TimeSpan.FromSeconds(10));
-
+/*
             //Выбирает страну - Россия
             IWebElement country = webDriver.FindElement(By.XPath("//*[@id='container3']"));
             country.Click();
@@ -39,7 +39,7 @@ namespace SocialMediaInformationAggregator.FindPeople
 
             //Выбирает город, почему-то косячит и считает, что в этом городе людей нет, сделать по-человечески
             //Научиться динамически выбирать после выбора страны
-            /* IWebElement city = webDriver.FindElement(By.XPath("//*[@id='container2']"));
+             IWebElement city = webDriver.FindElement(By.XPath("//*[@id='container2']"));
              city.Click();
              element.Timeout = TimeSpan.FromSeconds(10);
              IWebElement cityFind = webDriver.FindElement(By.XPath("//*[@id='option_list_options_container_2_3']"));
@@ -53,13 +53,13 @@ namespace SocialMediaInformationAggregator.FindPeople
                 webDriver.FindElements(By.LinkText(people.Text))[i].Click();
 
                 PersonInformation personInformation = new PersonInformation();
-                personInformation.Name = "Никита";
-                personInformation.LastName = "Новиков";
+                personInformation.Name = searchOptions.Name;
+                personInformation.LastName = searchOptions.LastName;
                 personInformation.YearOfBirth = YearBirth(webDriver);
                 personInformation.Cities = new List<string>() { LiveCity(webDriver) };
                 personInformation.Education = new List<string>() { Educations(webDriver) };
                 personInformation.SocialNetwork = SocialNetwork.VK;
-                //personInformation.Photo = Photo(webDriver, i);
+                personInformation.Photo = Photo(webDriver, i);
 
                 PeopleFromVK.Add(personInformation);
 
@@ -112,15 +112,12 @@ namespace SocialMediaInformationAggregator.FindPeople
             Thread.Sleep(1000);
             IWebElement img = webDriver.FindElement(By.XPath("//*[@id='profile_photo_link']/img"));
             Screenshot screenshot = ((ITakesScreenshot)webDriver.FindElement(By.XPath("//*[@id='profile_photo_link']/img"))).GetScreenshot();// .FindElement(By.XPath("")).
-            string im = @"C:\Users\User\OneDrive\летний интенсив\1\" + i.ToString() + ".png";
+            string im = @"C:\Users\User\OneDrive\Social-media-information-aggregator-BranchToShow\SocialMediaInformationAggregator\SocialMediaInformationAggregator\Assets\" + i.ToString() + ".png";
             screenshot.SaveAsFile(im);
             Image image = new Image();
             BitmapImage bitmapImage = new BitmapImage();
-            bitmapImage.UriSource = new Uri(i.ToString() + ".png", UriKind.Relative);
+            bitmapImage.UriSource = new Uri(@"pack://application:,,,/Assets/"+i+".png");
             image.Source = bitmapImage;
-
-            //image. = 
-            //image.Source = new BitmapImage(new Uri(im));
             return image;
         }
 
@@ -138,3 +135,4 @@ namespace SocialMediaInformationAggregator.FindPeople
         }
     }
 }
+
