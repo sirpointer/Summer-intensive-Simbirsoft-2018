@@ -16,7 +16,7 @@
         </Grid.ColumnDefinitions>
 
         <ListBox Grid.Column="1" Name="PeopleListBox">
-            <ListBoxItem Height="100">
+           <!-- <ListBoxItem Height="100">
                 <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="100"/>
@@ -37,7 +37,7 @@
                     </StackPanel>
                 </Grid>
 
-            </ListBoxItem>
+            </ListBoxItem>-->
         </ListBox>
     </Grid>
 </Page>

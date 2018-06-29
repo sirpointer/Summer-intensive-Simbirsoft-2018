@@ -53,3 +53,7 @@ C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggre
 C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\ListOfPeoplePage.baml
 C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\PersonPage.baml
 C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\SocialMediaInformationAggregator_Content.g.cs
+C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\AuthorizationPage.g.cs
+C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\RegistrationPage.g.cs
+C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\AuthorizationPage.baml
+C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\RegistrationPage.baml

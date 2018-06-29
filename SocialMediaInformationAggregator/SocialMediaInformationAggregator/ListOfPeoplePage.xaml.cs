@@ -28,12 +28,32 @@ namespace SocialMediaInformationAggregator
 
             AddPersonToListBox(new FindPeople.PersonInformation()
             {
-                Name = "Nikita",
-                LastName = "Novikov",
-                Cities = new List<string>() { "Uluanovsk" },
-                Education = new List<string>() { "ULSTU" },
+                Name = "Иван",
+                LastName = "Иванов",
+                Cities = new List<string>() { "Москва" },
+                Education = new List<string>() { "Школа 20" },
                 SocialNetwork = FindPeople.SocialNetwork.Facebook,
-                YearOfBirth = 1998
+                YearOfBirth = 1990
+            });
+
+            AddPersonToListBox(new FindPeople.PersonInformation()
+            {
+                Name = "Иван",
+                LastName = "Иванов",
+                Cities = new List<string>() { "Москва", "Питер" },
+                Education = new List<string>() { "МГУ" },
+                SocialNetwork = FindPeople.SocialNetwork.OK,
+                YearOfBirth = 1990
+            });
+
+            AddPersonToListBox(new FindPeople.PersonInformation()
+            {
+                Name = "Иван",
+                LastName = "Иванов",
+                Cities = new List<string>() { "Питер" },
+                Education = new List<string>() { "МГУ", "Школа 20" },
+                SocialNetwork = FindPeople.SocialNetwork.VK,
+                YearOfBirth = 1990
             });
 
             foreach (var person in App.PersonInformation)
@@ -42,7 +62,11 @@ namespace SocialMediaInformationAggregator
 
         private void PeopleListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            throw new NotImplementedException();
+            foreach (var ui in (Application.Current.MainWindow.Content as Grid).Children)
+            {
+                if (ui is Frame)
+                    (ui as Frame).Navigate(new Uri("PersonPage.xaml", UriKind.Relative));
+            }
         }
 
         public void AddPersonToListBox(FindPeople.PersonInformation person)

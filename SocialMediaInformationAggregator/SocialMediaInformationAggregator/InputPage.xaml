@@ -18,7 +18,8 @@
         <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBlock Text="Имя" Margin="40, 0, 0, 0" FontSize="10"/>
             <TextBox Name="NameTextBox" HorizontalAlignment="Left" MinWidth="100" Margin="40, 0, 10, 10" />
-            <TextBox Name="LastNameTextBox" MinWidth="100" Margin="40, 10, 10, 10" HorizontalAlignment="Left" />
+            <TextBlock Text="Фамилия" Margin="40, 0, 0, 0" FontSize="10"/>
+            <TextBox Name="LastNameTextBox" MinWidth="100" Margin="40, 0, 10, 10" HorizontalAlignment="Left" />
 
             <TextBlock Text="Год рождения" Margin="30, 0, 0, 0" FontSize="10"/>
             <StackPanel Orientation="Horizontal" Margin="10, 0, 0, 10">
@@ -26,7 +27,7 @@
                 <TextBlock Margin="20, 0, 0, 0" Text="от" />
                 <ComboBox Name="FromYearCB" Margin="10, 0" MaxDropDownHeight="100" MinWidth="60"/>
                 <TextBlock Name="YearToOption" Text="+" Margin="20, 0, 0 ,0" PreviewMouseDown="OptionTB_PreviewMouseDown" />
-                <TextBlock Margin="10, 0, 0, 0" Text="от" />
+                <TextBlock Margin="10, 0, 0, 0" Text="до" />
                 <ComboBox Name="ToYearCB" Margin="10, 0" MaxDropDownHeight="100" MinWidth="60"/>
             </StackPanel>
 

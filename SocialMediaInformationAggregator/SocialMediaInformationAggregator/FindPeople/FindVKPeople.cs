@@ -24,7 +24,7 @@ namespace SocialMediaInformationAggregator.FindPeople
 
             //Ищет человека в поисковике по имени, добавить TextBox, переделать по-человечески
             IWebElement querName = webDriver.FindElement(By.Id("search_query"));
-            querName.SendKeys("Никита" + " " + "Новиков" + " \n");
+            querName.SendKeys("Никита" + " " + "Новиков" + "\n");
 
             WebDriverWait element = new WebDriverWait(webDriver, TimeSpan.FromSeconds(10));
 
@@ -59,7 +59,7 @@ namespace SocialMediaInformationAggregator.FindPeople
                 personInformation.Cities = new List<string>() { LiveCity(webDriver) };
                 personInformation.Education = new List<string>() { Educations(webDriver) };
                 personInformation.SocialNetwork = SocialNetwork.VK;
-                personInformation.Photo = Photo(webDriver, i);
+                //personInformation.Photo = Photo(webDriver, i);
 
                 PeopleFromVK.Add(personInformation);
 

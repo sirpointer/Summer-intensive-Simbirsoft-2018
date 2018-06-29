@@ -53,7 +53,7 @@ namespace SocialMediaInformationAggregator
 
             try
             {
-                webDriver = new EdgeDriver("WebDrivers/");
+                webDriver = new EdgeDriver(@"C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\WebDrivers\");
             }
             catch
             {

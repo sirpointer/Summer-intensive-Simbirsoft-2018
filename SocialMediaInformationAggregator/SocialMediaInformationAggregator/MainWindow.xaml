@@ -16,7 +16,7 @@
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 10, 0">
             <TextBlock Text="Login" Margin="15, 5"/>
-            <Button Content="Войти"  />
+            <Button Name="LoginButton" Click="LoginButton_Click"  Content="Войти"  />
         </StackPanel>
         
 

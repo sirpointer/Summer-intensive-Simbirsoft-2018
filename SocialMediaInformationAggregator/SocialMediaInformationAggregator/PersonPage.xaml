@@ -8,7 +8,27 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="PersonPage">
 
-    <Grid>
-        
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Image Grid.Column="1" Source="Assets/app.ico" HorizontalAlignment="Left" Height="100" Margin="34,56,0,0" VerticalAlignment="Top" Width="100"/>
+        <TextBlock FontSize="16pt" Text="Иван Иванов" Grid.Column="1" HorizontalAlignment="Left" Margin="163,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock FontSize="12pt" Grid.Column="1" HorizontalAlignment="Left" Margin="163,111,0,0" TextWrapping="Wrap" Text="1990" VerticalAlignment="Top"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="34,190,0,0" TextWrapping="Wrap" Text="Образование" VerticalAlignment="Top"/>
+        <TextBlock Foreground="Blue" Grid.Column="1" HorizontalAlignment="Left" Margin="223,190,0,0" TextWrapping="Wrap" Text="МГУ" VerticalAlignment="Top"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="163,161,0,0" TextWrapping="Wrap" Text="VK" VerticalAlignment="Top"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="223,161,0,0" TextWrapping="Wrap" Text="Facebook" VerticalAlignment="Top" Foreground="Blue"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="314,161,0,0" TextWrapping="Wrap" Text="OK" VerticalAlignment="Top" Foreground="OrangeRed"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="163,190,0,0" TextWrapping="Wrap" Text="МГУ" VerticalAlignment="Top"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="314,190,0,0" TextWrapping="Wrap" Text="Школа 20" VerticalAlignment="Top" Foreground="OrangeRed"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="163,211,0,0" TextWrapping="Wrap" Text="Школа 20" VerticalAlignment="Top"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="34,251,0,0" TextWrapping="Wrap" Text="Города проживания" VerticalAlignment="Top"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="163,251,0,0" TextWrapping="Wrap" Text="Москва" VerticalAlignment="Top"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="223,251,0,0" TextWrapping="Wrap" Text="Питер" VerticalAlignment="Top" Foreground="Blue"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="314,251,0,0" TextWrapping="Wrap" Text="Москва" VerticalAlignment="Top" Foreground="OrangeRed"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="314,272,0,0" TextWrapping="Wrap" Text="Питер" VerticalAlignment="Top" Foreground="OrangeRed"/>
     </Grid>
 </Page>

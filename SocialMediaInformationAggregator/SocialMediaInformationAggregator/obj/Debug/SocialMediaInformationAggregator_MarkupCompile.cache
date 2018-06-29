@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\App.xaml
-4747869311
+6-1317744509
 2-1648424678
-18-149409160
+16-2056816279
 18673778714
-InputPage.xaml;ListOfPeoplePage.xaml;MainWindow.xaml;PersonPage.xaml;
+AuthorizationPage.xaml;InputPage.xaml;ListOfPeoplePage.xaml;MainWindow.xaml;PersonPage.xaml;RegistrationPage.xaml;
 
-True
+False
 

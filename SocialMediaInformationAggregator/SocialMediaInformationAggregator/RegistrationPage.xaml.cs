@@ -16,24 +16,13 @@ using System.Windows.Shapes;
 namespace SocialMediaInformationAggregator
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для RegistrationPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class RegistrationPage : Page
     {
-        public MainWindow()
+        public RegistrationPage()
         {
             InitializeComponent();
-        }
-
-        private void BackButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (PagesFrame.CanGoBack)
-                PagesFrame.GoBack();
-        }
-
-        private void LoginButton_Click(object sender, RoutedEventArgs e)
-        {
-            PagesFrame.Navigate(new Uri("AuthorizationPage.xaml", UriKind.Relative));
         }
     }
 }
