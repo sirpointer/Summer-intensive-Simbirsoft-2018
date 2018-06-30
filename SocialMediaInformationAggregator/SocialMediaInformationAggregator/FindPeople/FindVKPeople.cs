@@ -30,7 +30,7 @@ namespace SocialMediaInformationAggregator.FindPeople
 
             Country(webDriver);
             City(webDriver);
-
+            Thread.Sleep(1000);
             //try
             //{
                 for(int i=1;i<6;i++)
@@ -52,15 +52,14 @@ namespace SocialMediaInformationAggregator.FindPeople
 
                         PeopleFromVK.Add(personInformation);
 
-                        Thread.Sleep(500);
                         webDriver.Navigate().Back();
                     }
                 }
-            /*}
-            catch
-            {
+            //}
+            //catch
+            //{
 
-            }*/
+            //}
         }
 
         private void City(IWebDriver webDriver)
@@ -135,6 +134,29 @@ namespace SocialMediaInformationAggregator.FindPeople
 
         private int? YearBirth(IWebDriver webDriver)
         {
+            int? bith=null;
+            try
+            {
+                for (int i = 1; i < 10; i++)
+                {
+                    if (IsElementExist(By.XPath("//*[@id='profile_short']/div[" + i + "]"), webDriver))
+                    {
+                        IWebElement querBirth = webDriver.FindElement(By.XPath("//*[@id='profile_short']/div[" + i + "]"));
+                        if (querBirth.Text.Contains("День рождения:"))
+                        {
+                            bith = Convert.ToInt32(webDriver.FindElement(By.XPath("//*[@id='profile_short']/div[" + i + "]/div[2]/a[2]")).Text.Substring(0, 4));
+                            return bith;
+                        }
+                    }
+                }
+                return bith;
+            }
+            catch
+            {
+                return bith;
+            }
+
+            /*
             Thread.Sleep(500);
             if (IsElementExist(By.XPath("//*[@id='profile_short']/div[1]/div[2]/a[2]"), webDriver))
             {
@@ -143,33 +165,57 @@ namespace SocialMediaInformationAggregator.FindPeople
                 return Convert.ToInt32(birth);
             }
             else
-                return null;
+                return null;*/
         }
 
         private string LiveCity(IWebDriver webDriver)
         {
-            Thread.Sleep(500);
-            if (IsElementExist(By.XPath("//*[@id='profile_short']/div[2]/div[2]/a"), webDriver))
+            string city;
+            try
             {
-                IWebElement querCity = webDriver.FindElement(By.XPath("//*[@id='profile_short']/div[2]/div[2]/a"));
-                string city = querCity.Text;
-                return city;
-            }
-            else
+                for(int i=0;i<10;i++)
+                {
+                    if(IsElementExist(By.XPath("//*[@id='profile_short']/div["+i+"]"),webDriver))
+                    {
+                        IWebElement querCity = webDriver.FindElement(By.XPath("//*[@id='profile_short']/div[" + i + "]"));
+                        if(querCity.Text.Contains("Город:"))
+                        {
+                            city = webDriver.FindElement(By.XPath("//*[@id='profile_short']/div[" + i + "]/div[2]/a")).Text;
+                            return city;
+                        }
+                    }
+                }
                 return null;
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         private string Educations(IWebDriver webDriver)
         {
-            Thread.Sleep(500);
-            if (IsElementExist(By.XPath("//*[@id='profile_short']/div[3]/div[2]"), webDriver))
+            string education;
+            try
             {
-                IWebElement querEducation = webDriver.FindElement(By.XPath("//*[@id='profile_short']/div[3]/div[2]"));
-                string education = querEducation.Text;
-                return education;
-            }
-            else
+                for (int i = 0; i < 10; i++)
+                {
+                    if (IsElementExist(By.XPath("//*[@id='profile_short']/div[" + i + "]"), webDriver))
+                    {
+                        IWebElement querEducation = webDriver.FindElement(By.XPath("//*[@id='profile_short']/div[" + i + "]"));
+                        if (querEducation.Text.Contains("Место учёбы:") || querEducation.Text.Contains("Образование:"))
+                        {
+                            education = webDriver.FindElement(By.XPath("//*[@id='profile_short']/div[" + i + "]/div[2]")).Text;
+                            return education;
+                        }
+                    }
+                }
                 return null;
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         private Image Photo(IWebDriver webDriver, int i)
@@ -200,5 +246,4 @@ namespace SocialMediaInformationAggregator.FindPeople
         }
     }
 }
-
 
