@@ -96,5 +96,10 @@ namespace SocialMediaInformationAggregator
                 };
             }
         }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

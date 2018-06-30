@@ -47,8 +47,6 @@ namespace SocialMediaInformationAggregator
                     App.OkPerson = App.PersonInformation[index];
             }
 
-            this.PeopleListBox.Items.Clear();
-
             foreach (var ui in (Application.Current.MainWindow.Content as Grid).Children)
             {
                 if (ui is Frame)
