@@ -26,6 +26,8 @@ namespace SocialMediaInformationAggregator
 
             PeopleListBox.SelectionChanged += PeopleListBox_SelectionChanged;
 
+            PeopleListBox.Items.Clear();
+
             foreach (var person in App.PersonInformation)
                 AddPersonToListBox(person);
         }
@@ -94,14 +96,36 @@ namespace SocialMediaInformationAggregator
             TextBlock educationTB = new TextBlock();
             TextBlock citiesTB = new TextBlock();
 
+            List<string> education = new List<string>();
+
             foreach (var ed in person.Education)
             {
-                educationTB.Text += ed + ", ";
+                if (!string.IsNullOrWhiteSpace(ed))
+                    education.Add(ed);
             }
+
+            for (int i = 0; i < education.Count; i++)
+            {
+                if (i != education.Count - 1)
+                    educationTB.Text += education[i] + ", ";
+                else
+                    educationTB.Text += education[i] + '.';
+            }
+
+            List<string> cities = new List<string>();
 
             foreach (var city in person.Cities)
             {
-                citiesTB.Text += city + ", ";
+                if (!string.IsNullOrWhiteSpace(city))
+                    cities.Add(city);
+            }
+
+            for (int i = 0; i < cities.Count; i++)
+            {
+                if (i != cities.Count - 1)
+                    citiesTB.Text += cities[i] + ", ";
+                else
+                    citiesTB.Text += cities[i] + '.';
             }
 
             PersonInformationSP.Children.Add(fullNameTB);

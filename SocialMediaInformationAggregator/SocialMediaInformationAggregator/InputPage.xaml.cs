@@ -102,6 +102,7 @@ namespace SocialMediaInformationAggregator
             webDriver.Quit();
         }
 
+
         private void SetSerachOptions(FindPeople.SearchOptions options)
         {
             if (YearFromOption.Text == "+")
@@ -121,6 +122,7 @@ namespace SocialMediaInformationAggregator
                     options.City = EducationComboBox.Text;
         }
 
+
         private void InputComboBox_GotFocus(object sender, RoutedEventArgs e)
         {
             ComboBox cb = sender as ComboBox;
@@ -132,6 +134,33 @@ namespace SocialMediaInformationAggregator
         private void InputComboBox_LostFocus(object sender, RoutedEventArgs e)
         {
             (sender as ComboBox).IsDropDownOpen = false;
+        }
+
+
+        private void LastNameComboBox_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            var box = sender as ComboBox;
+
+            switch (box.Name)
+            {
+                case "LastNameComboBox":
+                    break;
+                case "NameComboBox":
+                    break;
+                case "CityComboBox":
+                    break;
+                case "EducationComboBox":
+                    break;
+            }
+
+
+            if (string.IsNullOrEmpty(box.Text))
+            {
+                box.Items.Clear();
+
+                
+
+            }
         }
     }
 }
