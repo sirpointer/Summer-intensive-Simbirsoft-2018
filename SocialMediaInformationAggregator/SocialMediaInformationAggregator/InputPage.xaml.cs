@@ -55,19 +55,19 @@ namespace SocialMediaInformationAggregator
 
             try
             {
-                webDriver = new EdgeDriver();
+                webDriver = new FirefoxDriver();
             }
             catch
             {
                 try
                 {
-                    webDriver = new FirefoxDriver();
+                    webDriver = new ChromeDriver(); 
                 }
                 catch
                 {
                     try
                     {
-                        webDriver = new ChromeDriver();
+                        webDriver = new EdgeDriver();
                     }
                     catch
                     {

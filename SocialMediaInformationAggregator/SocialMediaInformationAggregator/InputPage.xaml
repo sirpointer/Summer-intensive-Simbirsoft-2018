@@ -18,10 +18,10 @@
 
 
         <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <TextBlock Text="Имя" Margin="40, 0, 0, 0" FontSize="10"/>
-            <ComboBox Name="NameComboBox" HorizontalAlignment="Left" MinWidth="100" Margin="40, 0, 10, 10" IsEditable="True" GotFocus="InputComboBox_GotFocus" LostFocus="InputComboBox_LostFocus" />
             <TextBlock Text="Фамилия" Margin="40, 0, 0, 0" FontSize="10"/>
             <ComboBox Name="LastNameComboBox" IsEditable="True" MinWidth="100" Margin="40, 0, 10, 10" HorizontalAlignment="Left" GotFocus="InputComboBox_GotFocus" LostFocus="InputComboBox_LostFocus" />
+            <TextBlock Text="Имя" Margin="40, 0, 0, 0" FontSize="10"/>
+            <ComboBox Name="NameComboBox" HorizontalAlignment="Left" MinWidth="100" Margin="40, 0, 10, 10" IsEditable="True" GotFocus="InputComboBox_GotFocus" LostFocus="InputComboBox_LostFocus" />
 
             <TextBlock Text="Год рождения" Margin="30, 0, 0, 0" FontSize="10"/>
             <StackPanel Orientation="Horizontal" Margin="10, 0, 0, 10">
