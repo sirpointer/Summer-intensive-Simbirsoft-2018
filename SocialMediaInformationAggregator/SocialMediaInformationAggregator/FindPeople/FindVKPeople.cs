@@ -27,7 +27,7 @@ namespace SocialMediaInformationAggregator.FindPeople
             InputYearBirthFrom(webDriver, searchOptions);
             InputYearBirthTo(webDriver, searchOptions);
 
-
+/*
             //*[@id="school_header"]
             Thread.Sleep(1000);
             webDriver.FindElement(By.XPath("//*[@id='school_header']")).Click();
@@ -37,7 +37,7 @@ namespace SocialMediaInformationAggregator.FindPeople
                 IWebElement querEducation = webDriver.FindElement(By.Id("container6"));
                 querEducation.Click();
                 //querEducation.SendKeys("ш");
-                /*Thread.Sleep(500);
+                Thread.Sleep(500);
                 bool elemExist = true;
                 int i = 0;
                 try
@@ -62,8 +62,8 @@ namespace SocialMediaInformationAggregator.FindPeople
                 catch
                 {
 
-                } */
-            }
+                } 
+            } */
 
             //Ищет человека в поисковике по имени
             IWebElement querName = webDriver.FindElement(By.Id("search_query"));
