@@ -58,10 +58,10 @@ namespace SocialMediaInformationAggregator
 
 
                 foreach (var ed in person.Education)
-                    EducationVkStackPanel.Children.Add(GetOkTextBlock(ed));
+                    EducationOkStackPanel.Children.Add(GetOkTextBlock(ed));
 
                 foreach (var city in person.Cities)
-                    CitiesVkStackPanel.Children.Add(GetOkTextBlock(city));
+                    CitiesOkStackPanel.Children.Add(GetOkTextBlock(city));
             }
         }
 

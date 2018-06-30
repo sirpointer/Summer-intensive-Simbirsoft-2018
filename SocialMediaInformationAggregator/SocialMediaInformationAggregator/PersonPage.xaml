@@ -57,7 +57,7 @@
                 <TextBlock Name="VkTextBlock" Foreground="Blue" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12pt">
                     <Hyperlink Name="VkHyperLink" TextDecorations="{x:Null}" Foreground="Blue">ВКонтакте</Hyperlink>
                 </TextBlock>
-                <TextBlock Name="OkTextBlock" Text="Одноклассники" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12pt">
+                <TextBlock Name="OkTextBlock" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12pt">
                     <Hyperlink Name="OkHyperLink" TextDecorations="{x:Null}" Foreground="OrangeRed">Одноклассники</Hyperlink>
                 </TextBlock>
 
