@@ -182,10 +182,10 @@ namespace SocialMediaInformationAggregator.FindPeople
                 querCity.Click();
                 Thread.Sleep(500);
                 bool elemExist = true;
-                int i = 1;
+                int i = 0;
                 try
                 {
-                    while (i<21)
+                    while (elemExist)
                     {
                         if (IsElementExist(By.XPath("//*[@id='option_list_options_container_2_" + i + "']"), webDriver))
                         {
@@ -196,31 +196,33 @@ namespace SocialMediaInformationAggregator.FindPeople
                                 elemExist = false;
                                 city.Click();
                             }
-                            if (city.Text.Equals("Другой город") && searchOptions.City != null)
+                            if (city.Text.Equals("Другой город"))
                             {
-                                elemExist = false;
-                                city.Click();
-                                webDriver.FindElement(By.XPath("//*[@id='container2']/table/tbody/tr/td/input[1]")).SendKeys(searchOptions.City);
-                                Thread.Sleep(500);
-                                webDriver.FindElement(By.XPath("//*[@id='option_list_options_container_2_1']")).Click();
+                                if(searchOptions.City!=null)
+                                {
+                                    elemExist = false;
+                                    city.Click();
+                                    webDriver.FindElement(By.XPath("//*[@id='container2']/table/tbody/tr/td/input[1]")).SendKeys(searchOptions.City);
+                                    Thread.Sleep(500);
+                                    webDriver.FindElement(By.XPath("//*[@id='option_list_options_container_2_1']")).Click();
+                                }
+                                else
+                                {
+                                    elemExist = false;
+                                    webDriver.FindElement(By.XPath("//*[@id='option_list_options_container_2_1']")).Click();
+                                }
                             }
                         }
                         else
-                        {
-                            Thread.Sleep(500);
-                            querCity.Click();
-                            Thread.Sleep(500);
-                            webDriver.FindElement(By.XPath("//*[@id='option_list_options_container_2_" + 1 + "']")).Click();
-                        }                            
+                            i++;                      
                     }
                 }
                 catch
                 {
+                    //Thread.Sleep(500);
+                    //querCity.Click();
                     Thread.Sleep(500);
-                    querCity.Click();
-                    Thread.Sleep(500);
-                    webDriver.FindElement(By.XPath("//*[@id='option_list_options_container_2_" + 1 + "']")).Click();
-                    //webDriver.FindElement(By.XPath("//*[@id='option_list_options_container_2_1']")).Click();
+                    webDriver.FindElement(By.XPath("//*[@id='option_list_options_container_2_1']")).Click();
                 }
             }
         }
