@@ -31,7 +31,11 @@ namespace SocialMediaInformationAggregator
                 this.PersonImage = person.Photo;
                 this.FullNameTextBlock.Text = person.Name + " " + person.LastName;
                 this.YearTextBlock.Text = person.YearOfBirth.ToString();
-                this.VkHyperLink.NavigateUri = new Uri(person.ProfileLink);
+
+                if (!string.IsNullOrWhiteSpace(person.ProfileLink))
+                {
+                    this.VkHyperLink.NavigateUri = new Uri(person.ProfileLink);
+                }
 
                 foreach (var ed in person.Education)
                     EducationVkStackPanel.Children.Add(GetVkTextBlock(ed));
@@ -46,7 +50,12 @@ namespace SocialMediaInformationAggregator
                 this.PersonImage = person.Photo;
                 this.FullNameTextBlock.Text = person.Name + " " + person.LastName;
                 this.YearTextBlock.Text = person.YearOfBirth.ToString();
-                this.OkHyperLink.NavigateUri = new Uri(person.ProfileLink);
+
+                if (!string.IsNullOrWhiteSpace(person.ProfileLink))
+                {
+                    this.OkHyperLink.NavigateUri = new Uri(person.ProfileLink);
+                }
+
 
                 foreach (var ed in person.Education)
                     EducationVkStackPanel.Children.Add(GetOkTextBlock(ed));
