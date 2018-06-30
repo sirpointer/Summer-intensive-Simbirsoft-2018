@@ -41,6 +41,8 @@ namespace SocialMediaInformationAggregator.FindPeople
         public Image Photo { get; set; }
 
         public SocialNetwork SocialNetwork { get; set; }
+
+        public string ProfileLink { get; set; }
     }
 
     public enum SocialNetwork { VK, OK, Facebook }
