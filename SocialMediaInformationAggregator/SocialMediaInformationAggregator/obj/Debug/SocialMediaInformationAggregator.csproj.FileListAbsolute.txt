@@ -59,3 +59,4 @@ C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggre
 C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\RegistrationPage.baml
 C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\ForgottenPasswordPage.g.cs
 C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\ForgottenPasswordPage.baml
+C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\bin\Debug\MicrosoftWebDriver.exe

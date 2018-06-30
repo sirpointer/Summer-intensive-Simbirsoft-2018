@@ -1,6 +1,8 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.IE;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -53,11 +55,25 @@ namespace SocialMediaInformationAggregator
 
             try
             {
-                webDriver = new EdgeDriver(@"C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\WebDrivers\");
+                webDriver = new EdgeDriver();
             }
             catch
             {
-                webDriver = new FirefoxDriver(@"C:\Users\User\OneDrive\летний интенсив\", new FirefoxOptions() { BrowserExecutableLocation = @"C:\Program Files\Mozilla Firefox\firefox.exe" });
+                try
+                {
+                    webDriver = new FirefoxDriver();
+                }
+                catch
+                {
+                    try
+                    {
+                        webDriver = new ChromeDriver();
+                    }
+                    catch
+                    {
+                        webDriver = new InternetExplorerDriver();
+                    }
+                }
             }
             
             FindPeople.IFindPeople find = new FindPeople.FindPeople();
