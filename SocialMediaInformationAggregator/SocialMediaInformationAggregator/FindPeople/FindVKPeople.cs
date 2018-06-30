@@ -31,9 +31,9 @@ namespace SocialMediaInformationAggregator.FindPeople
             Country(webDriver);
             City(webDriver);
 
-            try
-            {
-                for(int i=0;i<6;i++)
+            //try
+            //{
+                for(int i=1;i<6;i++)
                 {
                     Thread.Sleep(500);
                     if (IsElementExist(By.XPath("//*[@id='results']/div[" + i + "]/div[3]/div[1]/a"), webDriver))
@@ -48,18 +48,19 @@ namespace SocialMediaInformationAggregator.FindPeople
                         personInformation.Cities = new List<string>() { LiveCity(webDriver) };
                         personInformation.Education = new List<string>() { Educations(webDriver) };
                         personInformation.SocialNetwork = SocialNetwork.VK;
-                        personInformation.Photo = Photo(webDriver, i);
+                        //personInformation.Photo = Photo(webDriver, i);
 
                         PeopleFromVK.Add(personInformation);
 
+                        Thread.Sleep(500);
                         webDriver.Navigate().Back();
                     }
                 }
-            }
+            /*}
             catch
             {
 
-            }
+            }*/
         }
 
         private void City(IWebDriver webDriver)

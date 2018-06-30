@@ -50,7 +50,17 @@ namespace SocialMediaInformationAggregator
                 LastName = LastNameComboBox.Text
             };
             SetSerachOptions(options);
+            WebDriverWorks(options);
 
+            foreach (var ui in (Application.Current.MainWindow.Content as Grid).Children)
+            {
+                if (ui is Frame)
+                    (ui as Frame).Navigate(new Uri("ListOfPeoplePage.xaml", UriKind.Relative));
+            }
+        }
+
+        private static void WebDriverWorks(FindPeople.SearchOptions options)
+        {
             IWebDriver webDriver;
 
             try
@@ -61,7 +71,7 @@ namespace SocialMediaInformationAggregator
             {
                 try
                 {
-                    webDriver = new ChromeDriver(); 
+                    webDriver = new ChromeDriver();
                 }
                 catch
                 {
@@ -75,14 +85,14 @@ namespace SocialMediaInformationAggregator
                     }
                 }
             }
-            
+
             FindPeople.IFindPeople find = new FindPeople.FindPeople();
 
             find.FindPeopleOnVK(webDriver, options);
             find.FindPeopleOnOK(webDriver, options);
-            
+
             App.PersonInformation = new List<FindPeople.PersonInformation>();
-            
+
             foreach (var person in find.PeopleFromVK)
                 App.PersonInformation.Add(person);
 
@@ -90,12 +100,6 @@ namespace SocialMediaInformationAggregator
                 App.PersonInformation.Add(person);
 
             webDriver.Quit();
-
-            foreach (var ui in (Application.Current.MainWindow.Content as Grid).Children)
-            {
-                if (ui is Frame)
-                    (ui as Frame).Navigate(new Uri("ListOfPeoplePage.xaml", UriKind.Relative));
-            }
         }
 
         private void SetSerachOptions(FindPeople.SearchOptions options)

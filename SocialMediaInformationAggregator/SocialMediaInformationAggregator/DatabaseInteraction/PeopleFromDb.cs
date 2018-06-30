@@ -35,7 +35,7 @@ namespace SocialMediaInformationAggregator.DatabaseInteraction
                 throw new NotImplementedException();
         }
 
-        public static List<string> LastNameFoundPeople(string login, int count=-1)
+        public static List<string> LastNameFoundPeople(string login, int count=-1, string startWith = "")
         {
             if (String.IsNullOrWhiteSpace(login) || count<1)
             {
@@ -48,17 +48,17 @@ namespace SocialMediaInformationAggregator.DatabaseInteraction
             throw new NotImplementedException();
         }
 
-        public static List<string> FirstNameFoundPeople(string login, int count = -1)
+        public static List<string> FirstNameFoundPeople(string login, int count = -1, string startWith = "")
         {
             throw new NotImplementedException();
         }
 
-        public static List<string> CityFoundPeople(string login, int count = -1)
+        public static List<string> CityFoundPeople(string login, int count = -1, string startWith = "")
         {
             throw new NotImplementedException();
         }
 
-        public static List<string> EducationFoundPeople(string login, int count = -1)
+        public static List<string> EducationFoundPeople(string login, int count = -1, string startWith = "")
         {
             throw new NotImplementedException();
         }
