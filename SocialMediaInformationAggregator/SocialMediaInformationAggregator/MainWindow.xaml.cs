@@ -27,11 +27,7 @@ namespace SocialMediaInformationAggregator
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            /*if ("PersonPage.xaml".Contains(PagesFrame.Source.OriginalString))
-            {
-                PagesFrame.Navigate("ListOfPeoplePage.xaml");
-            }
-            else */if (PagesFrame.CanGoBack)
+            if (PagesFrame.CanGoBack)
                 PagesFrame.GoBack();
         }
 
@@ -43,9 +39,18 @@ namespace SocialMediaInformationAggregator
         private void HistoryButton_Click(object sender, RoutedEventArgs e)
         {
             if (App.CurrentUserLogin != null)
+            {
                 App.PersonInformation = DatabaseInteraction.PeopleFromDb.GetFoundPeople(App.CurrentUserLogin);
+                PagesFrame.Navigate(new Uri("ListOfPeoplePage.xaml", UriKind.Relative));
+            }
+            else
+                MessageBox.Show("Для просмотра истории поиска нужно авторизироваться.");
 
-            PagesFrame.Navigate(new Uri("ListOfPeoplePage.xaml", UriKind.Relative));
+        }
+
+        private void LogoutButton_Click(object sender, RoutedEventArgs e)
+        {
+            App.CurrentUserLogin = null;
         }
     }
 }

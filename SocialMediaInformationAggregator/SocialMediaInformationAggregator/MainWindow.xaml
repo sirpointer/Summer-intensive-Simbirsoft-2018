@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SocialMediaInformationAggregator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="600" Width="900" MinHeight="600" MinWidth="600">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40px" />
@@ -14,10 +14,11 @@
 
         <Button Name="BackButton" Click="BackButton_Click" Content="&#xe0a6;" FontFamily="Segoe MDL2 Assets" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5" Margin="5" />
 
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 10, 0">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 10, 0" Name="LoginAndHistorySP">
             <Button Name="HistoryButton" Content="История" Margin="0, 0, 40, 0" Click="HistoryButton_Click"/>
-            <TextBlock Text="Login" Margin="15, 5"/>
-            <Button Name="LoginButton" Click="LoginButton_Click"  Content="Войти"  />
+            <TextBlock Margin="15, 5" Text="Неавторизирован" Name="LoginTextBlock"/>
+            <Button Name="LoginButton" Click="LoginButton_Click" Content="Войти" Visibility="Collapsed" />
+            <Button Name="LogoutButton" Click="LogoutButton_Click"  Content="Выйти"  />
         </StackPanel>
         
 

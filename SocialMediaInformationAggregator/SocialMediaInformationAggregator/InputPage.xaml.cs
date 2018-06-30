@@ -36,6 +36,53 @@ namespace SocialMediaInformationAggregator
             }
         }
 
+        /// <summary>
+        /// Возвращает значение указывающее, обязатен ли год. 
+        /// </summary>
+        public bool YearFromChecked
+        {
+            get
+            {
+                if (YearFromOption.Text.Equals("+"))
+                    return true;
+                else
+                    return false;
+            }
+        }
+
+        public bool YearToChecked
+        {
+            get
+            {
+                if (!YearFromChecked || YearToOption.Text.Equals("-"))
+                    return false;
+                else
+                    return true;
+            }
+        }
+
+        public bool CityChecked
+        {
+            get
+            {
+                if (CityOption.Text.Equals("+"))
+                    return true;
+                else
+                    return false;
+            }
+        }
+
+        public bool EducationChecked
+        {
+            get
+            {
+                if (EducationOption.Text.Equals("+"))
+                    return true;
+                else
+                    return false;
+            }
+        }
+
         private void OptionTB_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             TextBlock tb = sender as TextBlock;
@@ -44,6 +91,9 @@ namespace SocialMediaInformationAggregator
 
         private void FindButton_Click(object sender, RoutedEventArgs e)
         {
+            if (!NameCheck())
+                return;
+            
             FindPeople.SearchOptions options = new FindPeople.SearchOptions()
             {
                 Name = NameComboBox.Text,
@@ -56,6 +106,20 @@ namespace SocialMediaInformationAggregator
             {
                 if (ui is Frame)
                     (ui as Frame).Navigate(new Uri("ListOfPeoplePage.xaml", UriKind.Relative));
+            }
+        }
+
+        private bool NameCheck()
+        {
+            if (string.IsNullOrWhiteSpace(NameComboBox.Text) || string.IsNullOrWhiteSpace(LastNameComboBox.Text))
+            {
+                NameErrorTextBlock.Visibility = Visibility.Visible;
+                return false;
+            }
+            else
+            {
+                NameErrorTextBlock.Visibility = Visibility.Collapsed;
+                return true;
             }
         }
 
@@ -105,23 +169,43 @@ namespace SocialMediaInformationAggregator
 
         private void SetSerachOptions(FindPeople.SearchOptions options)
         {
-            if (YearFromOption.Text == "+")
-                if (FromYearCB.SelectedIndex != -1)
-                    options.YearOfBirth = Convert.ToInt32(FromYearCB.SelectedValue);
+            if (YearFromChecked)
+            {
+                if (!string.IsNullOrWhiteSpace(FromYearCB.Text))
+                {
+                    options.YearOfBirth = Convert.ToInt32(FromYearCB.Text);
+                }
 
-            if (YearToOption.Text == "+")
-                if (ToYearCB.SelectedIndex != -1)
-                    options.ForThisYear = Convert.ToInt32(ToYearCB.SelectedValue);
+                YearToCheck(options);
+            }
 
-            if (CityOption.Text == "+")
+            if (CityChecked)
+            {
                 if (!string.IsNullOrWhiteSpace(CityComboBox.Text))
+                {
                     options.City = CityComboBox.Text;
+                }
+            }
 
-            if (EducationOption.Text == "+")
+            if (EducationChecked)
+            {
                 if (!string.IsNullOrWhiteSpace(EducationComboBox.Text))
-                    options.City = EducationComboBox.Text;
+                {
+                    options.Education = EducationComboBox.Text;
+                }
+            }
         }
 
+        private void YearToCheck(FindPeople.SearchOptions options)
+        {
+            if (YearToChecked)
+            {
+                if (!string.IsNullOrWhiteSpace(ToYearCB.Text))
+                {
+                    options.ForThisYear = Convert.ToInt32(ToYearCB.Text);
+                }
+            }
+        }
 
         private void InputComboBox_GotFocus(object sender, RoutedEventArgs e)
         {
