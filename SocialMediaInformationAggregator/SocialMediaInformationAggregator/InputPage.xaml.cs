@@ -125,10 +125,29 @@ namespace SocialMediaInformationAggregator
 
         private void InputComboBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            ComboBox cb = sender as ComboBox;
+            if (App.CurrentUserLogin != null)
+            {
+                ComboBox cb = sender as ComboBox;
 
-            if (cb.Items.Count != 0)
-                (sender as ComboBox).IsDropDownOpen = true;
+                switch (cb.Name)
+                {
+                    case "LastNameComboBox":
+                        SetLastNameTooltips(cb);
+                        break;
+                    case "NameComboBox":
+                        SetFirstNameTooltips(cb);
+                        break;
+                    case "CityComboBox":
+                        SetCityTooltips(cb);
+                        break;
+                    case "EducationComboBox":
+                        SetEducationTooltips(cb);
+                        break;
+                }
+
+                if (cb.Items.Count != 0)
+                    (sender as ComboBox).IsDropDownOpen = true;
+            }
         }
 
         private void InputComboBox_LostFocus(object sender, RoutedEventArgs e)
@@ -139,27 +158,73 @@ namespace SocialMediaInformationAggregator
 
         private void LastNameComboBox_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            var box = sender as ComboBox;
-
-            switch (box.Name)
+            if (App.CurrentUserLogin != null)
             {
-                case "LastNameComboBox":
-                    break;
-                case "NameComboBox":
-                    break;
-                case "CityComboBox":
-                    break;
-                case "EducationComboBox":
-                    break;
+                var box = sender as ComboBox;
+
+                switch (box.Name)
+                {
+                    case "LastNameComboBox":
+                        SetLastNameTooltips(box);
+                        break;
+                    case "NameComboBox":
+                        SetFirstNameTooltips(box);
+                        break;
+                    case "CityComboBox":
+                        SetCityTooltips(box);
+                        break;
+                    case "EducationComboBox":
+                        SetEducationTooltips(box);
+                        break;
+                }
             }
+        }
 
+        private static void SetLastNameTooltips(ComboBox box)
+        {
+            List<string> tips = DatabaseInteraction.PeopleFromDb.LastNameFoundPeople(App.CurrentUserLogin, startWith: box.Text);
 
-            if (string.IsNullOrEmpty(box.Text))
+            box.Items.Clear();
+
+            foreach (var tip in tips)
             {
-                box.Items.Clear();
+                box.Items.Add(tip);
+            }
+        }
 
-                
+        private static void SetFirstNameTooltips(ComboBox box)
+        {
+            List<string> tips = DatabaseInteraction.PeopleFromDb.FirstNameFoundPeople(App.CurrentUserLogin, startWith: box.Text);
 
+            box.Items.Clear();
+
+            foreach (var tip in tips)
+            {
+                box.Items.Add(tip);
+            }
+        }
+
+        private static void SetCityTooltips(ComboBox box)
+        {
+            List<string> tips = DatabaseInteraction.PeopleFromDb.CityFoundPeople(App.CurrentUserLogin, startWith: box.Text);
+
+            box.Items.Clear();
+
+            foreach (var tip in tips)
+            {
+                box.Items.Add(tip);
+            }
+        }
+
+        private static void SetEducationTooltips(ComboBox box)
+        {
+            List<string> tips = DatabaseInteraction.PeopleFromDb.EducationFoundPeople(App.CurrentUserLogin, startWith: box.Text);
+
+            box.Items.Clear();
+
+            foreach (var tip in tips)
+            {
+                box.Items.Add(tip);
             }
         }
     }
