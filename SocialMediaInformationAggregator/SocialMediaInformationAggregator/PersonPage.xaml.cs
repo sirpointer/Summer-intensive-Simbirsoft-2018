@@ -23,6 +23,69 @@ namespace SocialMediaInformationAggregator
         public PersonPage()
         {
             InitializeComponent();
+
+            if (App.VkPerson != null)
+            {
+                FindPeople.PersonInformation person = App.VkPerson;
+
+                this.PersonImage = person.Photo;
+                this.FullNameTextBlock.Text = person.Name + " " + person.LastName;
+                this.YearTextBlock.Text = person.YearOfBirth.ToString();
+                this.VkHyperLink.NavigateUri = new Uri(person.ProfileLink);
+
+                foreach (var ed in person.Education)
+                    EducationVkStackPanel.Children.Add(GetVkTextBlock(ed));
+
+                foreach (var city in person.Cities)
+                    CitiesVkStackPanel.Children.Add(GetVkTextBlock(city));
+            }
+            else if (App.OkPerson != null)
+            {
+                FindPeople.PersonInformation person = App.OkPerson;
+
+                this.PersonImage = person.Photo;
+                this.FullNameTextBlock.Text = person.Name + " " + person.LastName;
+                this.YearTextBlock.Text = person.YearOfBirth.ToString();
+                this.OkHyperLink.NavigateUri = new Uri(person.ProfileLink);
+
+                foreach (var ed in person.Education)
+                    EducationVkStackPanel.Children.Add(GetOkTextBlock(ed));
+
+                foreach (var city in person.Cities)
+                    CitiesVkStackPanel.Children.Add(GetOkTextBlock(city));
+            }
+        }
+
+        public static TextBlock GetVkTextBlock(string text)
+        {
+            if (string.IsNullOrWhiteSpace(text))
+                throw new Exception("Поле для образования пустое.");
+            else
+            {
+                return new TextBlock()
+                {
+                    Text = text,
+                    Margin = new Thickness(5),
+                    Foreground = Brushes.Blue,
+                    HorizontalAlignment = HorizontalAlignment.Center
+                };
+            }
+        }
+
+        public static TextBlock GetOkTextBlock(string text)
+        {
+            if (string.IsNullOrWhiteSpace(text))
+                throw new Exception("Поле для образования пустое.");
+            else
+            {
+                return new TextBlock()
+                {
+                    Text = text,
+                    Margin = new Thickness(5),
+                    Foreground = Brushes.OrangeRed,
+                    HorizontalAlignment = HorizontalAlignment.Center
+                };
+            }
         }
     }
 }

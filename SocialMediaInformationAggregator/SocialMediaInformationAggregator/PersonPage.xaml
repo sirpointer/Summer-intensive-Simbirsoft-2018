@@ -14,21 +14,75 @@
             <ColumnDefinition Width="2*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <Image Grid.Column="1" Source="Assets/app.ico" HorizontalAlignment="Left" Height="100" Margin="34,56,0,0" VerticalAlignment="Top" Width="100"/>
-        <TextBlock FontSize="16pt" Text="Иван Иванов" Grid.Column="1" HorizontalAlignment="Left" Margin="163,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <TextBlock FontSize="12pt" Grid.Column="1" HorizontalAlignment="Left" Margin="163,111,0,0" TextWrapping="Wrap" Text="1990" VerticalAlignment="Top"/>
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="34,190,0,0" TextWrapping="Wrap" Text="Образование" VerticalAlignment="Top"/>
-        <TextBlock Foreground="Blue" Grid.Column="1" HorizontalAlignment="Left" Margin="223,190,0,0" TextWrapping="Wrap" Text="МГУ" VerticalAlignment="Top"/>
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="163,161,0,0" TextWrapping="Wrap" Text="VK" VerticalAlignment="Top"/>
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="223,161,0,0" TextWrapping="Wrap" Text="Facebook" VerticalAlignment="Top" Foreground="Blue"/>
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="314,161,0,0" TextWrapping="Wrap" Text="OK" VerticalAlignment="Top" Foreground="OrangeRed"/>
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="163,190,0,0" TextWrapping="Wrap" Text="МГУ" VerticalAlignment="Top"/>
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="314,190,0,0" TextWrapping="Wrap" Text="Школа 20" VerticalAlignment="Top" Foreground="OrangeRed"/>
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="163,211,0,0" TextWrapping="Wrap" Text="Школа 20" VerticalAlignment="Top"/>
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="34,251,0,0" TextWrapping="Wrap" Text="Города проживания" VerticalAlignment="Top"/>
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="163,251,0,0" TextWrapping="Wrap" Text="Москва" VerticalAlignment="Top"/>
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="223,251,0,0" TextWrapping="Wrap" Text="Питер" VerticalAlignment="Top" Foreground="Blue"/>
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="314,251,0,0" TextWrapping="Wrap" Text="Москва" VerticalAlignment="Top" Foreground="OrangeRed"/>
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="314,272,0,0" TextWrapping="Wrap" Text="Питер" VerticalAlignment="Top" Foreground="OrangeRed"/>
+
+        <Grid Grid.Column="1" Margin="0, 60, 0, 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="2*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Image Name="PersonImage" Source="Assets/app.ico" Grid.RowSpan="2" />
+
+                <TextBlock Name="FullNameTextBlock" Text="Имя Фамилия" Grid.Column="1" VerticalAlignment="Center" Margin="20, 0, 0, 0" FontSize="16pt" TextWrapping="Wrap"/>
+                <TextBlock Name="YearTextBlock" Text="1998" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Margin="20, 10, 0, 0" FontSize="13pt" />
+
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40px" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <!--Названия соцсетей.-->
+                <TextBlock Name="VkTextBlock" Foreground="Blue" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12pt">
+                    <Hyperlink Name="VkHyperLink" TextDecorations="{x:Null}" Foreground="Blue">ВКонтакте</Hyperlink>
+                </TextBlock>
+                <TextBlock Name="OkTextBlock" Text="Одноклассники" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12pt">
+                    <Hyperlink Name="OkHyperLink" TextDecorations="{x:Null}" Foreground="OrangeRed">Одноклассники</Hyperlink>
+                </TextBlock>
+
+                <!--Про образования.-->
+                <TextBlock Name="EducationTextBlock" Grid.Row="1" Text="Образование" HorizontalAlignment="Center" Margin="5" FontSize="10pt" />
+
+                <StackPanel Name="EducationVkStackPanel" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="1" Margin="5" >
+
+                </StackPanel>
+
+                <StackPanel Name="EducationOkStackPanel" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" Margin="5">
+
+                </StackPanel>
+
+                <!--Про города.-->
+                <TextBlock Name="CitiesTextBlock" Grid.Row="2" Text="Города проживания" HorizontalAlignment="Center" Margin="5" FontSize="10pt" />
+
+                <StackPanel Name="CitiesVkStackPanel" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="2" Margin="5">
+
+                </StackPanel>
+
+                <StackPanel Name="CitiesOkStackPanel" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" Margin="5">
+
+                </StackPanel>
+            </Grid>
+        </Grid>
     </Grid>
 </Page>

@@ -14,9 +14,11 @@ namespace SocialMediaInformationAggregator
     /// </summary>
     public partial class App : Application
     {
-        private static List<FindPeople.PersonInformation> personInformation;
+        public static List<PersonInformation> PersonInformation { get; set; }
 
-        public static List<PersonInformation> PersonInformation { get => personInformation; set => personInformation = value; }
+        public static PersonInformation VkPerson { get; set; }
+
+        public static PersonInformation OkPerson { get; set; }
     }
 
 }

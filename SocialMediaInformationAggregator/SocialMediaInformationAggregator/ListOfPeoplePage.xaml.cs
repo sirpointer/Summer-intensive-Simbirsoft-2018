@@ -32,6 +32,19 @@ namespace SocialMediaInformationAggregator
 
         private void PeopleListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            App.VkPerson = null;
+            App.OkPerson = null;
+
+            int index = (sender as ListBox).SelectedIndex;
+
+            if (index != -1)
+            {
+                if (App.PersonInformation[index].SocialNetwork == FindPeople.SocialNetwork.VK)
+                    App.VkPerson = App.PersonInformation[index];
+                else
+                    App.OkPerson = App.PersonInformation[index];
+            }
+
             foreach (var ui in (Application.Current.MainWindow.Content as Grid).Children)
             {
                 if (ui is Frame)
@@ -39,6 +52,9 @@ namespace SocialMediaInformationAggregator
             }
         }
 
+
+
+        // Добавление ListBoxItem.
         public void AddPersonToListBox(FindPeople.PersonInformation person)
         {
             Grid personGrid = new Grid() { HorizontalAlignment = HorizontalAlignment.Stretch, VerticalAlignment = VerticalAlignment.Stretch };

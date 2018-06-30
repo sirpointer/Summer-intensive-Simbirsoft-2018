@@ -44,8 +44,8 @@ namespace SocialMediaInformationAggregator
         {
             FindPeople.SearchOptions options = new FindPeople.SearchOptions()
             {
-                Name = NameTextBox.Text,
-                LastName = LastNameTextBox.Text
+                Name = NameComboBox.Text,
+                LastName = LastNameComboBox.Text
             };
             SetSerachOptions(options);
 
@@ -63,16 +63,12 @@ namespace SocialMediaInformationAggregator
             FindPeople.IFindPeople find = new FindPeople.FindPeople();
 
             find.FindPeopleOnVK(webDriver, options);
-            //find.FindPeopleOnFacebook(webDriver, options);
             find.FindPeopleOnOK(webDriver, options);
             
             App.PersonInformation = new List<FindPeople.PersonInformation>();
             
             foreach (var person in find.PeopleFromVK)
                 App.PersonInformation.Add(person);
-
-            /*foreach (var person in find.PeopleFromFacebook)
-                App.PersonInformation.Add(person);*/
 
             foreach (var person in find.PeopleFromOK)
                 App.PersonInformation.Add(person);
@@ -97,12 +93,25 @@ namespace SocialMediaInformationAggregator
                     options.ForThisYear = Convert.ToInt32(ToYearCB.SelectedValue);
 
             if (CityOption.Text == "+")
-                if (!string.IsNullOrWhiteSpace(CityTB.Text))
-                    options.City = CityTB.Text;
+                if (!string.IsNullOrWhiteSpace(CityComboBox.Text))
+                    options.City = CityComboBox.Text;
 
             if (EducationOption.Text == "+")
-                if (!string.IsNullOrWhiteSpace(EducationTB.Text))
-                    options.City = EducationTB.Text;
+                if (!string.IsNullOrWhiteSpace(EducationComboBox.Text))
+                    options.City = EducationComboBox.Text;
+        }
+
+        private void InputComboBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            ComboBox cb = sender as ComboBox;
+
+            if (cb.Items.Count != 0)
+                (sender as ComboBox).IsDropDownOpen = true;
+        }
+
+        private void InputComboBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            (sender as ComboBox).IsDropDownOpen = false;
         }
     }
 }
