@@ -76,7 +76,18 @@ namespace SocialMediaInformationAggregator
         {
             get
             {
-                if (EducationOption.Text.Equals("+"))
+                if (UniversityOption.Text.Equals("+"))
+                    return true;
+                else
+                    return false;
+            }
+        }
+
+        public bool SchoolChecked
+        {
+            get
+            {
+                if (SchoolOption.Text.Equals("+"))
                     return true;
                 else
                     return false;
@@ -169,30 +180,66 @@ namespace SocialMediaInformationAggregator
 
         private void SetSerachOptions(FindPeople.SearchOptions options)
         {
-            if (YearFromChecked)
+            YearsCheck(options);
+            CityCheck(options);
+            UniversityCheck(options);
+            SchoolCheck(options);
+        }
+
+        private void SchoolCheck(FindPeople.SearchOptions options)
+        {
+            if (SchoolChecked)
             {
-                if (!string.IsNullOrWhiteSpace(FromYearCB.Text))
-                {
-                    options.YearOfBirth = Convert.ToInt32(FromYearCB.Text);
-                }
-
-                YearToCheck(options);
+                if (!string.IsNullOrWhiteSpace(SchoolComboBox.Text))
+                    options.Schools = SchoolComboBox.Text;
+                else
+                    options.Schools = null;
             }
+            else
+                options.Schools = null;
+        }
 
+        private void UniversityCheck(FindPeople.SearchOptions options)
+        {
+            if (EducationChecked)
+            {
+                if (!string.IsNullOrWhiteSpace(UniversityComboBox.Text))
+                    options.Education = UniversityComboBox.Text;
+                else
+                    options.Education = null;
+            }
+            else
+                options.Education = null;
+        }
+
+        private void CityCheck(FindPeople.SearchOptions options)
+        {
             if (CityChecked)
             {
                 if (!string.IsNullOrWhiteSpace(CityComboBox.Text))
-                {
                     options.City = CityComboBox.Text;
-                }
+                else
+                    options.City = null;
             }
+            else
+                options.City = null;
+        }
 
-            if (EducationChecked)
+        private void YearsCheck(FindPeople.SearchOptions options)
+        {
+            if (YearFromChecked)
             {
-                if (!string.IsNullOrWhiteSpace(EducationComboBox.Text))
-                {
-                    options.Education = EducationComboBox.Text;
-                }
+                if (!string.IsNullOrWhiteSpace(FromYearCB.Text))
+                    options.YearOfBirth = Convert.ToInt32(FromYearCB.Text);
+                else
+                    options.YearOfBirth = null;
+
+                YearToCheck(options);
+            }
+            else
+            {
+                options.YearOfBirth = null;
+                options.ForThisYear = null;
             }
         }
 
@@ -201,10 +248,12 @@ namespace SocialMediaInformationAggregator
             if (YearToChecked)
             {
                 if (!string.IsNullOrWhiteSpace(ToYearCB.Text))
-                {
                     options.ForThisYear = Convert.ToInt32(ToYearCB.Text);
-                }
+                else
+                    options = null;
             }
+            else
+                options = null;
         }
 
         private void InputComboBox_GotFocus(object sender, RoutedEventArgs e)

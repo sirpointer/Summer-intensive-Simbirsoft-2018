@@ -15,8 +15,6 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-
-
         <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBlock Text="Фамилия" Margin="40, 0, 0, 0" FontSize="10"/>
             <ComboBox 
@@ -65,11 +63,24 @@
                     LostFocus="InputComboBox_LostFocus" />
             </StackPanel>
 
-            <TextBlock Text="Место учебы" Margin="30, 0, 0, 0" FontSize="10"/>
+            <TextBlock Text="Университет" Margin="30, 0, 0, 0" FontSize="10"/>
             <StackPanel Orientation="Horizontal" Margin="10, 0, 0, 10">
-                <TextBlock Name="EducationOption" FontWeight="Bold" FontSize="14pt" Text="+" PreviewMouseDown="OptionTB_PreviewMouseDown" />
+                <TextBlock Name="UniversityOption" FontWeight="Bold" FontSize="14pt" Text="+" PreviewMouseDown="OptionTB_PreviewMouseDown" />
                 <ComboBox 
-                    Name="EducationComboBox" 
+                    Name="UniversityComboBox" 
+                    IsEditable="True" 
+                    MinWidth="120" 
+                    FontSize="12pt"
+                    Margin="20, 0" 
+                    GotFocus="InputComboBox_GotFocus" 
+                    LostFocus="InputComboBox_LostFocus" />
+            </StackPanel>
+
+            <TextBlock Text="Школа" Margin="30, 0, 0, 0" FontSize="10"/>
+            <StackPanel Orientation="Horizontal" Margin="10, 0, 0, 10">
+                <TextBlock Name="SchoolOption" FontWeight="Bold" FontSize="14pt" Text="+" PreviewMouseDown="OptionTB_PreviewMouseDown" />
+                <ComboBox 
+                    Name="SchoolComboBox" 
                     IsEditable="True" 
                     MinWidth="120" 
                     FontSize="12pt"
