@@ -29,7 +29,7 @@ namespace SocialMediaInformationAggregator
         {
             InitializeComponent();
 
-            for (int i = DateTime.Now.Year; i > 1900; i--)
+            for (int i = DateTime.Now.Year - 15; i > 1930; i--)
             {
                 FromYearCB.Items.Add(i.ToString());
                 ToYearCB.Items.Add(i.ToString());

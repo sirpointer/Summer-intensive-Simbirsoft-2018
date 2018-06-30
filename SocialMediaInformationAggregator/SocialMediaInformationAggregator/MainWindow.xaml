@@ -17,8 +17,8 @@
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 10, 0" Name="LoginAndHistorySP">
             <Button Name="HistoryButton" Content="История" Margin="0, 0, 40, 0" Click="HistoryButton_Click"/>
             <TextBlock Margin="15, 5" Text="Неавторизирован" Name="LoginTextBlock"/>
-            <Button Name="LoginButton" Click="LoginButton_Click" Content="Войти" Visibility="Collapsed" />
-            <Button Name="LogoutButton" Click="LogoutButton_Click"  Content="Выйти"  />
+            <Button Name="LoginButton" Click="LoginButton_Click" Content="Войти"  />
+            <Button Name="LogoutButton" Click="LogoutButton_Click"  Content="Выйти" Visibility="Collapsed" />
         </StackPanel>
         
 

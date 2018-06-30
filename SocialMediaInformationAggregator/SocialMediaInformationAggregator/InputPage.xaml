@@ -44,10 +44,10 @@
             <StackPanel Orientation="Horizontal" Margin="10, 0, 0, 10">
                 <TextBlock Text="+" FontSize="14pt" Name="YearFromOption" PreviewMouseDown="OptionTB_PreviewMouseDown" FontWeight="Bold" />
                 <TextBlock Margin="20, 0, 0, 0" Text="от" />
-                <ComboBox FontSize="14pt" Name="FromYearCB" Margin="10, 0" MaxDropDownHeight="100" MinWidth="80"/>
+                <ComboBox FontSize="12pt" Name="FromYearCB" Margin="10, 0" MaxDropDownHeight="100" MinWidth="80"/>
                 <TextBlock Name="YearToOption" FontSize="14pt" Text="+" Margin="20, 0, 0 ,0" PreviewMouseDown="OptionTB_PreviewMouseDown" FontWeight="Bold" />
                 <TextBlock Margin="10, 0, 0, 0" Text="до" />
-                <ComboBox Name="ToYearCB" Margin="10, 0" MaxDropDownHeight="100" MinWidth="80" FontSize="14pt"/>
+                <ComboBox Name="ToYearCB" Margin="10, 0" MaxDropDownHeight="100" MinWidth="80" FontSize="12pt"/>
             </StackPanel>
 
             <TextBlock Text="Город" Margin="30, 0, 0, 0" FontSize="10"/>
