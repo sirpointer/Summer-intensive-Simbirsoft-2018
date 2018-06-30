@@ -27,50 +27,108 @@ namespace SocialMediaInformationAggregator.FindPeople
             querName.SendKeys(searchOptions.Name + " " + searchOptions.LastName + "\n");
 
             WebDriverWait element = new WebDriverWait(webDriver, TimeSpan.FromSeconds(10));
-/*
-            //Выбирает страну - Россия
-            IWebElement country = webDriver.FindElement(By.XPath("//*[@id='container3']"));
-            country.Click();
-            element.Timeout = TimeSpan.FromSeconds(10);
-            IWebElement countryFind = webDriver.FindElement(By.XPath("//*[@id='option_list_options_container_3_2']"));
-            countryFind.Click();
 
-            Thread.Sleep(1000);
+            Country(webDriver);
+            City(webDriver);
 
-            //Выбирает город, почему-то косячит и считает, что в этом городе людей нет, сделать по-человечески
-            //Научиться динамически выбирать после выбора страны
-             IWebElement city = webDriver.FindElement(By.XPath("//*[@id='container2']"));
-             city.Click();
-             element.Timeout = TimeSpan.FromSeconds(10);
-             IWebElement cityFind = webDriver.FindElement(By.XPath("//*[@id='option_list_options_container_2_3']"));
-             cityFind.Click();
-             */
             try
             {
-                for (int i = 0; i < 5; i++)
+                for(int i=0;i<6;i++)
                 {
-                    Thread.Sleep(1000);
-                    //Переход на конкретного человека
-                    IWebElement people = webDriver.FindElements(By.ClassName("name"))[i];
-                    webDriver.FindElements(By.LinkText(people.Text))[i].Click();
+                    Thread.Sleep(500);
+                    if (IsElementExist(By.XPath("//*[@id='results']/div[" + i + "]/div[3]/div[1]/a"), webDriver))
+                    {
+                        IWebElement people = webDriver.FindElement(By.XPath("//*[@id='results']/div[" + i + "]/div[3]/div[1]/a"));
+                        webDriver.FindElement(By.XPath("//*[@id='results']/div[" + i + "]/div[3]/div[1]/a")).Click();
 
-                    PersonInformation personInformation = new PersonInformation();
-                    personInformation.Name = searchOptions.Name;
-                    personInformation.LastName = searchOptions.LastName;
-                    personInformation.YearOfBirth = YearBirth(webDriver);
-                    personInformation.Cities = new List<string>() { LiveCity(webDriver) };
-                    personInformation.Education = new List<string>() { Educations(webDriver) };
-                    personInformation.SocialNetwork = SocialNetwork.VK;
-                    personInformation.Photo = Photo(webDriver, i);
+                        PersonInformation personInformation = new PersonInformation();
+                        personInformation.Name = searchOptions.Name;
+                        personInformation.LastName = searchOptions.LastName;
+                        personInformation.YearOfBirth = YearBirth(webDriver);
+                        personInformation.Cities = new List<string>() { LiveCity(webDriver) };
+                        personInformation.Education = new List<string>() { Educations(webDriver) };
+                        personInformation.SocialNetwork = SocialNetwork.VK;
+                        personInformation.Photo = Photo(webDriver, i);
 
-                    PeopleFromVK.Add(personInformation);
+                        PeopleFromVK.Add(personInformation);
 
-                    webDriver.Navigate().Back();
+                        webDriver.Navigate().Back();
+                    }
                 }
             }
             catch
             {
-                
+
+            }
+        }
+
+        private void City(IWebDriver webDriver)
+        {
+            Thread.Sleep(500);
+            if (IsElementExist(By.Id("container2"), webDriver))
+            {
+                IWebElement querCity = webDriver.FindElement(By.Id("container2"));
+                querCity.Click();
+                Thread.Sleep(500);
+                bool elemExist = true;
+                int i = 0;
+                try
+                {
+                    while (elemExist)
+                    {
+                        if (IsElementExist(By.XPath("//*[@id='option_list_options_container_3_" + i + "']"), webDriver))
+                        {
+                            IWebElement city = webDriver.FindElement(By.XPath("//*[@id='option_list_options_container_2_" + i + "']"));
+                            i++;
+                            if (city.Text == "Ульяновск")
+                            {
+                                elemExist = false;
+                                city.Click();
+                            }
+                        }
+                        else
+                            i++;
+                    }
+                }
+                catch
+                {
+
+                }
+            }
+        }
+
+        private void Country(IWebDriver webDriver)
+        {
+            Thread.Sleep(500);
+            if (IsElementExist(By.Id("container3"), webDriver))
+            {
+                IWebElement querCounntry = webDriver.FindElement(By.Id("container3"));
+                querCounntry.Click();
+                Thread.Sleep(500);
+                bool elemExist = true;
+                int i = 0;
+                try
+                {
+                    while (elemExist)
+                    {
+                        if (IsElementExist(By.XPath("//*[@id='option_list_options_container_3_" + i + "']"), webDriver))
+                        {
+                            IWebElement country = webDriver.FindElement(By.XPath("//*[@id='option_list_options_container_3_" + i + "']"));
+                            i++;
+                            if (country.Text == "Россия")
+                            {
+                                elemExist = false;
+                                country.Click();
+                            }
+                        }
+                        else
+                            i++;
+                    }
+                }
+                catch
+                {
+
+                }
             }
         }
 
@@ -141,4 +199,5 @@ namespace SocialMediaInformationAggregator.FindPeople
         }
     }
 }
+
 
