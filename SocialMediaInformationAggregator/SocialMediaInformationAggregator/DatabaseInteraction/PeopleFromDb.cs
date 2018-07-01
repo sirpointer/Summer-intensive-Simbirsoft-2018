@@ -11,8 +11,8 @@ namespace SocialMediaInformationAggregator.DatabaseInteraction
 {
     public static class PeopleFromDb
     {
-        public static string connectionString;
-        public static void ConnectToDatabase()
+        private static string connectionString;
+        private static void ConnectToDatabase()
         {
             string dataDirectory = Directory.GetCurrentDirectory();
             AppDomain.CurrentDomain.SetData("DataDirectory", dataDirectory); //Переопределяем |DataDirectory|, директория, откуда загружается база данных
@@ -61,6 +61,98 @@ namespace SocialMediaInformationAggregator.DatabaseInteraction
             return CommonPersons;
         }
 
+        private static List<string> GetListElements(string TableName, string lgn)
+        {
+            List<string> elements = new List<string>();
+            ConnectToDatabase();
+            SqlConnection conn = new SqlConnection(connectionString);
+            conn.Open();
+            string query = String.Format("SELECT * FROM " + TableName + " WHERE Login=@a");
+            using (SqlCommand comm = new SqlCommand(query, conn))
+            {
+                comm.Parameters.AddWithValue("@a", lgn);
+                SqlDataReader reader = comm.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        elements.Add(reader.GetValue(1).ToString());
+                    }
+                }
+            }
+            return elements;
+        }
+
+
+        private static void InsertNewElements(string lgn, string pole, string val, string tableName)
+        {
+            ConnectToDatabase();
+            SqlConnection conn = new SqlConnection(connectionString);
+            conn.Open();
+            string query = String.Format("INSERT INTO " + tableName +
+                       " (Login, " + pole +") " +
+                       "VALUES (@login, @value)");
+            using (SqlCommand comm = new SqlCommand(query, conn))
+            {
+                comm.Parameters.AddWithValue("@login", lgn);
+                comm.Parameters.AddWithValue("@value", val);
+                comm.ExecuteNonQuery();
+            }
+        }
+
+        public static void SetFoundCity(string Login, string Val)
+        {
+            InsertNewElements(Login,"City", Val, "FoundCities");
+        }
+
+        public static void SetFoundFirstName(string Login, string Val)
+        {
+            InsertNewElements(Login, "Name", Val, "FoundNames");
+        }
+        public static void SetFoundLastName(string Login, string Val)
+        {
+            InsertNewElements(Login, "LastName", Val, "FoundLastName");
+        }
+
+        public static void SetFoundSchool(string Login, string Val)
+        {
+            InsertNewElements(Login, "School", Val, "FoundSchools");
+        }
+
+        public static void SetFoundUniversity(string Login, string Val)
+        {
+            InsertNewElements(Login, "University", Val, "FoundUniversities");
+        }
+
+        public static List<string> GetFoundCities(string login)
+        {
+            List<string> elements = GetListElements("FoundCities", login);
+            return elements.Distinct().OrderBy(a=>a).ToList();
+        }
+
+        public static List<string> GetFoundFirstNames(string login)
+        {
+            List<string> elements = GetListElements("FoundNames", login);
+            return elements.Distinct().OrderBy(a => a).ToList();
+        }
+
+        public static List<string> GetFoundLastNamea(string login)
+        {
+            List<string> elements = GetListElements("FoundLastNames", login);
+            return elements.Distinct().OrderBy(a => a).ToList();
+        }
+
+        public static List<string> GetFoundSchools(string login)
+        {
+            List<string> elements = GetListElements("FoundSchools", login);
+            return elements.Distinct().OrderBy(a => a).ToList();
+        }
+
+        public static List<string> GetFoundUniversities(string login)
+        {
+            List<string> elements = GetListElements("FoundUniversity", login);
+            return elements.Distinct().OrderBy(a => a).ToList();
+        }
         private static List<string> GetRowInformFromDb(string login, int k)
         {
             List<string> informFromVK = GetRowInformFromDbNetwork(login, "FoundPersonsVK", k);
