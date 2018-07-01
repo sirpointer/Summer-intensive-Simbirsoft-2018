@@ -128,15 +128,15 @@ namespace SocialMediaInformationAggregator
             DatabaseInteraction.PeopleFromDb.SetFoundFirstName(App.CurrentUserLogin, NameComboBox.Text);
             DatabaseInteraction.PeopleFromDb.SetFoundLastName(App.CurrentUserLogin, LastNameComboBox.Text);
 
-            if (CityChecked)
+            if (CityChecked && string.IsNullOrWhiteSpace(CityComboBox.Text))
             {
                 DatabaseInteraction.PeopleFromDb.SetFoundCity(App.CurrentUserLogin, CityComboBox.Text);
             }
-            if (EducationChecked)
+            if (EducationChecked && string.IsNullOrWhiteSpace(UniversityComboBox.Text))
             {
                 DatabaseInteraction.PeopleFromDb.SetFoundUniversity(App.CurrentUserLogin, UniversityComboBox.Text);
             }
-            if (SchoolChecked)
+            if (SchoolChecked && string.IsNullOrWhiteSpace(SchoolComboBox.Text))
             {
                 DatabaseInteraction.PeopleFromDb.SetFoundSchool(App.CurrentUserLogin, SchoolComboBox.Text);
             }

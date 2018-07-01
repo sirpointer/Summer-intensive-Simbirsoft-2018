@@ -14,7 +14,7 @@
 
         <Button 
             BorderBrush="#4872a3"
-            BorderThickness="1px"
+            BorderThickness="2px"
             Background="#FF4A76A8" 
             Foreground="White" 
             Name="BackButton" 
@@ -57,7 +57,7 @@
                 FontWeight="Bold"
                 FontSize="12pt"
                 BorderBrush="#4872a3"
-                BorderThickness="1px"/>
+                BorderThickness="2px"/>
             <Button 
                 Name="LogoutButton" 
                 Click="LogoutButton_Click"  
@@ -68,9 +68,9 @@
                 FontWeight="Bold"
                 FontSize="12pt"
                 BorderBrush="#4872a3"
-                BorderThickness="1px"/>
+                BorderThickness="2px"/>
         </StackPanel>
-        
+
 
         <Frame Background="White" Grid.Row="1" Source="InputPage.xaml" Name="PagesFrame" NavigationUIVisibility="Hidden">
             
