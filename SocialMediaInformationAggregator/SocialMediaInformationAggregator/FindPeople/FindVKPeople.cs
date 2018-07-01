@@ -26,6 +26,7 @@ namespace SocialMediaInformationAggregator.FindPeople
             InputCountry(webDriver);
             InputCity(webDriver, searchOptions);
             InputSchool(webDriver, searchOptions);
+            InputUniversitet(webDriver, searchOptions);
             InputYearBirthFrom(webDriver, searchOptions);
             InputYearBirthTo(webDriver, searchOptions);
 
@@ -43,7 +44,7 @@ namespace SocialMediaInformationAggregator.FindPeople
                 //wait.Until((x, y) => )
                 if (IsElementExist(By.XPath("//*[@id='results']/div[" + i + "]/div[3]/div[1]/a"), webDriver))
                 {
-                    Thread.Sleep(500);
+                    Thread.Sleep(1000);
                     IWebElement people = webDriver.FindElement(By.XPath("//*[@id='results']/div[" + i + "]/div[3]/div[1]/a"));
                     webDriver.FindElement(By.XPath("//*[@id='results']/div[" + i + "]/div[3]/div[1]/a")).Click();
 
@@ -68,6 +69,43 @@ namespace SocialMediaInformationAggregator.FindPeople
             //}
         }
 
+
+        private void InputUniversitet(IWebDriver webDriver, SearchOptions searchOptions)
+        {
+            Thread.Sleep(3000);
+            if (IsElementExist(By.Id("cUniversity"), webDriver) && searchOptions.Education != null)
+            {
+                webDriver.FindElement(By.Id("cUniversity")).Click();
+                Thread.Sleep(500);
+                bool elemExist = true;
+                int i = 0;
+                try
+                {
+                    while (elemExist && i < 100)
+                    {
+                        //if (webDriver is OpenQA.Selenium.Firefox.FirefoxDriver)
+                        if (IsElementExist(By.XPath("//*[@id='option_list_options_container_12_" + i + "']"), webDriver))
+                        {
+                            IWebElement universitet = webDriver.FindElement(By.XPath("//*[@id='option_list_options_container_12_" + i + "']"));
+                            i++;
+                            if (universitet.Text.Contains(searchOptions.Education))
+                            {
+                                elemExist = false;
+                                universitet.Click();
+                            }
+                        }
+                        else
+                            i++;
+                    }
+                    webDriver.FindElement(By.Id("cUniversity")).Click();
+                }
+                catch
+                {
+
+                }
+            }
+        }
+
         private void InputSchool(IWebDriver webDriver, SearchOptions searchOptions)
         {
             Thread.Sleep(3000);
@@ -84,12 +122,12 @@ namespace SocialMediaInformationAggregator.FindPeople
                         //if (webDriver is OpenQA.Selenium.Firefox.FirefoxDriver)
                         if (IsElementExist(By.XPath("//*[@id='option_list_options_container_6_" + i + "']"), webDriver))
                         {
-                            IWebElement yearFrom = webDriver.FindElement(By.XPath("//*[@id='option_list_options_container_6_" + i + "']"));
+                            IWebElement city = webDriver.FindElement(By.XPath("//*[@id='option_list_options_container_6_" + i + "']"));
                             i++;
-                            if (yearFrom.Text.Contains(searchOptions.Schools))
+                            if (city.Text.Contains(searchOptions.Schools))
                             {
                                 elemExist = false;
-                                yearFrom.Click();
+                                city.Click();
                             }
                         }
                         else
@@ -106,7 +144,7 @@ namespace SocialMediaInformationAggregator.FindPeople
         private void InputYearBirthFrom(IWebDriver webDriver, SearchOptions searchOptions)
         {
             Thread.Sleep(1000);
-            if (IsElementExist(By.Id("container13"), webDriver))
+            if (IsElementExist(By.Id("container13"), webDriver)&&searchOptions.ForThisYear!=null)
             {
                 IWebElement querYearFrom = webDriver.FindElement(By.Id("container13"));
                 querYearFrom.Click();
@@ -142,7 +180,7 @@ namespace SocialMediaInformationAggregator.FindPeople
         private void InputYearBirthTo(IWebDriver webDriver, SearchOptions searchOptions)
         {
             Thread.Sleep(1000);
-            if (IsElementExist(By.Id("container14"), webDriver))
+            if (IsElementExist(By.Id("container14"), webDriver)&&searchOptions.YearOfBirth!=null)
             {
                 IWebElement querYearFrom = webDriver.FindElement(By.Id("container14"));
                 querYearFrom.Click();
