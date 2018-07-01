@@ -8,20 +8,18 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="40px" />
+            <RowDefinition Height="52" />
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <Button Name="BackButton" Click="BackButton_Click" Content="&#xe0a6;" FontFamily="Segoe MDL2 Assets" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5" Margin="5" />
+        <Button Name="BackButton" Click="BackButton_Click" Content="&#xe0a6;" FontFamily="Segoe MDL2 Assets" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5" Margin="5,13,0,15" Height="24" Width="24" />
 
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 10, 0">
-            <TextBlock Text="Login" Margin="15, 5"/>
-            <Button Name="LoginButton" Click="LoginButton_Click"  Content="Войти"  />
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,5,9.6,21" Height="26" Width="96">
+            <TextBlock Text="Login" Name="LoginLabel" Margin="15, 5"/>
+            <Button x:Name="LoginButton" Click="LoginButton_Click"  Content="Войти"  />
         </StackPanel>
-        
 
-        <Frame Grid.Row="1" Source="InputPage.xaml" Name="PagesFrame" NavigationUIVisibility="Hidden">
-            
-        </Frame>
+
+        <Frame Source="InputPage.xaml" Name="PagesFrame" NavigationUIVisibility="Hidden" Margin="0,37,-0.4,0" Grid.RowSpan="2"/>
     </Grid>
 </Window>

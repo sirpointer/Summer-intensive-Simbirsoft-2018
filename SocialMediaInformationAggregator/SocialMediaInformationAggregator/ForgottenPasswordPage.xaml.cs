@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -20,9 +23,74 @@ namespace SocialMediaInformationAggregator
     /// </summary>
     public partial class ForgottenPasswordPage : Page
     {
+        public string connectionString;
         public ForgottenPasswordPage()
         {
+            string dataDirectory = Directory.GetCurrentDirectory();
+            AppDomain.CurrentDomain.SetData("DataDirectory", dataDirectory); //Переопределяем |DataDirectory|, директория, откуда загружается база данных
+            connectionString = "Data Source=LAPTOP-8FE5V0OM\\SQLEXPRESS;Initial Catalog=SMIA;Integrated Security=True";
             InitializeComponent();
+        }
+        public SqlConnection ConnectToDb()
+        {
+            SqlConnection conn = new SqlConnection(connectionString);
+            return conn;
+        }
+        public void CheckInputInform(SqlDataReader reader)
+        {
+            string frstAnsw = "";
+            string secAnsw = "";
+            string thirdAnsw = "";
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    frstAnsw = (string)reader[5];
+                    secAnsw = (string)reader[6];
+                    thirdAnsw = (string)reader[7];
+                }
+                if (frstAnsw == textBoxFrst.Text && secAnsw == textBoxSec.Text && thirdAnsw == textBoxThird.Text)
+                {
+                    App.LoginGlobalVeryForMethod = textBoxLogin.Text;
+                    this.NavigationService.Navigate(new Uri("ChangePasswordPage.xaml", UriKind.Relative));
+                }
+                else
+                {
+                    MessageBox.Show("Ваши ответы не совпадают с регистрационными данными.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Некорректный логин.");
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (textBoxLogin.Text != "" && textBoxFrst.Text != "" && textBoxSec.Text != "" && textBoxThird.Text != "")
+            {
+                try
+                {
+                    SqlConnection conn = ConnectToDb();
+                    conn.Open();
+                    List<string> k = new List<string>();
+                    string query = string.Format("SELECT * FROM Users WHERE Login=@a");
+                    using (SqlCommand comm = new SqlCommand(query, conn))
+                    {
+                        comm.Parameters.AddWithValue("@a", textBoxLogin.Text);
+                        SqlDataReader reader = comm.ExecuteReader();
+                        CheckInputInform(reader);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Некоторые поля не заполнены!");
+            }
         }
     }
 }

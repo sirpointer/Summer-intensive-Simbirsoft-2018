@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\
+C:\Users\user\Documents\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\
 SocialMediaInformationAggregator
 none
 false
 DEBUG;TRACE
-C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\App.xaml
-7-1569635489
+C:\Users\user\Documents\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\App.xaml
+9299040782
 3361775139
-21950516834
-18673778714
-AuthorizationPage.xaml;ForgottenPasswordPage.xaml;InputPage.xaml;ListOfPeoplePage.xaml;MainWindow.xaml;PersonPage.xaml;RegistrationPage.xaml;
+241185845770
+19-1107561778
+AuthorizationPage.xaml;ChangePasswordPage.xaml;ForgottenPasswordPage.xaml;InputPage.xaml;ListOfPeoplePage.xaml;MainWindow.xaml;PersonPage.xaml;QuestionPage.xaml;RegistrationPage.xaml;
 
-False
+True
 

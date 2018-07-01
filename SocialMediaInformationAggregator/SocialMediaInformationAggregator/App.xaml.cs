@@ -19,6 +19,9 @@ namespace SocialMediaInformationAggregator
         public static PersonInformation VkPerson { get; set; }
 
         public static PersonInformation OkPerson { get; set; }
+
+        public static string CurrentUserLogin { get; set; }
+        public static string LoginGlobalVeryForMethod { get; set; }
     }
 
 }

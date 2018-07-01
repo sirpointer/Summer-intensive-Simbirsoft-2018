@@ -35,5 +35,6 @@ namespace SocialMediaInformationAggregator
         {
             PagesFrame.Navigate(new Uri("AuthorizationPage.xaml", UriKind.Relative));
         }
+        
     }
 }
