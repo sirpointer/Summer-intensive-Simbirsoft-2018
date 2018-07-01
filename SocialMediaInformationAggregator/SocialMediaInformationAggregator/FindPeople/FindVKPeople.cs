@@ -56,6 +56,8 @@ namespace SocialMediaInformationAggregator.FindPeople
                     personInformation.Education = Educations(webDriver);
                     personInformation.SocialNetwork = SocialNetwork.VK;
                     //personInformation.Photo = Photo(webDriver, i);
+                    Thread.Sleep(500);
+                    personInformation.ProfileLink = webDriver.Url;
 
                     PeopleFromVK.Add(personInformation);
 
