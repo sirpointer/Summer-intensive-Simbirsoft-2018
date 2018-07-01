@@ -34,6 +34,7 @@ C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggre
 C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\bin\Debug\ThoughtWorks.Selenium.Core.xml
 C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\bin\Debug\WebDriver.xml
 C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\bin\Debug\WebDriver.Support.xml
+C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\SocialMediaInformationAggregator.csprojAssemblyReference.cache
 C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\AuthorizationPage.g.cs
 C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\ForgottenPasswordPage.g.cs
 C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\InputPage.g.cs
@@ -59,4 +60,3 @@ C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggre
 C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\SocialMediaInformationAggregator.csproj.CopyComplete
 C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\SocialMediaInformationAggregator.exe
 C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\SocialMediaInformationAggregator.pdb
-C:\Users\sirpo\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\SocialMediaInformationAggregator.csprojAssemblyReference.cache

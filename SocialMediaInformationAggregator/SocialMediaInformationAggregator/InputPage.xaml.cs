@@ -17,6 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SocialMediaInformationAggregator.DatabaseInteraction;
 
 namespace SocialMediaInformationAggregator
 {
@@ -111,6 +112,7 @@ namespace SocialMediaInformationAggregator
                 LastName = LastNameComboBox.Text
             };
             SetSerachOptions(options);
+
             WebDriverWorks(options);
 
             foreach (var ui in (Application.Current.MainWindow.Content as Grid).Children)
@@ -169,7 +171,9 @@ namespace SocialMediaInformationAggregator
             App.PersonInformation = new List<FindPeople.PersonInformation>();
 
             foreach (var person in find.PeopleFromVK)
+            {
                 App.PersonInformation.Add(person);
+            }
 
             foreach (var person in find.PeopleFromOK)
                 App.PersonInformation.Add(person);
@@ -245,12 +249,21 @@ namespace SocialMediaInformationAggregator
 
         private void YearToCheck(FindPeople.SearchOptions options)
         {
-            if (YearToChecked)
+            if (YearToChecked && !string.IsNullOrWhiteSpace(ToYearCB.Text))
             {
-                if (!string.IsNullOrWhiteSpace(ToYearCB.Text))
-                    options.ForThisYear = Convert.ToInt32(ToYearCB.Text);
+                var firstYear = Convert.ToInt32(ToYearCB.Text);
+                var secondYear = Convert.ToInt32(FromYearCB.Text);
+
+                if (firstYear > secondYear)
+                {
+                    options.YearOfBirth = secondYear;
+                    options.ForThisYear = firstYear;
+                }
                 else
-                    options = null;
+                {
+                    options.YearOfBirth = firstYear;
+                    options.ForThisYear = secondYear;
+                }
             }
             else
                 options = null;
