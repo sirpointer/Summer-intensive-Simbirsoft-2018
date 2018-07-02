@@ -19,12 +19,13 @@ namespace SocialMediaInformationAggregator.FindPeople
 
         public void FindPeopleOnVK(IWebDriver webDriver, SearchOptions searchOptions)
         {
-
+            //(new WebDriverWait(webDriver, TimeSpan.FromSeconds(30))).Until();
             webDriver.Navigate().GoToUrl("https://vk.com/search?c%5Bper_page%5D=40&c%5Bphoto%5D=1&c%5Bsection%5D=people");
             //WebDriverWait wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(10));
-            WebDriverWait wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(10));
-
+            // WebDriverWait wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(10));
+            Thread.Sleep(500);
             InputCountry(webDriver);
+            Thread.Sleep(500);
             InputCity(webDriver, searchOptions);
             InputSchool(webDriver, searchOptions);
             InputUniversitet(webDriver, searchOptions);
@@ -51,12 +52,17 @@ namespace SocialMediaInformationAggregator.FindPeople
                     Thread.Sleep(1000);
                     IWebElement people = webDriver.FindElement(By.XPath("//*[@id='results']/div[" + i + "]/div[3]/div[1]/a"));
                     webDriver.FindElement(By.XPath("//*[@id='results']/div[" + i + "]/div[3]/div[1]/a")).Click();
-
+                    Thread.Sleep(500);
                     PersonInformation personInformation = new PersonInformation();
+                    Thread.Sleep(500);
                     personInformation.Name = searchOptions.Name;
+                    Thread.Sleep(500);
                     personInformation.LastName = searchOptions.LastName;
+                    Thread.Sleep(500);
                     personInformation.YearOfBirth = YearBirth(webDriver);
+                    Thread.Sleep(500);
                     personInformation.Cities = new List<string>() { LiveCity(webDriver) };
+                    Thread.Sleep(500);
                     personInformation.Education = Educations(webDriver);
                     personInformation.SocialNetwork = SocialNetwork.VK;
                     //personInformation.Photo = Photo(webDriver, i);
@@ -293,7 +299,8 @@ namespace SocialMediaInformationAggregator.FindPeople
 
         private void InputCountry(IWebDriver webDriver)
         {
-            Thread.Sleep(500);
+            //Thread.Sleep(500);
+            new WebDriverWait(webDriver, TimeSpan.FromSeconds(20)).Until(driver => driver.FindElement(By.Id("container3")));
             if (IsElementExist(By.Id("container3"), webDriver))
             {
                 IWebElement querCounntry = webDriver.FindElement(By.Id("container3"));
@@ -396,6 +403,7 @@ namespace SocialMediaInformationAggregator.FindPeople
         {
             for (int i = 0; i < 10; i++)
             {
+                //new WebDriverWait(webDriver, TimeSpan.FromSeconds(10)).Until(driver => driver.FindElement(By.XPath("//*[@id='profile_short']/div[" + 1 + "]")));
                 if (IsElementExist(By.XPath("//*[@id='profile_short']/div[" + i + "]"), webDriver))
                     ExistEducation(webDriver, education, i);
             }
