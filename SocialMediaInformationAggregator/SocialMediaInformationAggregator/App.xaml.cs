@@ -16,11 +16,11 @@ namespace SocialMediaInformationAggregator
     /// </summary>
     public partial class App : Application
     {
-        public static List<PersonInformation> PersonInformation { get; set; }
+        public static List<PersonInformation> PersonInformation { get; set; } = new List<PersonInformation>();
 
-        public static PersonInformation VkPerson { get; set; }
+        public static PersonInformation VkPerson { get; set; } = new PersonInformation();
 
-        public static PersonInformation OkPerson { get; set; }
+        public static PersonInformation OkPerson { get; set; } = new PersonInformation();
 
         public static string LoginGlobalVeryForMethod { get; set; }
 

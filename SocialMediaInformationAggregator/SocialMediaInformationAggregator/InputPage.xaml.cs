@@ -119,9 +119,9 @@ namespace SocialMediaInformationAggregator
             {
                 WebDriverWorks(options);
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Что-то пошло не так.");
+                MessageBox.Show(ex.Message);
                 return;
             }
 
@@ -178,21 +178,7 @@ namespace SocialMediaInformationAggregator
             }
             catch
             {
-                try
-                {
-                    webDriver = new FirefoxDriver();
-                }
-                catch
-                {
-                    try
-                    {
-                        webDriver = new EdgeDriver();
-                    }
-                    catch
-                    {
-                        webDriver = new InternetExplorerDriver();
-                    }
-                }
+                throw new Exception("Браузер Chrome не найден.");
             }
 
             FindPeople.IFindPeople find = new FindPeople.FindPeople();
@@ -218,6 +204,8 @@ namespace SocialMediaInformationAggregator
                 okIsOk = false;
             }
 
+            App.PersonInformation = new List<FindPeople.PersonInformation>();
+
             if (vkIsOk)
             {
                 foreach (var person in find.PeopleFromVK)
@@ -232,7 +220,7 @@ namespace SocialMediaInformationAggregator
 
             webDriver.Quit();
 
-            if (!(vkIsOk && okIsOk))
+            if (!vkIsOk && !okIsOk)
                 throw new Exception("Поиск во Вконтакте и Одноклассниках закончился неудачей.");
         }
 
