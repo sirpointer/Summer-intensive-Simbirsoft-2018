@@ -81,82 +81,87 @@ namespace SocialMediaInformationAggregator.FindPeople
             //}
         }
 
-
+        //+
         private void InputUniversitet(IWebDriver webDriver, SearchOptions searchOptions)
         {
             //Thread.Sleep(3000);
-            if (searchOptions.Schools != null && searchOptions.City!= null)
-                new WebDriverWait(webDriver, TimeSpan.FromSeconds(5)).Until(driver => driver.FindElement(By.Id("cUniversity")));
-
-            if (IsElementExist(By.Id("cUniversity"), webDriver) && searchOptions.Education != null && searchOptions.City!=null)
+            if (searchOptions.Education != null && searchOptions.City!= null)
             {
-                webDriver.FindElement(By.Id("cUniversity")).Click();
-                Thread.Sleep(500);
-                bool elemExist = true;
-                int i = 0;
-                try
+                new WebDriverWait(webDriver, TimeSpan.FromSeconds(5)).Until(driver => driver.FindElement(By.Id("cUniversity")));
+                if (IsElementExist(By.Id("cUniversity"), webDriver) && !webDriver.FindElement(By.Id("container2")).Text.Contains("Выбор города"))
                 {
-                    while (elemExist && i < 100)
-                    {
-                        //if (webDriver is OpenQA.Selenium.Firefox.FirefoxDriver)
-                        if (IsElementExist(By.XPath("//*[@id='option_list_options_container_12_" + i + "']"), webDriver))
-                        {
-                            IWebElement universitet = webDriver.FindElement(By.XPath("//*[@id='option_list_options_container_12_" + i + "']"));
-                            i++;
-                            if (universitet.Text.Contains(searchOptions.Education))
-                            {
-                                elemExist = false;
-                                universitet.Click();
-                            }
-                        }
-                        else
-                            i++;
-                    }
                     webDriver.FindElement(By.Id("cUniversity")).Click();
-                }
-                catch
-                {
+                    Thread.Sleep(500);
+                    bool elemExist = true;
+                    int i = 0;
+                    try
+                    {
+                        while (elemExist && i < 100)
+                        {
+                            if (IsElementExist(By.XPath("//*[@id='option_list_options_container_12_" + i + "']"), webDriver))
+                            {
+                                IWebElement universitet = webDriver.FindElement(By.XPath("//*[@id='option_list_options_container_12_" + i + "']"));
+                                i++;
+                                if (universitet.Text.Contains(searchOptions.Education))
+                                {
+                                    elemExist = false;
+                                    universitet.Click();
+                                }
+                            }
+                            else
+                                i++;
+                        }
+                        webDriver.FindElement(By.Id("cUniversity")).Click();
+                    }
+                    catch
+                    {
 
+                    }
                 }
+
             }
+
         }
 
         private void InputSchool(IWebDriver webDriver, SearchOptions searchOptions)
         {
             //Thread.Sleep(3000);
             if(searchOptions.Schools != null && searchOptions.City!=null)
-            new WebDriverWait(webDriver, TimeSpan.FromSeconds(5)).Until(driver => driver.FindElement(By.Id("cSchool")));
-
-            if (IsElementExist(By.Id("cSchool"), webDriver)&& searchOptions.Schools!=null && searchOptions.City!=null)
             {
-                webDriver.FindElement(By.Id("cSchool")).Click();
-                Thread.Sleep(500);
-                bool elemExist = true;
-                int i = 0;
-                try
+                new WebDriverWait(webDriver, TimeSpan.FromSeconds(5)).Until(driver => driver.FindElement(By.Id("cSchool")));
+
+                if (IsElementExist(By.Id("cSchool"), webDriver) && !webDriver.FindElement(By.Id("container2")).Text.Contains("Выбор города"))
                 {
-                    while (elemExist && i < 5000)
+                    webDriver.FindElement(By.Id("cSchool")).Click();
+                    Thread.Sleep(500);
+                    bool elemExist = true;
+                    int i = 0;
+                    try
                     {
-                        //if (webDriver is OpenQA.Selenium.Firefox.FirefoxDriver)
-                        if (IsElementExist(By.XPath("//*[@id='option_list_options_container_6_" + i + "']"), webDriver))
+                        while (elemExist && i < 5000)
                         {
-                            IWebElement city = webDriver.FindElement(By.XPath("//*[@id='option_list_options_container_6_" + i + "']"));
-                            i++;
-                            if (city.Text.Contains(searchOptions.Schools))
+                            //if (webDriver is OpenQA.Selenium.Firefox.FirefoxDriver)
+                            if (IsElementExist(By.XPath("//*[@id='option_list_options_container_6_" + i + "']"), webDriver))
                             {
-                                elemExist = false;
-                                city.Click();
+                                IWebElement city = webDriver.FindElement(By.XPath("//*[@id='option_list_options_container_6_" + i + "']"));
+                                i++;
+                                if (city.Text.Contains(searchOptions.Schools))
+                                {
+                                    elemExist = false;
+                                    city.Click();
+                                }
                             }
+                            else
+                                i++;
                         }
-                        else
-                            i++;
+                    }
+                    catch
+                    {
+
                     }
                 }
-                catch
-                {
-
-                }
             }
+
         }
 
         private void InputYearBirthFrom(IWebDriver webDriver, SearchOptions searchOptions)
@@ -291,8 +296,8 @@ namespace SocialMediaInformationAggregator.FindPeople
                 {
                     //Thread.Sleep(500);
                     //querCity.Click();
-                    Thread.Sleep(500);
-                    webDriver.FindElement(By.XPath("//*[@id='option_list_options_container_2_1']")).Click();
+                    //Thread.Sleep(500);
+                    //webDriver.FindElement(By.XPath("//*[@id='option_list_options_container_2_1']")).Click();
                 }
             }
         }
