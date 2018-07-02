@@ -21,6 +21,7 @@ namespace SocialMediaInformationAggregator.FindPeople
         {
 
             webDriver.Navigate().GoToUrl("https://vk.com/search?c%5Bper_page%5D=40&c%5Bphoto%5D=1&c%5Bsection%5D=people");
+            //WebDriverWait wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(10));
             WebDriverWait wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(10));
 
             InputCountry(webDriver);
@@ -42,6 +43,9 @@ namespace SocialMediaInformationAggregator.FindPeople
                 Thread.Sleep(500);
                 //wait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(By.XPath("//*[@id='results']/div[1]/div[3]/div[1]/a")));
                 //wait.Until((x, y) => )
+
+                //new WebDriverWait(webDriver, TimeSpan.FromSeconds(3)).Until(driver => driver.FindElement(By.XPath("//*[@id='results']/div[" + i + "]/div[3]/div[1]/a")));
+
                 if (IsElementExist(By.XPath("//*[@id='results']/div[" + i + "]/div[3]/div[1]/a"), webDriver))
                 {
                     Thread.Sleep(1000);
@@ -74,8 +78,11 @@ namespace SocialMediaInformationAggregator.FindPeople
 
         private void InputUniversitet(IWebDriver webDriver, SearchOptions searchOptions)
         {
-            Thread.Sleep(3000);
-            if (IsElementExist(By.Id("cUniversity"), webDriver) && searchOptions.Education != null)
+            //Thread.Sleep(3000);
+            if (searchOptions.Schools != null && searchOptions.City!= null)
+                new WebDriverWait(webDriver, TimeSpan.FromSeconds(5)).Until(driver => driver.FindElement(By.Id("cUniversity")));
+
+            if (IsElementExist(By.Id("cUniversity"), webDriver) && searchOptions.Education != null && searchOptions.City!=null)
             {
                 webDriver.FindElement(By.Id("cUniversity")).Click();
                 Thread.Sleep(500);
@@ -110,8 +117,11 @@ namespace SocialMediaInformationAggregator.FindPeople
 
         private void InputSchool(IWebDriver webDriver, SearchOptions searchOptions)
         {
-            Thread.Sleep(3000);
-            if (IsElementExist(By.Id("cSchool"), webDriver)&& searchOptions.Schools!=null)
+            //Thread.Sleep(3000);
+            if(searchOptions.Schools != null && searchOptions.City!=null)
+            new WebDriverWait(webDriver, TimeSpan.FromSeconds(5)).Until(driver => driver.FindElement(By.Id("cSchool")));
+
+            if (IsElementExist(By.Id("cSchool"), webDriver)&& searchOptions.Schools!=null && searchOptions.City!=null)
             {
                 webDriver.FindElement(By.Id("cSchool")).Click();
                 Thread.Sleep(500);
@@ -145,7 +155,12 @@ namespace SocialMediaInformationAggregator.FindPeople
 
         private void InputYearBirthFrom(IWebDriver webDriver, SearchOptions searchOptions)
         {
-            Thread.Sleep(1000);
+            //Thread.Sleep(1000);
+
+            if (searchOptions.Schools != null && searchOptions.City != null)
+                new WebDriverWait(webDriver, TimeSpan.FromSeconds(5)).Until(driver => driver.FindElement(By.Id("container13")));
+
+
             if (IsElementExist(By.Id("container13"), webDriver)&&searchOptions.ForThisYear!=null)
             {
                 IWebElement querYearFrom = webDriver.FindElement(By.Id("container13"));
@@ -181,7 +196,12 @@ namespace SocialMediaInformationAggregator.FindPeople
 
         private void InputYearBirthTo(IWebDriver webDriver, SearchOptions searchOptions)
         {
-            Thread.Sleep(1000);
+            //Thread.Sleep(1000);
+
+
+            if (searchOptions.Schools != null && searchOptions.City != null)
+                new WebDriverWait(webDriver, TimeSpan.FromSeconds(5)).Until(driver => driver.FindElement(By.Id("container14")));
+
             if (IsElementExist(By.Id("container14"), webDriver)&&searchOptions.YearOfBirth!=null)
             {
                 IWebElement querYearFrom = webDriver.FindElement(By.Id("container14"));
@@ -217,8 +237,10 @@ namespace SocialMediaInformationAggregator.FindPeople
 
         private void InputCity(IWebDriver webDriver, SearchOptions searchOptions)
         {
-            Thread.Sleep(2000);
-            if (IsElementExist(By.Id("container2"), webDriver))
+            //Thread.Sleep(2000);
+            //wait.Until(webDriver => webDriver.FindElement(By.Id("container2")));//ExpectedConditions.VisibilityOfAllElementsLocatedBy(By.XPath("//*[@id='results']/div[1]/div[3]/div[1]/a")));
+            new WebDriverWait(webDriver, TimeSpan.FromSeconds(10)).Until(driver => driver.FindElement(By.Id("container2")));
+            if (IsElementExist(By.Id("container2"), webDriver)&&searchOptions.City!=null)
             {
                 IWebElement querCity = webDriver.FindElement(By.Id("container2"));
                 querCity.Click();
