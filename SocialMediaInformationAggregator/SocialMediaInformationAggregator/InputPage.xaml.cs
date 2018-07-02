@@ -30,7 +30,7 @@ namespace SocialMediaInformationAggregator
         {
             InitializeComponent();
 
-            for (int i = DateTime.Now.Year - 15; i > 1930; i--)
+            for (int i = DateTime.Now.Year - 15; i > 1950; i--)
             {
                 FromYearCB.Items.Add(i.ToString());
                 ToYearCB.Items.Add(i.ToString());
@@ -125,20 +125,23 @@ namespace SocialMediaInformationAggregator
 
         private void AddFieldsToDb()
         {
-            DatabaseInteraction.PeopleFromDb.SetFoundFirstName(App.CurrentUserLogin, NameComboBox.Text);
-            DatabaseInteraction.PeopleFromDb.SetFoundLastName(App.CurrentUserLogin, LastNameComboBox.Text);
+            if (App.CurrentUserLogin != null)
+            {
+                DatabaseInteraction.PeopleFromDb.SetFoundFirstName(App.CurrentUserLogin, NameComboBox.Text);
+                DatabaseInteraction.PeopleFromDb.SetFoundLastName(App.CurrentUserLogin, LastNameComboBox.Text);
 
-            if (CityChecked && string.IsNullOrWhiteSpace(CityComboBox.Text))
-            {
-                DatabaseInteraction.PeopleFromDb.SetFoundCity(App.CurrentUserLogin, CityComboBox.Text);
-            }
-            if (EducationChecked && string.IsNullOrWhiteSpace(UniversityComboBox.Text))
-            {
-                DatabaseInteraction.PeopleFromDb.SetFoundUniversity(App.CurrentUserLogin, UniversityComboBox.Text);
-            }
-            if (SchoolChecked && string.IsNullOrWhiteSpace(SchoolComboBox.Text))
-            {
-                DatabaseInteraction.PeopleFromDb.SetFoundSchool(App.CurrentUserLogin, SchoolComboBox.Text);
+                if (CityChecked && string.IsNullOrWhiteSpace(CityComboBox.Text))
+                {
+                    DatabaseInteraction.PeopleFromDb.SetFoundCity(App.CurrentUserLogin, CityComboBox.Text);
+                }
+                if (EducationChecked && string.IsNullOrWhiteSpace(UniversityComboBox.Text))
+                {
+                    DatabaseInteraction.PeopleFromDb.SetFoundUniversity(App.CurrentUserLogin, UniversityComboBox.Text);
+                }
+                if (SchoolChecked && string.IsNullOrWhiteSpace(SchoolComboBox.Text))
+                {
+                    DatabaseInteraction.PeopleFromDb.SetFoundSchool(App.CurrentUserLogin, SchoolComboBox.Text);
+                }
             }
         }
 
@@ -162,13 +165,13 @@ namespace SocialMediaInformationAggregator
 
             try
             {
-                webDriver = new FirefoxDriver();
+                webDriver = new ChromeDriver();
             }
             catch
             {
                 try
                 {
-                    webDriver = new ChromeDriver();
+                    webDriver = new FirefoxDriver();
                 }
                 catch
                 {
