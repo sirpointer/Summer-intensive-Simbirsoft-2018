@@ -15,7 +15,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-
 namespace SocialMediaInformationAggregator
 {
     /// <summary>
@@ -31,6 +30,7 @@ namespace SocialMediaInformationAggregator
             connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = " + dataDirectory + @"\SMIA.mdf";
             InitializeComponent();
         }
+
         private void AuthButton_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -50,6 +50,7 @@ namespace SocialMediaInformationAggregator
                         {
                             pass = (string)reader[0];
                         }
+
                         if (pass == passwordBox.Password.ToString())
                         {
                             App.CurrentUserLogin = textBoxLogin.Text;
@@ -65,6 +66,7 @@ namespace SocialMediaInformationAggregator
                         MessageBox.Show("Некорректный логин");
                     }
                 }
+
                 conn.Close();
             }
             catch (Exception ex)
@@ -72,11 +74,9 @@ namespace SocialMediaInformationAggregator
                 MessageBox.Show(ex.Message);
             }
         }
-        
 
         private void ForgottenPasswordButton_Click(object sender, RoutedEventArgs e)
         {
-
             this.NavigationService.Navigate(new Uri("ForgottenPasswordPage.xaml", UriKind.Relative));
         }
 
