@@ -29,7 +29,7 @@ namespace SocialMediaInformationAggregator
         {
             string dataDirectory = Directory.GetCurrentDirectory();
             AppDomain.CurrentDomain.SetData("DataDirectory", dataDirectory); //Переопределяем |DataDirectory|, директория, откуда загружается база данных
-            connectionString = "Data Source=LAPTOP-8FE5V0OM\\SQLEXPRESS;Initial Catalog=SMIA;Integrated Security=True";
+            connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = " + dataDirectory + @"\SMIA.mdf";
             ForgottenPasswordPage forgottenPasswordPage = new ForgottenPasswordPage();
             Login = App.LoginGlobalVeryForMethod;
             InitializeComponent();
@@ -46,7 +46,6 @@ namespace SocialMediaInformationAggregator
                 using (SqlCommand comm = new SqlCommand(query, conn))
                 {
                     Login = App.LoginGlobalVeryForMethod;
-                    MessageBox.Show(Login);
                     comm.Parameters.AddWithValue("@login", Login);
                     comm.Parameters.AddWithValue("@pass", passNew.Password);
                     comm.ExecuteNonQuery();

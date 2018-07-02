@@ -28,8 +28,7 @@ namespace SocialMediaInformationAggregator
         {
             string dataDirectory = Directory.GetCurrentDirectory();
             AppDomain.CurrentDomain.SetData("DataDirectory", dataDirectory); //Переопределяем |DataDirectory|, директория, откуда загружается база данных
-            connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB; AttachDbFilename = " + App.GetCurrentDirectory + @"\SMIA.mdf";
-            
+            connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = " + dataDirectory + @"\SMIA.mdf";
             InitializeComponent();
         }
         private void AuthButton_Click(object sender, RoutedEventArgs e)
