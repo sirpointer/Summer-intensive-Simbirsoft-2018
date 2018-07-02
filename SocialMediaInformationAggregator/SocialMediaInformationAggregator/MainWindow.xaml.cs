@@ -23,6 +23,8 @@ namespace SocialMediaInformationAggregator
         public MainWindow()
         {
             InitializeComponent();
+
+            //App.CurrentUserLogin = "admin";
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)

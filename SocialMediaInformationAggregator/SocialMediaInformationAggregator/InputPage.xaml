@@ -26,7 +26,8 @@
                 HorizontalAlignment="Left" 
                 GotFocus="InputComboBox_GotFocus" 
                 LostFocus="InputComboBox_LostFocus"
-                PreviewKeyDown="LastNameComboBox_PreviewKeyDown"/>
+                PreviewKeyDown="LastNameComboBox_PreviewKeyDown"
+                PreviewTextInput="ComboBox_PreviewTextInput"/>
             
             <TextBlock Text="Имя" Margin="40, 0, 0, 0" FontSize="10"/>
             <ComboBox 
@@ -37,10 +38,16 @@
                 Margin="40, 0, 10, 10" 
                 IsEditable="True" 
                 GotFocus="InputComboBox_GotFocus" 
-                LostFocus="InputComboBox_LostFocus" />
-            <TextBlock Name="NameErrorTextBlock" Text="Имя и Фамилия - обязательные поля." Foreground="Red" FontSize="8pt" Visibility="Collapsed" />
+                LostFocus="InputComboBox_LostFocus" 
+                PreviewTextInput="ComboBox_PreviewTextInput" />
+            
+            <TextBlock 
+                Name="NameErrorTextBlock" 
+                Text="Имя и Фамилия - обязательные поля." 
+                Foreground="Red" FontSize="8pt" 
+                Visibility="Collapsed" />
 
-            <TextBlock Text="Год рождения" Margin="30, 0, 0, 0" FontSize="10"/>
+            <TextBlock Text="Возраст" Margin="30, 0, 0, 0" FontSize="10"/>
             <StackPanel Orientation="Horizontal" Margin="10, 0, 0, 10">
                 <TextBlock Text="+" FontSize="14pt" Name="YearFromOption" PreviewMouseDown="OptionTB_PreviewMouseDown" FontWeight="Bold" />
                 <TextBlock Margin="20, 0, 0, 0" Text="от" />
@@ -60,7 +67,8 @@
                     FontSize="12pt"
                     Margin="20, 0" 
                     GotFocus="InputComboBox_GotFocus" 
-                    LostFocus="InputComboBox_LostFocus" />
+                    LostFocus="InputComboBox_LostFocus"
+                    PreviewTextInput="ComboBox_PreviewTextInput"/>
             </StackPanel>
 
             <TextBlock Text="Университет" Margin="30, 0, 0, 0" FontSize="10"/>
@@ -73,7 +81,8 @@
                     FontSize="12pt"
                     Margin="20, 0" 
                     GotFocus="InputComboBox_GotFocus" 
-                    LostFocus="InputComboBox_LostFocus" />
+                    LostFocus="InputComboBox_LostFocus"
+                    PreviewTextInput="UniversityComboBox_PreviewTextInput"/>
             </StackPanel>
 
             <TextBlock Text="Школа" Margin="30, 0, 0, 0" FontSize="10"/>
@@ -86,7 +95,8 @@
                     FontSize="12pt"
                     Margin="20, 0" 
                     GotFocus="InputComboBox_GotFocus" 
-                    LostFocus="InputComboBox_LostFocus" />
+                    LostFocus="InputComboBox_LostFocus"
+                    PreviewTextInput="UniversityComboBox_PreviewTextInput"/>
             </StackPanel>
 
             <Button 

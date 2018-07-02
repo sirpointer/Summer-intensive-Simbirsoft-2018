@@ -33,16 +33,16 @@ namespace SocialMediaInformationAggregator
             {
                 FindPeople.PersonInformation person = App.VkPerson;
 
-                if (person.Photo == null)
-                {
-                    BitmapImage bitmap = new BitmapImage();
-                    bitmap.BeginInit();
-                    bitmap.UriSource = new Uri("Assets/app.ico");
+                //if (person.Photo == null)
+                //{
+                //    BitmapImage bitmap = new BitmapImage();
+                //    bitmap.BeginInit();
+                //    bitmap.UriSource = new Uri("Assets/app.ico");
 
-                    this.PersonImage = new Image() { Source = bitmap };
-                }
-                else
-                    this.PersonImage = person.Photo;
+                //    this.PersonImage = new Image() { Source = bitmap };
+                //}
+                //else
+                //    this.PersonImage = person.Photo;
 
                 this.FullNameTextBlock.Text = person.Name + " " + person.LastName;
                 this.YearTextBlock.Text = person.YearOfBirth.ToString();
@@ -62,7 +62,7 @@ namespace SocialMediaInformationAggregator
             {
                 FindPeople.PersonInformation person = App.OkPerson;
 
-                this.PersonImage = person.Photo;
+                //this.PersonImage = person.Photo;
                 this.FullNameTextBlock.Text = person.Name + " " + person.LastName;
                 this.YearTextBlock.Text = person.YearOfBirth.ToString();
 
@@ -114,7 +114,19 @@ namespace SocialMediaInformationAggregator
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            SaveTextBlock.Visibility = Visibility.Hidden;
+            SaveErrorTextBlock.Visibility = Visibility.Hidden;
+
+            try
+            {
+                DatabaseInteraction.PeopleFromDb.AddFoundPerson(App.VkPerson, App.OkPerson);
+                SaveTextBlock.Visibility = Visibility.Visible;
+            }
+            catch
+            {
+                SaveErrorTextBlock.Visibility = Visibility.Visible;
+            }
+
         }
 
         private void VkHyperLink_RequestNavigate(object sender, RequestNavigateEventArgs e)

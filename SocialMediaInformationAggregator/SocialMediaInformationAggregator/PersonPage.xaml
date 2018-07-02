@@ -32,7 +32,7 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
 
-                <Image Name="PersonImage" Source="Assets/app.ico" Grid.RowSpan="2" />
+               <!-- <Image Name="PersonImage" Source="Assets/app.ico" Grid.RowSpan="2" /> -->
 
                 <TextBlock Name="FullNameTextBlock" Text="Имя Фамилия" Grid.Column="1" VerticalAlignment="Center" Margin="20, 0, 0, 0" FontSize="16pt" TextWrapping="Wrap"/>
                 <TextBlock Name="YearTextBlock" Text="1998" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Margin="20, 10, 0, 0" FontSize="13pt" />
@@ -59,7 +59,7 @@
                     <Hyperlink NavigateUri="https://www.google.ru/" Name="VkHyperLink" TextDecorations="{x:Null}" Foreground="Blue" RequestNavigate="VkHyperLink_RequestNavigate">ВКонтакте</Hyperlink>
                 </TextBlock>
                 <TextBlock Name="OkTextBlock" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12pt">
-                    <Hyperlink Name="OkHyperLink" TextDecorations="{x:Null}" Foreground="OrangeRed">Одноклассники</Hyperlink>
+                    <Hyperlink Name="OkHyperLink" TextDecorations="{x:Null}" Foreground="OrangeRed" RequestNavigate="VkHyperLink_RequestNavigate">Одноклассники</Hyperlink>
                 </TextBlock>
 
                 <!--Про образования.-->
@@ -89,7 +89,13 @@
 
                 </StackPanel>
 
-                <Button Name="SaveButton" Content="Сохранить" Margin="0, 30" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="3" Click="SaveButton_Click" />
+                <StackPanel Grid.Column="1" Grid.Row="3">
+                    <Button Name="SaveButton" Content="Сохранить" Margin="0, 30, 0, 10" HorizontalAlignment="Center" Click="SaveButton_Click" />
+                    <TextBlock Name="SaveTextBlock" Text="Данные сохранены" HorizontalAlignment="Center" Foreground="Red" Visibility="Hidden" />
+                    <TextBlock Name="SaveErrorTextBlock" Text="Данные не удалось сохранить" HorizontalAlignment="Center" Foreground="Red" Visibility="Collapsed" />
+                </StackPanel>
+                
+                
             </Grid>
         </Grid>
     </Grid>

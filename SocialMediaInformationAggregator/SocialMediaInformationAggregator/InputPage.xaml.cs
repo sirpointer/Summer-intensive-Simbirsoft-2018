@@ -30,7 +30,7 @@ namespace SocialMediaInformationAggregator
         {
             InitializeComponent();
 
-            for (int i = DateTime.Now.Year - 15; i > 1950; i--)
+            for (int i = 14; i <= 80; i++)
             {
                 FromYearCB.Items.Add(i.ToString());
                 ToYearCB.Items.Add(i.ToString());
@@ -311,15 +311,15 @@ namespace SocialMediaInformationAggregator
                 var firstYear = Convert.ToInt32(ToYearCB.Text);
                 var secondYear = Convert.ToInt32(FromYearCB.Text);
 
-                if (firstYear > secondYear)
-                {
-                    options.YearOfBirth = secondYear;
-                    options.ForThisYear = firstYear;
-                }
-                else
+                if (firstYear < secondYear)
                 {
                     options.YearOfBirth = firstYear;
                     options.ForThisYear = secondYear;
+                }
+                else
+                {
+                    options.YearOfBirth = secondYear;
+                    options.ForThisYear = firstYear;
                 }
             }
             else
@@ -444,6 +444,19 @@ namespace SocialMediaInformationAggregator
             {
                 box.Items.Add(tip);
             }
+        }
+
+
+        private void ComboBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (e.Text.All(x => !char.IsLetter(x)) || string.IsNullOrWhiteSpace(e.Text))
+                e.Handled = true;
+        }
+
+        private void UniversityComboBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!e.Text.All(x => x == '№' || char.IsLetterOrDigit(x)))
+                e.Handled = true;
         }
     }
 }
