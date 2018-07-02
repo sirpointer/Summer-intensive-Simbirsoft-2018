@@ -114,7 +114,16 @@ namespace SocialMediaInformationAggregator
             SetSerachOptions(options);
             AddFieldsToDb();
 
-            WebDriverWorks(options);
+
+            try
+            {
+                WebDriverWorks(options);
+            }
+            catch
+            {
+                MessageBox.Show("Что-то пошло не так.");
+                return;
+            }
 
             foreach (var ui in (Application.Current.MainWindow.Content as Grid).Children)
             {
@@ -188,20 +197,43 @@ namespace SocialMediaInformationAggregator
 
             FindPeople.IFindPeople find = new FindPeople.FindPeople();
 
-            find.FindPeopleOnVK(webDriver, options);
-            //find.FindPeopleOnOK(webDriver, options);
+            bool vkIsOk = true;
+            bool okIsOk = true;
 
-            App.PersonInformation = new List<FindPeople.PersonInformation>();
-
-            foreach (var person in find.PeopleFromVK)
+            try
             {
-                App.PersonInformation.Add(person);
+                find.FindPeopleOnVK(webDriver, options);
+            }
+            catch
+            {
+                vkIsOk = false;
             }
 
-            //foreach (var person in find.PeopleFromOK)
-            //    App.PersonInformation.Add(person);
+            try
+            {
+                find.FindPeopleOnOK(webDriver, options);
+            }
+            catch
+            {
+                okIsOk = false;
+            }
+
+            if (vkIsOk)
+            {
+                foreach (var person in find.PeopleFromVK)
+                    App.PersonInformation.Add(person);
+            }
+
+            if (okIsOk)
+            {
+                foreach (var person in find.PeopleFromOK)
+                    App.PersonInformation.Add(person);
+            }
 
             webDriver.Quit();
+
+            if (!(vkIsOk && okIsOk))
+                throw new Exception("Поиск во Вконтакте и Одноклассниках закончился неудачей.");
         }
 
 

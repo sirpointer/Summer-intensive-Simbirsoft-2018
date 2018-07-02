@@ -101,4 +101,3 @@ E:\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\S
 E:\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\QuestionPage.g.cs
 E:\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\ChangePasswordPage.baml
 E:\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\QuestionPage.baml
-E:\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\SocialMediaInformationAggregator.csprojAssemblyReference.cache

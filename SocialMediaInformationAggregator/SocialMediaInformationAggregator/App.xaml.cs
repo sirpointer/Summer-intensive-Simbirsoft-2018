@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -22,6 +23,8 @@ namespace SocialMediaInformationAggregator
         public static PersonInformation OkPerson { get; set; }
 
         public static string LoginGlobalVeryForMethod { get; set; }
+
+        public static string GetCurrentDirectory => Directory.GetCurrentDirectory();
 
         private static string _currentLogin;
 
