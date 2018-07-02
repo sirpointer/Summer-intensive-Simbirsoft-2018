@@ -455,5 +455,16 @@ namespace SocialMediaInformationAggregator
             if (!e.Text.All(x => x == '№' || char.IsLetterOrDigit(x)))
                 e.Handled = true;
         }
+
+        private void UniversityComboBox_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (!CityChecked || string.IsNullOrWhiteSpace(CityComboBox.Text))
+            {
+                e.Handled = true;
+                EmptyCityErrorTextBlock.Visibility = Visibility.Visible;
+            }
+            else
+                EmptyCityErrorTextBlock.Visibility = Visibility.Hidden;
+        }
     }
 }

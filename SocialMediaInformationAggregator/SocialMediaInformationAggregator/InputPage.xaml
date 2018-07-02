@@ -82,7 +82,8 @@
                     Margin="20, 0" 
                     GotFocus="InputComboBox_GotFocus" 
                     LostFocus="InputComboBox_LostFocus"
-                    PreviewTextInput="UniversityComboBox_PreviewTextInput"/>
+                    PreviewTextInput="UniversityComboBox_PreviewTextInput"
+                    PreviewKeyDown="UniversityComboBox_PreviewKeyDown"/>
             </StackPanel>
 
             <TextBlock Text="Школа" Margin="30, 0, 0, 0" FontSize="10"/>
@@ -96,8 +97,17 @@
                     Margin="20, 0" 
                     GotFocus="InputComboBox_GotFocus" 
                     LostFocus="InputComboBox_LostFocus"
-                    PreviewTextInput="UniversityComboBox_PreviewTextInput"/>
+                    PreviewTextInput="UniversityComboBox_PreviewTextInput"
+                    PreviewKeyDown="UniversityComboBox_PreviewKeyDown"/>
             </StackPanel>
+
+            <TextBlock 
+                Name="EmptyCityErrorTextBlock" 
+                HorizontalAlignment="Center" 
+                Text="Для ввода университета или школы нужно указать город"
+                TextWrapping="Wrap"
+                Foreground="Red"
+                Visibility="Hidden"/>
 
             <Button 
                 Name="FindButton" 
@@ -108,7 +118,7 @@
                 Margin="20" 
                 Padding="10, 5" 
                 Click="FindButton_Click" />
-            <TextBlock Name="NotFoundTextBlock" Text="Не найдено ни одного человека" Foreground="Red" HorizontalAlignment="Center" Margin="10" Visibility="Visible" />
+            <TextBlock Name="NotFoundTextBlock" Text="Не найдено ни одного человека" Foreground="Red" HorizontalAlignment="Center" Margin="10" Visibility="Collapsed" />
         </StackPanel>
     </Grid>
 </Page>
