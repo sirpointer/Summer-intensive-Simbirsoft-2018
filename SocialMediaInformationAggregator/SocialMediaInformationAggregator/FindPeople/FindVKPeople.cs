@@ -19,12 +19,12 @@ namespace SocialMediaInformationAggregator.FindPeople
 
         public void FindPeopleOnVK(IWebDriver webDriver, SearchOptions searchOptions)
         {
-            //(new WebDriverWait(webDriver, TimeSpan.FromSeconds(30))).Until();
             webDriver.Navigate().GoToUrl("https://vk.com/search?c%5Bper_page%5D=40&c%5Bphoto%5D=1&c%5Bsection%5D=people");
-            //WebDriverWait wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(10));
-            // WebDriverWait wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(10));
-            Thread.Sleep(500);
+
+            //Thread.Sleep(500);
             InputCountry(webDriver);
+            
+            //Решить проблему с задержкой перед городом
             Thread.Sleep(500);
             InputCity(webDriver, searchOptions);
             InputSchool(webDriver, searchOptions);
@@ -32,35 +32,40 @@ namespace SocialMediaInformationAggregator.FindPeople
             InputYearBirthFrom(webDriver, searchOptions);
             InputYearBirthTo(webDriver, searchOptions);
 
-            //Ищет человека в поисковике по имени
             IWebElement querName = webDriver.FindElement(By.Id("search_query"));
             querName.SendKeys(searchOptions.Name + " " + searchOptions.LastName + "\n");
 
             Thread.Sleep(1000);
+
+            if(!IsElementExist(By.XPath("//*[@id='results']/div[1]/div[3]/div[1]/a"),webDriver))
+            {
+                webDriver.Navigate().Refresh();
+                querName.Clear();
+                querName.SendKeys(searchOptions.Name + " " + searchOptions.LastName + "\n");
+            }
+
             //try
             //{
             for (int i = 1; i < 6; i++)
             {
-                Thread.Sleep(500);
-                //wait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(By.XPath("//*[@id='results']/div[1]/div[3]/div[1]/a")));
-                //wait.Until((x, y) => )
-
-                //new WebDriverWait(webDriver, TimeSpan.FromSeconds(3)).Until(driver => driver.FindElement(By.XPath("//*[@id='results']/div[" + i + "]/div[3]/div[1]/a")));
-
+                Thread.Sleep(1000);
                 if (IsElementExist(By.XPath("//*[@id='results']/div[" + i + "]/div[3]/div[1]/a"), webDriver))
                 {
                     Thread.Sleep(1000);
-                    IWebElement people = webDriver.FindElement(By.XPath("//*[@id='results']/div[" + i + "]/div[3]/div[1]/a"));
+                    //IWebElement people = webDriver.FindElement(By.XPath("//*[@id='results']/div[" + i + "]/div[3]/div[1]/a"));
                     webDriver.FindElement(By.XPath("//*[@id='results']/div[" + i + "]/div[3]/div[1]/a")).Click();
-                    Thread.Sleep(500);
+                    //Thread.Sleep(500);
                     PersonInformation personInformation = new PersonInformation();
-                    Thread.Sleep(500);
-                    personInformation.Name = searchOptions.Name;
-                    Thread.Sleep(500);
-                    personInformation.LastName = searchOptions.LastName;
-                    Thread.Sleep(500);
+                    //Thread.Sleep(500);
+
+                    NameAndLastName(webDriver, out string name, out string lName);
+
+                    personInformation.Name = name;
+                    //Thread.Sleep(500);
+                    personInformation.LastName = lName;
+                    //Thread.Sleep(500);
                     personInformation.YearOfBirth = YearBirth(webDriver);
-                    Thread.Sleep(500);
+                    //Thread.Sleep(500);
                     personInformation.Cities = new List<string>() { LiveCity(webDriver) };
                     Thread.Sleep(500);
                     personInformation.Education = Educations(webDriver);
@@ -82,9 +87,23 @@ namespace SocialMediaInformationAggregator.FindPeople
         }
 
         //+
+        private void NameAndLastName(IWebDriver webDriver, out string name, out string lName)
+        {
+            name = "";
+            lName = "";
+            //new WebDriverWait(webDriver, TimeSpan.FromSeconds(5)).Until(driver => driver.FindElement(By.Id("page_info_wrap")));
+            Thread.Sleep(500);
+            if (IsElementExist(By.Id("page_info_wrap"), webDriver))
+            {
+                string str = webDriver.FindElement(By.XPath("//*[@id='page_info_wrap']/div[1]/h2")).Text;
+                name = str.Substring(0, str.IndexOf(' '));
+                lName = str.Substring(str.IndexOf(' ') + 1);
+            }
+        }
+
+        //+
         private void InputUniversitet(IWebDriver webDriver, SearchOptions searchOptions)
         {
-            //Thread.Sleep(3000);
             if (searchOptions.Education != null && searchOptions.City!= null)
             {
                 new WebDriverWait(webDriver, TimeSpan.FromSeconds(5)).Until(driver => driver.FindElement(By.Id("cUniversity")));
@@ -104,8 +123,8 @@ namespace SocialMediaInformationAggregator.FindPeople
                                 i++;
                                 if (universitet.Text.Contains(searchOptions.Education))
                                 {
-                                    elemExist = false;
                                     universitet.Click();
+                                    elemExist = false;
                                 }
                             }
                             else
@@ -122,10 +141,10 @@ namespace SocialMediaInformationAggregator.FindPeople
             }
 
         }
-
+        
+        //+
         private void InputSchool(IWebDriver webDriver, SearchOptions searchOptions)
         {
-            //Thread.Sleep(3000);
             if(searchOptions.Schools != null && searchOptions.City!=null)
             {
                 new WebDriverWait(webDriver, TimeSpan.FromSeconds(5)).Until(driver => driver.FindElement(By.Id("cSchool")));
@@ -147,8 +166,8 @@ namespace SocialMediaInformationAggregator.FindPeople
                                 i++;
                                 if (city.Text.Contains(searchOptions.Schools))
                                 {
-                                    elemExist = false;
                                     city.Click();
+                                    elemExist = false;
                                 }
                             }
                             else
@@ -163,148 +182,140 @@ namespace SocialMediaInformationAggregator.FindPeople
             }
 
         }
-
+        
+        //+
         private void InputYearBirthFrom(IWebDriver webDriver, SearchOptions searchOptions)
         {
-            //Thread.Sleep(1000);
-
-            if (searchOptions.Schools != null && searchOptions.City != null)
+            if (searchOptions.ForThisYear!=null)
+            {
                 new WebDriverWait(webDriver, TimeSpan.FromSeconds(5)).Until(driver => driver.FindElement(By.Id("container13")));
 
-
-            if (IsElementExist(By.Id("container13"), webDriver)&&searchOptions.ForThisYear!=null)
-            {
-                IWebElement querYearFrom = webDriver.FindElement(By.Id("container13"));
-                querYearFrom.Click();
-                Thread.Sleep(500);
-                bool elemExist = true;
-                int i = 0;
-                try
+                if (IsElementExist(By.Id("container13"), webDriver))
                 {
-                    while (elemExist)
+                    IWebElement querYearFrom = webDriver.FindElement(By.Id("container13"));
+                    querYearFrom.Click();
+                    Thread.Sleep(500);
+                    bool elemExist = true;
+                    int i = 0;
+                    try
                     {
-                        //if (webDriver is OpenQA.Selenium.Firefox.FirefoxDriver)
-                        if (IsElementExist(By.XPath("//*[@id='option_list_options_container_13_" + i + "']"), webDriver))
+                        while (elemExist)
                         {
-                            IWebElement yearFrom = webDriver.FindElement(By.XPath("//*[@id='option_list_options_container_13_" + i + "']"));
-                            i++;
-                            if (yearFrom.Text.Contains((DateTime.Now.Year - searchOptions.ForThisYear).ToString()))
+                            //if (webDriver is OpenQA.Selenium.Firefox.FirefoxDriver)
+                            if (IsElementExist(By.XPath("//*[@id='option_list_options_container_13_" + i + "']"), webDriver))
                             {
-                                elemExist = false;
-                                yearFrom.Click();
+                                IWebElement yearFrom = webDriver.FindElement(By.XPath("//*[@id='option_list_options_container_13_" + i + "']"));
+                                i++;
+                                if (yearFrom.Text.Contains((DateTime.Now.Year - searchOptions.ForThisYear).ToString()))
+                                {
+                                    yearFrom.Click();
+                                    elemExist = false;
+                                }
                             }
+                            else
+                                i++;
                         }
-                        else
-                            i++;
+                    }
+                    catch
+                    {
+
                     }
                 }
-                catch
-                {
-
-                }
             }
-        }
 
+
+        }
+        
+        //+
         private void InputYearBirthTo(IWebDriver webDriver, SearchOptions searchOptions)
         {
-            //Thread.Sleep(1000);
-
-
-            if (searchOptions.Schools != null && searchOptions.City != null)
+            if (searchOptions.YearOfBirth!=null)
+            {
                 new WebDriverWait(webDriver, TimeSpan.FromSeconds(5)).Until(driver => driver.FindElement(By.Id("container14")));
 
-            if (IsElementExist(By.Id("container14"), webDriver)&&searchOptions.YearOfBirth!=null)
-            {
-                IWebElement querYearFrom = webDriver.FindElement(By.Id("container14"));
-                querYearFrom.Click();
-                Thread.Sleep(500);
-                bool elemExist = true;
-                int i = 0;
-                try
+                if (IsElementExist(By.Id("container14"), webDriver))
                 {
-                    while (elemExist)
+                    IWebElement querYearFrom = webDriver.FindElement(By.Id("container14"));
+                    querYearFrom.Click();
+                    Thread.Sleep(500);
+                    bool elemExist = true;
+                    int i = 0;
+                    try
                     {
-                        //if (webDriver is OpenQA.Selenium.Firefox.FirefoxDriver)
-                        if (IsElementExist(By.XPath("//*[@id='option_list_options_container_14_" + i + "']"), webDriver))
+                        while (elemExist)
                         {
-                            IWebElement yearFrom = webDriver.FindElement(By.XPath("//*[@id='option_list_options_container_14_" + i + "']"));
-                            i++;
-                            if (yearFrom.Text.Contains((DateTime.Now.Year - searchOptions.YearOfBirth).ToString()))
+                            //if (webDriver is OpenQA.Selenium.Firefox.FirefoxDriver)
+                            if (IsElementExist(By.XPath("//*[@id='option_list_options_container_14_" + i + "']"), webDriver))
                             {
-                                elemExist = false;
-                                yearFrom.Click();
+                                IWebElement yearFrom = webDriver.FindElement(By.XPath("//*[@id='option_list_options_container_14_" + i + "']"));
+                                i++;
+                                if (yearFrom.Text.Contains((DateTime.Now.Year - searchOptions.YearOfBirth).ToString()))
+                                {
+                                    yearFrom.Click();
+                                    elemExist = false;
+                                }
                             }
+                            else
+                                i++;
                         }
-                        else
-                            i++;
                     }
-                }
-                catch
-                {
+                    catch
+                    {
 
+                    }
                 }
             }
         }
-
+        
+        //+
         private void InputCity(IWebDriver webDriver, SearchOptions searchOptions)
         {
-            //Thread.Sleep(2000);
-            //wait.Until(webDriver => webDriver.FindElement(By.Id("container2")));//ExpectedConditions.VisibilityOfAllElementsLocatedBy(By.XPath("//*[@id='results']/div[1]/div[3]/div[1]/a")));
-            new WebDriverWait(webDriver, TimeSpan.FromSeconds(10)).Until(driver => driver.FindElement(By.Id("container2")));
-            if (IsElementExist(By.Id("container2"), webDriver)&&searchOptions.City!=null)
+            if(searchOptions.City!=null)
             {
-                IWebElement querCity = webDriver.FindElement(By.Id("container2"));
-                querCity.Click();
-                Thread.Sleep(500);
-                bool elemExist = true;
-                int i = 0;
-                try
+                new WebDriverWait(webDriver, TimeSpan.FromSeconds(10)).Until(driver => driver.FindElement(By.Id("container2")));
+                if (IsElementExist(By.Id("container2"), webDriver))
                 {
-                    while (elemExist)
+                    webDriver.FindElement(By.Id("container2")).Click();
+                    Thread.Sleep(500);
+                    bool elemExist = true;
+                    int i = 0;
+                    try
                     {
-                        if (IsElementExist(By.XPath("//*[@id='option_list_options_container_2_" + i + "']"), webDriver))
+                        while (elemExist)
                         {
-                            IWebElement city = webDriver.FindElement(By.XPath("//*[@id='option_list_options_container_2_" + i + "']"));
-                            i++;
-                            if (city.Text.Equals(searchOptions.City, StringComparison.CurrentCultureIgnoreCase))
+                            if (IsElementExist(By.XPath("//*[@id='option_list_options_container_2_" + i + "']"), webDriver))
                             {
-                                elemExist = false;
-                                city.Click();
-                            }
-                            if (city.Text.Equals("Другой город"))
-                            {
-                                if(searchOptions.City!=null)
+                                IWebElement city = webDriver.FindElement(By.XPath("//*[@id='option_list_options_container_2_" + i + "']"));
+                                i++;
+                                if (city.Text.Equals(searchOptions.City, StringComparison.CurrentCultureIgnoreCase))
                                 {
+                                    city.Click();
                                     elemExist = false;
+                                }
+                                if (city.Text.Equals("Другой город"))
+                                {
                                     city.Click();
                                     webDriver.FindElement(By.XPath("//*[@id='container2']/table/tbody/tr/td/input[1]")).SendKeys(searchOptions.City);
                                     Thread.Sleep(500);
                                     webDriver.FindElement(By.XPath("//*[@id='option_list_options_container_2_1']")).Click();
-                                }
-                                else
-                                {
                                     elemExist = false;
-                                    webDriver.FindElement(By.XPath("//*[@id='option_list_options_container_2_1']")).Click();
                                 }
                             }
+                            else
+                                i++;                      
                         }
-                        else
-                            i++;                      
                     }
-                }
-                catch
-                {
-                    //Thread.Sleep(500);
-                    //querCity.Click();
-                    //Thread.Sleep(500);
-                    //webDriver.FindElement(By.XPath("//*[@id='option_list_options_container_2_1']")).Click();
+                    catch
+                    {
+
+                    }
                 }
             }
         }
 
+        //+
         private void InputCountry(IWebDriver webDriver)
         {
-            //Thread.Sleep(500);
             new WebDriverWait(webDriver, TimeSpan.FromSeconds(20)).Until(driver => driver.FindElement(By.Id("container3")));
             if (IsElementExist(By.Id("container3"), webDriver))
             {
@@ -338,6 +349,7 @@ namespace SocialMediaInformationAggregator.FindPeople
             }
         }
 
+        //?
         private int? YearBirth(IWebDriver webDriver)
         {
             Thread.Sleep(500);
@@ -364,6 +376,7 @@ namespace SocialMediaInformationAggregator.FindPeople
             }  
         }
 
+        //?
         private string LiveCity(IWebDriver webDriver)
         {
             string city;
@@ -389,81 +402,71 @@ namespace SocialMediaInformationAggregator.FindPeople
             }
         }
 
+        //break
+        //+
         private List<string> Educations(IWebDriver webDriver)
         {
             List<string> education = new List<string>();
-            try
+            List<IWebElement> blocksDiv= BlocksDiv(webDriver);
+            for (int i=0; i< blocksDiv.Count;i++)
             {
-                Thread.Sleep(500);
-                FindEducation(webDriver, education);
-                return education;
-            }
-            catch
-            {
-                return education;
-            }
-        }
-
-        private void FindEducation(IWebDriver webDriver, List<string> education)
-        {
-            for (int i = 0; i < 10; i++)
-            {
-                //new WebDriverWait(webDriver, TimeSpan.FromSeconds(10)).Until(driver => driver.FindElement(By.XPath("//*[@id='profile_short']/div[" + 1 + "]")));
-                if (IsElementExist(By.XPath("//*[@id='profile_short']/div[" + i + "]"), webDriver))
-                    ExistEducation(webDriver, education, i);
-            }
-        }
-
-        private void ExistEducation(IWebDriver webDriver, List<string> education, int i)
-        {
-            IWebElement querEducation = webDriver.FindElement(By.XPath("//*[@id='profile_short']/div[" + i + "]"));
-            if (querEducation.Text.Contains("Место учёбы:") || querEducation.Text.Contains("Образование:"))
-            {
-                string ed1 = webDriver.FindElement(By.XPath("//*[@id='profile_short']/div[" + i + "]/div[2]")).Text;
-                education.Add(ed1);
-            }
-            if (querEducation.Text.Contains("Показать подробную информацию"))
-            {
-                FindAllInformation(webDriver, education, querEducation);
-            }
-        }
-
-        private void FindAllInformation(IWebDriver webDriver, List<string> education, IWebElement querEducation)
-        {
-            querEducation.Click();
-            for (int j = 0; j < 10; j++)
-            {
-                if (IsElementExist(By.XPath("//*[@id='profile_full']/div[" + j + "]"), webDriver))
+                if(blocksDiv[i].Text.StartsWith("Образование"))
                 {
-                    FindDivEducation(webDriver, education, j);
+                    List<IWebElement> blocksEducation = BlocksEducation(webDriver,i); 
+                    for(int j=0;j<blocksEducation.Count;j++)
+                    {
+                        if(blocksEducation[j].Text.StartsWith("Вуз")||blocksEducation[j].Text.StartsWith("Школа"))
+                        {
+                            string educat = blocksEducation[j].FindElement(By.XPath(".//a[1]")).Text;
+                            education.Add(educat);
+                        }
+                    }
                 }
             }
+            return education;
         }
 
-        private void FindDivEducation(IWebDriver webDriver, List<string> education, int j)
+        private List<IWebElement> BlocksDiv(IWebDriver webDriver)
         {
-            if (webDriver.FindElement(By.XPath("//*[@id='profile_full']/div[" + j + "]")).Text.StartsWith("Образование"))
+            List<IWebElement> blocksDiv = new List<IWebElement>();
+            Thread.Sleep(500);
+            for(int i=0;i<10;i++)
             {
-                for (int k = 0; k < 10; k++)
+                if(IsElementExist(By.XPath("//*[@id='profile_short']/div[" + i + "]"),webDriver))
                 {
-                    FindEducation(webDriver, education, j, k);
+                    IWebElement querEducation = webDriver.FindElement(By.XPath("//*[@id='profile_short']/div[" + i + "]"));
+                    if (querEducation.Text.Contains("Показать подробную информацию"))
+                    {
+                        querEducation.Click();
+                        for (int j = 0; j < 20; j++)
+                        {
+                            if (IsElementExist(By.XPath("//*[@id='profile_full']/div[" + j + "]"), webDriver))
+                            {
+                                IWebElement block = webDriver.FindElement(By.XPath("//*[@id='profile_full']/div[" + j + "]"));
+                                blocksDiv.Add(block);
+                            }
+                        }
+                    }
                 }
             }
+            return blocksDiv;
         }
 
-        private void FindEducation(IWebDriver webDriver, List<string> education, int j, int k)
+        private List<IWebElement> BlocksEducation(IWebDriver webDriver, int j)
         {
-            if (IsElementExist(By.XPath("//*[@id='profile_full']/div[" + j + "]/div[2]/div[" + k + "]"), webDriver))
+            Thread.Sleep(500);
+            List<IWebElement> blocksEducation = new List<IWebElement>();
+            for (int i = 0; i < 20; i++)
             {
-                IWebElement querAllEducation = webDriver.FindElement(By.XPath("//*[@id='profile_full']/div[" + j + "]/div[2]/div[" + k + "]"));
-                if (querAllEducation.Text.Contains("Вуз:") || querAllEducation.Text.Contains("Школа:"))
+                if (IsElementExist(By.XPath("//*[@id='profile_full']/div[" + (j + 1) + "]/div[2]/div[" + i + "]"), webDriver))
                 {
-                    string ed1 = webDriver.FindElement(By.XPath("//*[@id='profile_full']/div[" + j + "]/div[2]/div[" + k + "]/div[2]/a[1]")).Text;
-                    education.Add(ed1);
+                    blocksEducation.Add(webDriver.FindElement(By.XPath("//*[@id='profile_full']/div[" + (j + 1) + "]/div[2]/div[" + i + "]")));
                 }
             }
+            return blocksEducation;
         }
 
+        /*
         private Image Photo(IWebDriver webDriver, int i)
         {
             Thread.Sleep(1000);
@@ -476,7 +479,7 @@ namespace SocialMediaInformationAggregator.FindPeople
             bitmapImage.UriSource = new Uri(@"pack://application:,,,/Assets/"+i+".png");
             image.Source = bitmapImage;
             return image;
-        }
+        }*/
 
         private bool IsElementExist(By by, IWebDriver webDriver)
         {
