@@ -16,7 +16,7 @@ namespace SocialMediaInformationAggregator.DatabaseInteraction
         {
             string dataDirectory = Directory.GetCurrentDirectory();
             AppDomain.CurrentDomain.SetData("DataDirectory", dataDirectory); //Переопределяем |DataDirectory|, директория, откуда загружается база данных
-            connectionString = "Data Source=LAPTOP-8FE5V0OM\\SQLEXPRESS;Initial Catalog=SMIA;Integrated Security=True";
+            connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = " + App.GetCurrentDirectory + @"\SMIA.mdf"; //"Data Source=LAPTOP-8FE5V0OM\\SQLEXPRESS;Initial Catalog=SMIA;Integrated Security=True";
         }
 
         private static List<FindPeople.PersonInformation> GetFoindPeopleFromNetworks(string login, string TableName)
