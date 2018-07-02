@@ -115,15 +115,15 @@ namespace SocialMediaInformationAggregator
             AddFieldsToDb();
 
 
-            try
-            {
+            //try
+            //{
                 WebDriverWorks(options);
-            }
-            catch (Exception ex)
+            /*}
+            catch
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Что-то пошло не так.");
                 return;
-            }
+            }*/
 
             foreach (var ui in (Application.Current.MainWindow.Content as Grid).Children)
             {
@@ -178,7 +178,21 @@ namespace SocialMediaInformationAggregator
             }
             catch
             {
-                throw new Exception("Браузер Chrome не найден.");
+                try
+                {
+                    webDriver = new FirefoxDriver();
+                }
+                catch
+                {
+                    try
+                    {
+                        webDriver = new EdgeDriver();
+                    }
+                    catch
+                    {
+                        webDriver = new InternetExplorerDriver();
+                    }
+                }
             }
 
             FindPeople.IFindPeople find = new FindPeople.FindPeople();
@@ -194,7 +208,7 @@ namespace SocialMediaInformationAggregator
             {
                 vkIsOk = false;
             }
-
+            
             try
             {
                 find.FindPeopleOnOK(webDriver, options);
@@ -211,7 +225,7 @@ namespace SocialMediaInformationAggregator
                 foreach (var person in find.PeopleFromVK)
                     App.PersonInformation.Add(person);
             }
-
+            
             if (okIsOk)
             {
                 foreach (var person in find.PeopleFromOK)
@@ -220,8 +234,8 @@ namespace SocialMediaInformationAggregator
 
             webDriver.Quit();
 
-            if (!vkIsOk && !okIsOk)
-                throw new Exception("Поиск во Вконтакте и Одноклассниках закончился неудачей.");
+            //if (!vkIsOk && !okIsOk)
+              //  throw new Exception("Поиск во Вконтакте и Одноклассниках закончился неудачей.");
         }
 
 
