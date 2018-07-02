@@ -47,11 +47,6 @@ namespace SocialMediaInformationAggregator
                     App.OkPerson = App.PersonInformation[index];
             }
 
-            for (int i = 0; i < PeopleListBox.Items.Count; i++)
-                PeopleListBox.Items[i] = null;
-
-            PeopleListBox = null;
-
             foreach (var ui in (Application.Current.MainWindow.Content as Grid).Children)
             {
                 if (ui is Frame)
@@ -79,7 +74,7 @@ namespace SocialMediaInformationAggregator
 
             //ImageSource source = new ImageSourceConverter().ConvertFromString(@"pack://application:,,,/Assets/app.ico") as ImageSource;
 
-            Image photo = person.Photo; //new Image() { Source = source };
+            Image photo = new Image() { Source = person.Photo.Source };
 
             StackPanel PersonInformationSP = new StackPanel() { Margin = new Thickness(0, 0, 10, 0) };
             SetPersonInfoSP(person, PersonInformationSP);
