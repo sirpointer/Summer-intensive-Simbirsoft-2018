@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SocialMediaInformationAggregator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="900" MinHeight="600" MinWidth="600">
+        Title="MainWindow" Height="600" Width="900" MinHeight="700" MinWidth="700">
     <Grid Background="#FF4A76A8">
         <Grid.RowDefinitions>
             <RowDefinition Height="40px" />
@@ -31,7 +31,7 @@
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 10, 0" Name="LoginAndHistorySP">
             <Button 
                 BorderBrush="#4872a3"
-                BorderThickness="1px"
+                BorderThickness="2px"
                 Name="HistoryButton" 
                 Content="История" 
                 Margin="0, 0, 40, 0" 

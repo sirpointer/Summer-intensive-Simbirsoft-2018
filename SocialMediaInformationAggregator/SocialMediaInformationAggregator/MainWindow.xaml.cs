@@ -43,7 +43,14 @@ namespace SocialMediaInformationAggregator
             if (App.CurrentUserLogin != null)
             {
                 App.PersonInformation = DatabaseInteraction.PeopleFromDb.GetFoundPeople(App.CurrentUserLogin);
-                PagesFrame.Navigate(new Uri("ListOfPeoplePage.xaml", UriKind.Relative));
+
+                if (App.PersonInformation.Count < 1)
+                {
+                    MessageBox.Show("История пуста.");
+                    return;
+                }
+                else
+                    PagesFrame.Navigate(new Uri("ListOfPeoplePage.xaml", UriKind.Relative));
             }
             else
                 MessageBox.Show("Для просмотра истории поиска нужно авторизироваться.");

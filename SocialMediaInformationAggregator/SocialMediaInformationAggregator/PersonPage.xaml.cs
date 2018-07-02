@@ -33,17 +33,6 @@ namespace SocialMediaInformationAggregator
             {
                 FindPeople.PersonInformation person = App.VkPerson;
 
-                //if (person.Photo == null)
-                //{
-                //    BitmapImage bitmap = new BitmapImage();
-                //    bitmap.BeginInit();
-                //    bitmap.UriSource = new Uri("Assets/app.ico");
-
-                //    this.PersonImage = new Image() { Source = bitmap };
-                //}
-                //else
-                //    this.PersonImage = person.Photo;
-
                 this.FullNameTextBlock.Text = person.Name + " " + person.LastName;
                 this.YearTextBlock.Text = person.YearOfBirth.ToString();
 
@@ -62,7 +51,6 @@ namespace SocialMediaInformationAggregator
             {
                 FindPeople.PersonInformation person = App.OkPerson;
 
-                //this.PersonImage = person.Photo;
                 this.FullNameTextBlock.Text = person.Name + " " + person.LastName;
                 this.YearTextBlock.Text = person.YearOfBirth.ToString();
 
@@ -89,6 +77,7 @@ namespace SocialMediaInformationAggregator
                 return new TextBlock()
                 {
                     Text = text,
+                    TextWrapping = TextWrapping.Wrap,
                     Margin = new Thickness(5),
                     Foreground = Brushes.Blue,
                     HorizontalAlignment = HorizontalAlignment.Center
@@ -105,6 +94,7 @@ namespace SocialMediaInformationAggregator
                 return new TextBlock()
                 {
                     Text = text,
+                    TextWrapping = TextWrapping.Wrap,
                     Margin = new Thickness(5),
                     Foreground = Brushes.OrangeRed,
                     HorizontalAlignment = HorizontalAlignment.Center
@@ -114,19 +104,23 @@ namespace SocialMediaInformationAggregator
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            SaveTextBlock.Visibility = Visibility.Hidden;
-            SaveErrorTextBlock.Visibility = Visibility.Hidden;
-
-            try
+            if (App.CurrentUserLogin != null)
             {
-                DatabaseInteraction.PeopleFromDb.AddFoundPerson(App.VkPerson, App.OkPerson);
-                SaveTextBlock.Visibility = Visibility.Visible;
-            }
-            catch
-            {
-                SaveErrorTextBlock.Visibility = Visibility.Visible;
-            }
+                SaveTextBlock.Visibility = Visibility.Hidden;
+                SaveErrorTextBlock.Visibility = Visibility.Hidden;
 
+                try
+                {
+                    DatabaseInteraction.PeopleFromDb.AddFoundPerson(App.VkPerson, App.OkPerson);
+                    SaveTextBlock.Visibility = Visibility.Visible;
+                }
+                catch
+                {
+                    SaveErrorTextBlock.Visibility = Visibility.Visible;
+                }
+            }
+            else
+                MessageBox.Show("Для сохранения данных нужно авторизироваться.");
         }
 
         private void VkHyperLink_RequestNavigate(object sender, RequestNavigateEventArgs e)

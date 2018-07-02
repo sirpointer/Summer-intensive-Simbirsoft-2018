@@ -108,6 +108,7 @@
                 Margin="20" 
                 Padding="10, 5" 
                 Click="FindButton_Click" />
+            <TextBlock Name="NotFoundTextBlock" Text="Не найдено ни одного человека" Foreground="Red" HorizontalAlignment="Center" Margin="10" Visibility="Visible" />
         </StackPanel>
     </Grid>
 </Page>

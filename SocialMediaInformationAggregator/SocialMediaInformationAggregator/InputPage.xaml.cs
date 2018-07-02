@@ -18,6 +18,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SocialMediaInformationAggregator.DatabaseInteraction;
+using SocialMediaInformationAggregator.FindPeople;
 
 namespace SocialMediaInformationAggregator
 {
@@ -103,6 +104,8 @@ namespace SocialMediaInformationAggregator
 
         private void FindButton_Click(object sender, RoutedEventArgs e)
         {
+            NotFoundTextBlock.Visibility = Visibility.Collapsed;
+
             if (!NameCheck())
                 return;
 
@@ -124,6 +127,12 @@ namespace SocialMediaInformationAggregator
                 MessageBox.Show("Что-то пошло не так.");
                 return;
             }*/
+
+            if (App.PersonInformation.Count < 1 || App.PersonInformation == null)
+            {
+                NotFoundTextBlock.Visibility = Visibility.Visible;
+                return;
+            }
 
             foreach (var ui in (Application.Current.MainWindow.Content as Grid).Children)
             {
@@ -170,6 +179,8 @@ namespace SocialMediaInformationAggregator
 
         private static void WebDriverWorks(FindPeople.SearchOptions options)
         {
+            App.PersonInformation = new List<FindPeople.PersonInformation>();
+
             IWebDriver webDriver;
 
             try
@@ -178,24 +189,11 @@ namespace SocialMediaInformationAggregator
             }
             catch
             {
-                try
-                {
-                    webDriver = new FirefoxDriver();
-                }
-                catch
-                {
-                    try
-                    {
-                        webDriver = new EdgeDriver();
-                    }
-                    catch
-                    {
-                        webDriver = new InternetExplorerDriver();
-                    }
-                }
+                MessageBox.Show("Браузер Google Chrome не найден.");
+                return;
             }
 
-            FindPeople.IFindPeople find = new FindPeople.FindPeople();
+            IFindPeople find = new FindPeople.FindPeople();
 
             bool vkIsOk = true;
             bool okIsOk = true;
@@ -218,15 +216,14 @@ namespace SocialMediaInformationAggregator
                 okIsOk = false;
             }
 
-            App.PersonInformation = new List<FindPeople.PersonInformation>();
 
-            if (vkIsOk)
+            if (vkIsOk && find.PeopleFromVK != null)
             {
                 foreach (var person in find.PeopleFromVK)
                     App.PersonInformation.Add(person);
             }
             
-            if (okIsOk)
+            if (okIsOk && find.PeopleFromOK != null)
             {
                 foreach (var person in find.PeopleFromOK)
                     App.PersonInformation.Add(person);

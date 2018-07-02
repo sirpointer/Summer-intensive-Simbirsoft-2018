@@ -142,4 +142,3 @@ C:\Users\nik19\OneDrive\Документы\GitHub\Social-media-information-aggre
 C:\Users\nik19\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\SocialMediaInformationAggregator.csproj.CopyComplete
 C:\Users\nik19\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\SocialMediaInformationAggregator.exe
 C:\Users\nik19\OneDrive\Документы\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\SocialMediaInformationAggregator.pdb
-E:\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\SocialMediaInformationAggregator.csprojAssemblyReference.cache

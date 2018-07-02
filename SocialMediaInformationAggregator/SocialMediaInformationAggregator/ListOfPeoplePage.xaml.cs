@@ -76,17 +76,17 @@ namespace SocialMediaInformationAggregator
 
         private static void SetPersonGrid(FindPeople.PersonInformation person, Grid personGrid)
         {
-            personGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(100) });
-            personGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
+            //personGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(100) });
+            //personGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
 
             //ImageSource source = new ImageSourceConverter().ConvertFromString(@"pack://application:,,,/Assets/app.ico") as ImageSource;
 
-            Image photo = new Image() { Source = person.Photo.Source };
+            //Image photo = new Image() { Source = person.Photo.Source };
 
             StackPanel PersonInformationSP = new StackPanel() { Margin = new Thickness(0, 0, 10, 0) };
             SetPersonInfoSP(person, PersonInformationSP);
 
-            personGrid.Children.Add(photo);
+            //personGrid.Children.Add(photo);
             personGrid.Children.Add(PersonInformationSP);
 
             Grid.SetColumn(PersonInformationSP, 1);
