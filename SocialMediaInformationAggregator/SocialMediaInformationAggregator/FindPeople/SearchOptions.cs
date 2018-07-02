@@ -12,6 +12,7 @@ namespace SocialMediaInformationAggregator.FindPeople
     public class SearchOptions
     {
         private Nullable<int> _yearOfBirth;
+        private Nullable<int> _forThisYear;
 
         /// <summary>
         /// Инициализирует новый экземпляр класса SearchOptions.
@@ -24,6 +25,7 @@ namespace SocialMediaInformationAggregator.FindPeople
             this.YearOfBirth = null;
             this.City = null;
             this.Education = null;
+            this.ForThisYear = null;
         }
 
         /// <summary>
@@ -51,14 +53,32 @@ namespace SocialMediaInformationAggregator.FindPeople
             }
         }
 
+
+        public Nullable<int> ForThisYear
+        {
+            get => _forThisYear;
+            set
+            {
+                if (value != null && (value < 1900 || value > DateTime.Now.Year))
+                    throw new Exception("Год рождения должен лежать в диапозоне от 1990 до текущего года.");
+
+                _forThisYear = value;
+            }
+        }
+
         /// <summary>
         /// Город проживания искомого человека.
         /// </summary>
         public string City { get; set; }
 
         /// <summary>
-        /// Место учебы искомого человека.
+        /// Место учебы искомого человека (университет).
         /// </summary>
         public string Education { get; set; }
+
+        /// <summary>
+        /// Школа, в которой обучался искомый человек.
+        /// </summary>
+        public string Schools { get; set; }
     }
 }

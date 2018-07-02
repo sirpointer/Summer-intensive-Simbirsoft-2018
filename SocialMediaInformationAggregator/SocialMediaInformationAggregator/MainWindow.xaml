@@ -5,14 +5,74 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SocialMediaInformationAggregator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="600" Width="900" MinHeight="600" MinWidth="600">
+    <Grid Background="#FF4A76A8">
         <Grid.RowDefinitions>
             <RowDefinition Height="40px" />
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <Frame Grid.Row="1" Source="InputPage.xaml">
+        <Button 
+            BorderBrush="#4872a3"
+            BorderThickness="2px"
+            Background="#FF4A76A8" 
+            Foreground="White" 
+            Name="BackButton" 
+            Click="BackButton_Click" 
+            Content="&#xe0a6;" 
+            FontFamily="Segoe MDL2 Assets" 
+            HorizontalAlignment="Left" 
+            VerticalAlignment="Center" 
+            Padding="5" 
+            Margin="5"
+            FontWeight="Bold"
+            FontSize="12pt"/>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 10, 0" Name="LoginAndHistorySP">
+            <Button 
+                BorderBrush="#4872a3"
+                BorderThickness="1px"
+                Name="HistoryButton" 
+                Content="История" 
+                Margin="0, 0, 40, 0" 
+                Click="HistoryButton_Click"
+                Background="#FF4A76A8"
+                Foreground="White"
+                FontWeight="Bold"
+                FontSize="12pt"
+            />
+            <TextBlock 
+                Margin="15, 5" 
+                Text="Неавторизирован" 
+                Name="LoginTextBlock"
+                Background="#FF4A76A8"
+                Foreground="White"
+                FontSize="12pt"/>
+            <Button 
+                Name="LoginButton" 
+                Click="LoginButton_Click" 
+                Content="Войти"
+                Background="#FF4A76A8"
+                Foreground="White"
+                FontWeight="Bold"
+                FontSize="12pt"
+                BorderBrush="#4872a3"
+                BorderThickness="2px"/>
+            <Button 
+                Name="LogoutButton" 
+                Click="LogoutButton_Click"  
+                Content="Выйти" 
+                Visibility="Collapsed" 
+                Background="#FF4A76A8"
+                Foreground="White"
+                FontWeight="Bold"
+                FontSize="12pt"
+                BorderBrush="#4872a3"
+                BorderThickness="2px"/>
+        </StackPanel>
+
+
+        <Frame Background="White" Grid.Row="1" Source="InputPage.xaml" Name="PagesFrame" NavigationUIVisibility="Hidden">
             
         </Frame>
     </Grid>

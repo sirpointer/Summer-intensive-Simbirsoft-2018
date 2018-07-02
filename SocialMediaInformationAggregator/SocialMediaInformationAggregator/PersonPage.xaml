@@ -8,7 +8,89 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="PersonPage">
 
-    <Grid>
-        
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="1" Margin="0, 60, 0, 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="2*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Image Name="PersonImage" Source="Assets/app.ico" Grid.RowSpan="2" />
+
+                <TextBlock Name="FullNameTextBlock" Text="Имя Фамилия" Grid.Column="1" VerticalAlignment="Center" Margin="20, 0, 0, 0" FontSize="16pt" TextWrapping="Wrap"/>
+                <TextBlock Name="YearTextBlock" Text="1998" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Margin="20, 10, 0, 0" FontSize="13pt" />
+
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40px" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <!--Названия соцсетей.-->
+                <TextBlock Name="VkTextBlock" Foreground="Blue" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12pt">
+                    <Hyperlink NavigateUri="https://www.google.ru/" Name="VkHyperLink" TextDecorations="{x:Null}" Foreground="Blue" RequestNavigate="VkHyperLink_RequestNavigate">ВКонтакте</Hyperlink>
+                </TextBlock>
+                <TextBlock Name="OkTextBlock" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12pt">
+                    <Hyperlink Name="OkHyperLink" TextDecorations="{x:Null}" Foreground="OrangeRed">Одноклассники</Hyperlink>
+                </TextBlock>
+
+                <!--Про образования.-->
+                <TextBlock Name="EducationTextBlock" Grid.Row="1" Text="Образование" HorizontalAlignment="Center" Margin="5" FontSize="10pt" />
+
+                <StackPanel 
+                    Name="EducationVkStackPanel" 
+                    HorizontalAlignment="Stretch" 
+                    Grid.Column="1" 
+                    Grid.Row="1" 
+                    Margin="5">
+
+                </StackPanel>
+
+                <StackPanel Name="EducationOkStackPanel" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" Margin="5">
+
+                </StackPanel>
+
+                <!--Про города.-->
+                <TextBlock Name="CitiesTextBlock" Grid.Row="2" Text="Города проживания" HorizontalAlignment="Center" Margin="5" FontSize="10pt" />
+
+                <StackPanel Name="CitiesVkStackPanel" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="2" Margin="5">
+
+                </StackPanel>
+
+                <StackPanel Name="CitiesOkStackPanel" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" Margin="5">
+
+                </StackPanel>
+
+                <Button Name="SaveButton" Content="Сохранить" Margin="0, 30" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="3" Click="SaveButton_Click" />
+            </Grid>
+        </Grid>
     </Grid>
 </Page>

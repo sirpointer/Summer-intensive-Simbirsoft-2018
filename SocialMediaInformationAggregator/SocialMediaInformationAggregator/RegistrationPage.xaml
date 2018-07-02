@@ -1,0 +1,29 @@
+﻿<Page x:Class="SocialMediaInformationAggregator.RegistrationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SocialMediaInformationAggregator"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="RegistrationPage">
+
+    <Grid>
+        <Button x:Name="NextButton" Content="Далее" HorizontalAlignment="Left" Margin="382,228,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.716,0.406" Click="NextButton_Click"/>
+        <TextBox x:Name="TextBoxName" HorizontalAlignment="Left" Height="23" Margin="226,67,0,0" TextWrapping="Wrap" Text="Имя" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TextBoxFirstName" HorizontalAlignment="Left" Height="23" Margin="226,107,0,0" TextWrapping="Wrap" Text="Фамилия" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TextBoxLogin" HorizontalAlignment="Left" Height="23" Margin="226,146,0,0" TextWrapping="Wrap" Text="Логин" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TextBoxmail" HorizontalAlignment="Left" Height="23" Margin="226,192,0,0" TextWrapping="Wrap" Text="e-mail" VerticalAlignment="Top" Width="120"/>
+        <PasswordBox x:Name="repeatPasswordBox" HorizontalAlignment="Left" Margin="580,192,0,0" VerticalAlignment="Top" Width="104"/>
+        <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="580,146,0,0" VerticalAlignment="Top" Width="104"/>
+        <Label Content="Имя" HorizontalAlignment="Left" Margin="138,67,0,0" VerticalAlignment="Top"/>
+        <Label Content="Фамилия" HorizontalAlignment="Left" Margin="138,105,0,0" VerticalAlignment="Top"/>
+        <Label Content="Логин" HorizontalAlignment="Left" Margin="138,145,0,0" VerticalAlignment="Top"/>
+        <Label Content="e-mail" HorizontalAlignment="Left" Margin="138,192,0,0" VerticalAlignment="Top"/>
+        <Label Content="Введите пароль еще раз" HorizontalAlignment="Left" Margin="405,188,0,0" VerticalAlignment="Top"/>
+        <Label Content="Введите пароль" HorizontalAlignment="Left" Margin="405,143,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label" Content="Регистрация" HorizontalAlignment="Left" Margin="370,20,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="0.424,-0.225"/>
+
+
+    </Grid>
+</Page>
