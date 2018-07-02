@@ -24,12 +24,26 @@ namespace SocialMediaInformationAggregator
         public PersonPage()
         {
             InitializeComponent();
+            Init();
+        }
 
+        private void Init()
+        {
             if (App.VkPerson != null)
             {
                 FindPeople.PersonInformation person = App.VkPerson;
 
-                this.PersonImage = person.Photo;
+                if (person.Photo == null)
+                {
+                    BitmapImage bitmap = new BitmapImage();
+                    bitmap.BeginInit();
+                    bitmap.UriSource = new Uri("Assets/app.ico");
+
+                    this.PersonImage = new Image() { Source = bitmap };
+                }
+                else
+                    this.PersonImage = person.Photo;
+
                 this.FullNameTextBlock.Text = person.Name + " " + person.LastName;
                 this.YearTextBlock.Text = person.YearOfBirth.ToString();
 
@@ -44,7 +58,7 @@ namespace SocialMediaInformationAggregator
                 foreach (var city in person.Cities)
                     CitiesVkStackPanel.Children.Add(GetVkTextBlock(city));
             }
-            else if (App.OkPerson != null)
+            if (App.OkPerson != null)
             {
                 FindPeople.PersonInformation person = App.OkPerson;
 

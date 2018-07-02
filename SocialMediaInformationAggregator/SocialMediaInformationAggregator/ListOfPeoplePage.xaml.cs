@@ -42,9 +42,15 @@ namespace SocialMediaInformationAggregator
             if (index != -1)
             {
                 if (App.PersonInformation[index].SocialNetwork == FindPeople.SocialNetwork.VK)
+                {
                     App.VkPerson = App.PersonInformation[index];
+                    App.OkPerson = WorkingWithPeople.WorkingWithPeople.GetSimilarPerson(App.VkPerson, App.PersonInformation);
+                }
                 else
+                {
                     App.OkPerson = App.PersonInformation[index];
+                    App.VkPerson = WorkingWithPeople.WorkingWithPeople.GetSimilarPerson(App.OkPerson, App.PersonInformation);
+                }
             }
 
             foreach (var ui in (Application.Current.MainWindow.Content as Grid).Children)
@@ -57,6 +63,7 @@ namespace SocialMediaInformationAggregator
 
 
         // Добавление ListBoxItem.
+        //----------------------------------------------------
         public void AddPersonToListBox(FindPeople.PersonInformation person)
         {
             Grid personGrid = new Grid() { HorizontalAlignment = HorizontalAlignment.Stretch, VerticalAlignment = VerticalAlignment.Stretch };
@@ -163,5 +170,7 @@ namespace SocialMediaInformationAggregator
             socialNetworkSP.Children.Add(socialNetworkIcon);
             socialNetworkSP.Children.Add(socialNetworkNameTB);
         }
+
+        //----------------------------------------------------
     }
 }
