@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SocialMediaInformationAggregator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="900" MinHeight="700" MinWidth="700">
+        Title="MainWindow" Height="800" Width="1000" MinHeight="800" MinWidth="1000">
     <Grid Background="#FF4A76A8">
         <Grid.RowDefinitions>
             <RowDefinition Height="40px" />

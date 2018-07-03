@@ -96,8 +96,20 @@
 
                 <StackPanel Grid.Column="1" Grid.Row="3">
                     <Button Name="SaveButton" Content="Сохранить" Margin="0, 30, 0, 10" HorizontalAlignment="Center" Click="SaveButton_Click" />
-                    <TextBlock Name="SaveTextBlock" Text="Данные сохранены" HorizontalAlignment="Center" Foreground="Red" Visibility="Hidden" />
-                    <TextBlock Name="SaveErrorTextBlock" Text="Данные не удалось сохранить" HorizontalAlignment="Center" Foreground="Red" Visibility="Collapsed" />
+                    <TextBlock 
+                        Name="SaveTextBlock" 
+                        Text="Данные сохранены" 
+                        HorizontalAlignment="Center" 
+                        Foreground="Red" 
+                        Visibility="Hidden" 
+                        TextWrapping="Wrap"/>
+                    <TextBlock 
+                        Name="SaveErrorTextBlock" 
+                        Text="Данные не удалось сохранить" 
+                        HorizontalAlignment="Center" 
+                        Foreground="Red" 
+                        Visibility="Collapsed" 
+                        TextWrapping="Wrap"/>
                 </StackPanel>
                 
                 

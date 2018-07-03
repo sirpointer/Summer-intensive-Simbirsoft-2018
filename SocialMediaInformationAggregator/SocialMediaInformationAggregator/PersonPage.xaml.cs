@@ -137,15 +137,15 @@ namespace SocialMediaInformationAggregator
                 SaveTextBlock.Visibility = Visibility.Hidden;
                 SaveErrorTextBlock.Visibility = Visibility.Hidden;
 
-                try
-                {
+                /*try
+                {*/
                     DatabaseInteraction.PeopleFromDb.AddFoundPerson(App.VkPerson, App.OkPerson);
-                    SaveTextBlock.Visibility = Visibility.Visible;
+                /*    SaveTextBlock.Visibility = Visibility.Visible;
                 }
                 catch
                 {
                     SaveErrorTextBlock.Visibility = Visibility.Visible;
-                }
+                }*/
             }
             else
                 MessageBox.Show("Для сохранения данных нужно авторизироваться.");

@@ -24,10 +24,11 @@ namespace SocialMediaInformationAggregator
         {
             InitializeComponent();
 
-            PeopleListBox.SelectionChanged += PeopleListBox_SelectionChanged;
-
+            
             PeopleListBox.Items.Clear();
-
+            PeopleListBox.SelectedIndex = -1;
+            PeopleListBox.SelectionChanged += PeopleListBox_SelectionChanged;
+            
             foreach (var person in App.PersonInformation)
                 AddPersonToListBox(person);
         }
