@@ -31,27 +31,23 @@ namespace SocialMediaInformationAggregator.FindPeople
             InputUniversitet(webDriver, searchOptions);
             InputYearBirthFrom(webDriver, searchOptions);
             InputYearBirthTo(webDriver, searchOptions);
+            InputName(webDriver, searchOptions);
 
-            IWebElement querName = webDriver.FindElement(By.Id("search_query"));
-            querName.SendKeys(searchOptions.Name + " " + searchOptions.LastName + "\n");
-
-            Thread.Sleep(1000);
-
-            if (!IsElementExist(By.XPath("//*[@id='results']/div[1]/div[3]/div[1]/a"), webDriver))
-            {
-                webDriver.Navigate().Refresh();
-                querName.Clear();
-                querName.SendKeys(searchOptions.Name + " " + searchOptions.LastName + "\n");
-            }
-
-            //try
-            //{
+            //Thread.Sleep(500);
+            /*
+                        if (!IsElementExist(By.XPath("//*[@id='results']/div[1]/div[3]/div[1]/a"), webDriver))
+                        {
+                            webDriver.Navigate().Refresh();
+                            querName.Clear();
+                            querName.SendKeys(searchOptions.Name + " " + searchOptions.LastName + "\n");
+                        }
+            */
             for (int i = 1; i < 6; i++)
             {
-                Thread.Sleep(1000);
+                Thread.Sleep(500);
                 if (IsElementExist(By.XPath("//*[@id='results']/div[" + i + "]/div[3]/div[1]/a"), webDriver))
                 {
-                    Thread.Sleep(1000);
+                    Thread.Sleep(500);
                     //IWebElement people = webDriver.FindElement(By.XPath("//*[@id='results']/div[" + i + "]/div[3]/div[1]/a"));
                     webDriver.FindElement(By.XPath("//*[@id='results']/div[" + i + "]/div[3]/div[1]/a")).Click();
                     //Thread.Sleep(500);
@@ -67,11 +63,11 @@ namespace SocialMediaInformationAggregator.FindPeople
                     personInformation.YearOfBirth = YearBirth(webDriver);
                     //Thread.Sleep(500);
                     personInformation.Cities = new List<string>() { LiveCity(webDriver) };
-                    Thread.Sleep(500);
+                    //Thread.Sleep(500);
                     personInformation.Education = Educations(webDriver);
                     personInformation.SocialNetwork = SocialNetwork.VK;
                     //personInformation.Photo = Photo(webDriver, i);
-                    Thread.Sleep(500);
+                    //Thread.Sleep(500);
                     personInformation.ProfileLink = webDriver.Url;
 
                     PeopleFromVK.Add(personInformation);
@@ -84,6 +80,13 @@ namespace SocialMediaInformationAggregator.FindPeople
             //{
 
             //}
+        }
+
+        private void InputName(IWebDriver webDriver, SearchOptions searchOptions)
+        {
+            Times(webDriver, By.Id("search_query"));   
+            IWebElement querName = webDriver.FindElement(By.Id("search_query"));
+            querName.SendKeys(searchOptions.Name + " " + searchOptions.LastName + "\n");
         }
 
         //+
