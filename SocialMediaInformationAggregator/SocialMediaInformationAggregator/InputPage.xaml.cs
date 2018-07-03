@@ -132,17 +132,8 @@ namespace SocialMediaInformationAggregator
                 AddFieldsToDb();
             }
             catch { }
-
-
-            //try
-            //{
-                WebDriverWorks(options);
-            /*}
-            catch
-            {
-                MessageBox.Show("Что-то пошло не так.");
-                return;
-            }*/
+            
+            WebDriverWorks(options);
 
             if (App.PersonInformation.Count < 1 || App.PersonInformation == null)
             {
@@ -244,25 +235,33 @@ namespace SocialMediaInformationAggregator
             bool vkIsOk = true;
             bool okIsOk = true;
 
-        //    try
-         //   {
-                find.FindPeopleOnVK(webDriver, options);
-        //    }
-        //    catch
-        //    {
-               // vkIsOk = false;
-         //   }
+            #if DEBUG
+
+            find.FindPeopleOnVK(webDriver, options);
+            find.FindPeopleOnOK(webDriver, options);
             
-          //  try
-          //  {
+            #else
+
+            try
+            {
+                find.FindPeopleOnVK(webDriver, options);
+            }
+            catch
+            {
+                vkIsOk = false;
+            }
+
+            try
+            {
                 find.FindPeopleOnOK(webDriver, options);
-           // }
-           // catch
-            //{
-            //    okIsOk = false;
-            //}
+            }
+            catch
+            {
+                okIsOk = false;
+            }
 
-
+            #endif
+            
             if (vkIsOk && find.PeopleFromVK != null)
             {
                 foreach (var person in find.PeopleFromVK)
@@ -276,9 +275,6 @@ namespace SocialMediaInformationAggregator
             }
 
             webDriver.Quit();
-
-            //if (!vkIsOk && !okIsOk)
-              //  throw new Exception("Поиск во Вконтакте и Одноклассниках закончился неудачей.");
         }
 
 
