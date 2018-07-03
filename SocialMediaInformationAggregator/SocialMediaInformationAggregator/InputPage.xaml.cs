@@ -446,13 +446,13 @@ namespace SocialMediaInformationAggregator
 
         private void ComboBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            if (e.Text.All(x => !char.IsLetter(x)) || string.IsNullOrWhiteSpace(e.Text))
+            if (!e.Text.All(x => (x >= 'А' && x <= 'Я') || (x >= 'а' && x <= 'я') || x == '-'))
                 e.Handled = true;
         }
 
         private void UniversityComboBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            if (!e.Text.All(x => x == '№' || char.IsLetterOrDigit(x)))
+            if (!e.Text.All(x => x == '№' || char.IsDigit(x) || (x >= 'А' && x <= 'Я') || (x >= 'а' && x <= 'я') || x == '-'))
                 e.Handled = true;
         }
 

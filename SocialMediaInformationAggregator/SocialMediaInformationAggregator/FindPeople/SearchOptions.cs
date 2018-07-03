@@ -46,9 +46,6 @@ namespace SocialMediaInformationAggregator.FindPeople
             get => _yearOfBirth;
             set
             {
-                if (value != null && (value < 1900 || value > DateTime.Now.Year))
-                    throw new Exception("Год рождения должен лежать в диапозоне от 1990 до текущего года.");
-
                 _yearOfBirth = value;
             }
         }
@@ -59,9 +56,6 @@ namespace SocialMediaInformationAggregator.FindPeople
             get => _forThisYear;
             set
             {
-                if (value != null && (value < 1900 || value > DateTime.Now.Year))
-                    throw new Exception("Год рождения должен лежать в диапозоне от 1990 до текущего года.");
-
                 _forThisYear = value;
             }
         }
