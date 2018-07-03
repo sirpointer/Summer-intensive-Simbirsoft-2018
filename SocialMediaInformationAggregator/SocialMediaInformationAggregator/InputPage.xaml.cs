@@ -170,20 +170,41 @@ namespace SocialMediaInformationAggregator
         {
             if (App.CurrentUserLogin != null)
             {
-                DatabaseInteraction.PeopleFromDb.SetFoundFirstName(App.CurrentUserLogin, NameComboBox.Text);
-                DatabaseInteraction.PeopleFromDb.SetFoundLastName(App.CurrentUserLogin, LastNameComboBox.Text);
+                try
+                {
+                    DatabaseInteraction.PeopleFromDb.SetFoundFirstName(App.CurrentUserLogin, NameComboBox.Text);
+                }
+                catch { }
 
-                if (CityChecked && string.IsNullOrWhiteSpace(CityComboBox.Text))
+                try
                 {
-                    DatabaseInteraction.PeopleFromDb.SetFoundCity(App.CurrentUserLogin, CityComboBox.Text);
+                    DatabaseInteraction.PeopleFromDb.SetFoundLastName(App.CurrentUserLogin, LastNameComboBox.Text);
                 }
-                if (EducationChecked && string.IsNullOrWhiteSpace(UniversityComboBox.Text))
+                catch { }
+
+                if (CityChecked && !string.IsNullOrWhiteSpace(CityComboBox.Text))
                 {
-                    DatabaseInteraction.PeopleFromDb.SetFoundUniversity(App.CurrentUserLogin, UniversityComboBox.Text);
+                    try
+                    {
+                        DatabaseInteraction.PeopleFromDb.SetFoundCity(App.CurrentUserLogin, CityComboBox.Text);
+                    }
+                    catch { }
                 }
-                if (SchoolChecked && string.IsNullOrWhiteSpace(SchoolComboBox.Text))
+                if (EducationChecked && !string.IsNullOrWhiteSpace(UniversityComboBox.Text))
                 {
-                    DatabaseInteraction.PeopleFromDb.SetFoundSchool(App.CurrentUserLogin, SchoolComboBox.Text);
+                    try
+                    {
+                        DatabaseInteraction.PeopleFromDb.SetFoundUniversity(App.CurrentUserLogin, UniversityComboBox.Text);
+                    }
+                    catch { }
+                }
+                if (SchoolChecked && !string.IsNullOrWhiteSpace(SchoolComboBox.Text))
+                {
+                    try
+                    {
+                        DatabaseInteraction.PeopleFromDb.SetFoundSchool(App.CurrentUserLogin, SchoolComboBox.Text);
+                    }
+                    catch { }
                 }
             }
         }
