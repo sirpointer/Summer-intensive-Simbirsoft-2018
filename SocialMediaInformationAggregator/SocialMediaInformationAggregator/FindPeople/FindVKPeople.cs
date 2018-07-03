@@ -186,7 +186,7 @@ namespace SocialMediaInformationAggregator.FindPeople
         //+
         private void InputYearBirthFrom(IWebDriver webDriver, SearchOptions searchOptions)
         {
-            if (searchOptions.ForThisYear!=null)
+            if (searchOptions.YearOfBirth!=null)
             {
                 new WebDriverWait(webDriver, TimeSpan.FromSeconds(5)).Until(driver => driver.FindElement(By.Id("container13")));
 
@@ -206,7 +206,7 @@ namespace SocialMediaInformationAggregator.FindPeople
                             {
                                 IWebElement yearFrom = webDriver.FindElement(By.XPath("//*[@id='option_list_options_container_13_" + i + "']"));
                                 i++;
-                                if (yearFrom.Text.Contains((DateTime.Now.Year - searchOptions.ForThisYear).ToString()))
+                                if (yearFrom.Text.Contains((searchOptions.YearOfBirth).ToString()))
                                 {
                                     yearFrom.Click();
                                     elemExist = false;
@@ -229,7 +229,7 @@ namespace SocialMediaInformationAggregator.FindPeople
         //+
         private void InputYearBirthTo(IWebDriver webDriver, SearchOptions searchOptions)
         {
-            if (searchOptions.YearOfBirth!=null)
+            if (searchOptions.ForThisYear!=null)
             {
                 new WebDriverWait(webDriver, TimeSpan.FromSeconds(5)).Until(driver => driver.FindElement(By.Id("container14")));
 
@@ -249,7 +249,7 @@ namespace SocialMediaInformationAggregator.FindPeople
                             {
                                 IWebElement yearFrom = webDriver.FindElement(By.XPath("//*[@id='option_list_options_container_14_" + i + "']"));
                                 i++;
-                                if (yearFrom.Text.Contains((DateTime.Now.Year - searchOptions.YearOfBirth).ToString()))
+                                if (yearFrom.Text.Contains((searchOptions.ForThisYear).ToString()))
                                 {
                                     yearFrom.Click();
                                     elemExist = false;
