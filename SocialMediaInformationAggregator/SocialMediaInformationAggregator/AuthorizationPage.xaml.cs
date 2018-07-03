@@ -32,7 +32,7 @@ namespace SocialMediaInformationAggregator
         {
             try
             {
-                SqlConnection conn = new SqlConnection(App.connectionString);
+                SqlConnection conn = new SqlConnection(App.ConnectionString);
                 conn.Open();
                 List<string> k = new List<string>();
                 string query = string.Format("SELECT Password FROM Users WHERE Login=@a");
@@ -55,11 +55,13 @@ namespace SocialMediaInformationAggregator
                         }
                         else
                         {
+                            passwordBox.Password = "";
                             MessageBox.Show("Неверный пароль");
                         }
                     }
                     else
                     {
+                        passwordBox.Password = "";
                         MessageBox.Show("Некорректный логин");
                     }
                 }

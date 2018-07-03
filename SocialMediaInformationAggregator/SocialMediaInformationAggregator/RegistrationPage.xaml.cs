@@ -35,7 +35,7 @@ namespace SocialMediaInformationAggregator
         public void InsertUserIntoDb()
         {
             /// подключаемся к базе данны и записываем пользователя в таблицу
-            SqlConnection conn = new SqlConnection(App.connectionString);
+            SqlConnection conn = new SqlConnection(App.ConnectionString);
             try
             {
                 conn.Open();
@@ -103,9 +103,65 @@ namespace SocialMediaInformationAggregator
             }
         }
 
+        public bool EmailIsValid()
+        {
+            char[] mas = TextBoxmail.Text.ToCharArray();
+            int dogSymb = 0;
+            int dot = 0;
+            foreach (char k in mas)
+            {
+                if (((k >= 64 && k <= 90) || (k >= 97 && k <= 122) || k == 46) && dogSymb <= 1)
+                {
+                    if (k == 64)
+                    {
+                        dogSymb += 1;
+                    }
+                    if (k == 46)
+                    {
+                        dot += 1;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("E-mail задан некорректнo!");
+                    return false;
+                }
+            }
+            if (dogSymb == 1 && dot == 1)
+            {
+                dogSymb = TextBoxmail.Text.IndexOf('@');
+                dot = TextBoxmail.Text.LastIndexOf('.');
+                if (dogSymb != 0 && dot != 0)
+                {
+                    if (dot < dogSymb)
+                    {
+                        MessageBox.Show("E-mail задан некорректно!");
+                        return false;
+                    }
+                    else
+                    {
+                        if (TextBoxmail.Text.Count() - dot == 3 || TextBoxmail.Text.Count() - dot == 4)
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            MessageBox.Show("E-mail задан некорректно!");
+                            return false;
+                        }
+                    }
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("E-mail задан некорректно!");
+            }
+            return false;
+        }
         public bool EmailISUnique()
         {
-            SqlConnection conn = new SqlConnection(App.connectionString);
+            SqlConnection conn = new SqlConnection(App.ConnectionString);
             try
             {
                 conn.Open();
@@ -129,7 +185,6 @@ namespace SocialMediaInformationAggregator
                     }
                     else
                     {
-                        
                         return true;
                     }
                 }
@@ -145,7 +200,7 @@ namespace SocialMediaInformationAggregator
 
         public bool LoginISUnique()
         {
-            SqlConnection conn = new SqlConnection(App.connectionString);
+            SqlConnection conn = new SqlConnection(App.ConnectionString);
             try
             {
                 conn.Open();
@@ -159,7 +214,7 @@ namespace SocialMediaInformationAggregator
                     {
                         logins.Add(reader.GetValue(0).ToString());
                     }
-                    int k = logins.Where(a => a == TextBoxLogin.Text).Count();
+                    int k = logins.Where(a => a.ToLower() == TextBoxLogin.Text.ToLower()).Count();
                     if (k != 0)
                     {
                         MessageBox.Show("Данный адрес логин уже используется!");
@@ -183,7 +238,9 @@ namespace SocialMediaInformationAggregator
 
         private void NextButton_Click(object sender, RoutedEventArgs e)
         {
-            if (PasswordIsCorrect() == true && EmailISUnique() == true && LoginISUnique() == true)
+            if (!String.IsNullOrWhiteSpace(TextBoxFirstName.Text) && !String.IsNullOrWhiteSpace(TextBoxName.Text))
+            {
+                if (PasswordIsCorrect() == true && EmailISUnique() == true && LoginISUnique() == true && EmailIsValid() == true)
             {
                 if (passwordBox.Password.ToString() == repeatPasswordBox.Password.ToString())
                 {
@@ -200,6 +257,12 @@ namespace SocialMediaInformationAggregator
                     repeatPasswordBox.Password = "";
                 }
             }
+            }
+            else
+            {
+                MessageBox.Show("Не все поля заполнены!");
+            }
+            
         }
         
     }
