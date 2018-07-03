@@ -28,15 +28,15 @@ namespace SocialMediaInformationAggregator.WorkingWithPeople
                     anotherSocialNetworkPersonList.Add(pers);
             }
 
-            bool similarCity = false;
+            //bool similarCity = false;
             bool similarEducation = false;
             
             foreach (var pers in anotherSocialNetworkPersonList)
             {
-                similarCity = CityAreSimilar(person, pers);
+                //similarCity = CityAreSimilar(person, pers);
                 similarEducation = EducationAreSimilar(person, pers);
 
-                if (similarCity && similarEducation)
+                if (/*similarCity && */similarEducation)
                     return pers;
             }
 
@@ -59,16 +59,72 @@ namespace SocialMediaInformationAggregator.WorkingWithPeople
 
         private static bool EducationAreSimilar(PersonInformation man, PersonInformation manFromList)
         {
-            foreach (var education in man.Education)
+            foreach (var firstEducation in man.Education)
             {
                 foreach (var secondEducation in manFromList.Education)
                 {
-                    if (education.Equals(secondEducation, StringComparison.CurrentCultureIgnoreCase))
-                        return true;
+                    if (IsItSchool(firstEducation, secondEducation))
+                    {
+                        if (SchoolsAreEqual(firstEducation, secondEducation))
+                            return true;
+                        else
+                            return false;
+                    }
+                    else
+                    {
+                        if (firstEducation.Equals(secondEducation, StringComparison.CurrentCultureIgnoreCase))
+                            return true;
+                        else
+                            return false;
+                    }
                 }
             }
 
             return false;
+        }
+
+        private static bool IsItSchool(string firstEducation, string secondEducation)
+        {
+            bool school = (firstEducation.IndexOf("ШКОЛА", StringComparison.CurrentCultureIgnoreCase) > 0) 
+                && (secondEducation.IndexOf("ШКОЛА", StringComparison.CurrentCultureIgnoreCase) > 0);
+
+            bool lyceum = (firstEducation.IndexOf("ЛИЦЕЙ", StringComparison.CurrentCultureIgnoreCase) > 0)
+                && (secondEducation.IndexOf("ЛИЦЕЙ", StringComparison.CurrentCultureIgnoreCase) > 0);
+
+            bool gymnasium = (firstEducation.IndexOf("ГИМНАЗИЯ", StringComparison.CurrentCultureIgnoreCase) > 0) 
+                && (secondEducation.IndexOf("ГИМНАЗИЯ", StringComparison.CurrentCultureIgnoreCase) > 0);
+
+
+            return (school || lyceum || gymnasium);
+        }
+
+        private static bool SchoolsAreEqual(string firstSchool, string secondSchool)
+        {
+            StringBuilder firstSB = new StringBuilder(firstSchool);
+            StringBuilder secondSB = new StringBuilder(secondSchool);
+            StringBuilder firstNum = new StringBuilder(string.Empty);
+            StringBuilder secondNum = new StringBuilder(string.Empty);
+
+            for (int i = 0; i < firstSB.Length; i++)
+            {
+                if (char.IsDigit(firstSB[i]))
+                {
+                    firstNum.Append(firstSB[i]);
+                }
+            }
+
+            for (int i = 0; i < secondSB.Length; i++)
+            {
+                if (char.IsDigit(secondSB[i]))
+                {
+                    secondNum.Append(secondSB[i]);
+                }
+            }
+
+            if (firstNum.ToString().Equals(secondNum.ToString(), StringComparison.Ordinal))
+                return true;
+            else
+                return false;
         }
     }
 }
