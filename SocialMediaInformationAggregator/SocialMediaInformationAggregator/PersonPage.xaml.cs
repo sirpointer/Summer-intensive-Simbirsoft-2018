@@ -31,6 +31,15 @@ namespace SocialMediaInformationAggregator
         {
             if (App.VkPerson != null)
             {
+                App.OkPerson = WorkingWithPeople.WorkingWithPeople.GetSimilarPerson(App.VkPerson, App.PersonInformation);
+            }
+            else
+            {
+                App.VkPerson = WorkingWithPeople.WorkingWithPeople.GetSimilarPerson(App.OkPerson, App.PersonInformation);
+            }
+
+            if (App.VkPerson != null)
+            {
                 FindPeople.PersonInformation person = App.VkPerson;
 
                 this.FullNameTextBlock.Text = person.Name + " " + person.LastName;
@@ -41,11 +50,22 @@ namespace SocialMediaInformationAggregator
                     this.VkHyperLink.NavigateUri = new Uri(person.ProfileLink);
                 }
 
+                if (person.Education.Count == 0)
+                {
+
+                }
+
                 foreach (var ed in person.Education)
                     EducationVkStackPanel.Children.Add(GetVkTextBlock(ed));
 
                 foreach (var city in person.Cities)
                     CitiesVkStackPanel.Children.Add(GetVkTextBlock(city));
+            }
+            else
+            {
+                VkTextBlock.Visibility = Visibility.Hidden;
+                EducationVkStackPanel.Visibility = Visibility.Hidden;
+                CitiesVkStackPanel.Visibility = Visibility.Hidden;
             }
 
             if (App.OkPerson != null)
@@ -53,7 +73,7 @@ namespace SocialMediaInformationAggregator
                 FindPeople.PersonInformation person = App.OkPerson;
 
                 this.FullNameTextBlock.Text = person.Name + " " + person.LastName;
-                this.YearTextBlock.Text = person.YearOfBirth.ToString();
+                this.YearTextBlock.Text = person.YearOfBirth.ToString() ?? "Нет данных";
 
                 if (!string.IsNullOrWhiteSpace(person.ProfileLink))
                 {
@@ -64,8 +84,15 @@ namespace SocialMediaInformationAggregator
                 foreach (var ed in person.Education)
                     EducationOkStackPanel.Children.Add(GetOkTextBlock(ed));
 
+                
                 foreach (var city in person.Cities)
                     CitiesOkStackPanel.Children.Add(GetOkTextBlock(city));
+            }
+            else
+            {
+                OkTextBlock.Visibility = Visibility.Hidden;
+                EducationOkStackPanel.Visibility = Visibility.Hidden;
+                CitiesOkStackPanel.Visibility = Visibility.Hidden;
             }
         }
 
