@@ -54,6 +54,10 @@ namespace SocialMediaInformationAggregator
                 }
             }
 
+            PeopleListBox.SelectionChanged -= PeopleListBox_SelectionChanged;
+            PeopleListBox.SelectedIndex = -1;
+            PeopleListBox.SelectionChanged += PeopleListBox_SelectionChanged;
+
             foreach (var ui in (Application.Current.MainWindow.Content as Grid).Children)
             {
                 if (ui is Frame)
