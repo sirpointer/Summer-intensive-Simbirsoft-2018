@@ -25,10 +25,10 @@ namespace SocialMediaInformationAggregator
         public static string LoginGlobalVeryForMethod { get; set; }
 
         public static string GetCurrentDirectory => Directory.GetCurrentDirectory();
-        public static string connectionString { get; set; }
+        public static string ConnectionString { get; set; }
         public static void MakeConnectionString()
         {
-            connectionString = ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString.Replace("$adress$", GetCurrentDirectory);
+            ConnectionString = ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString.Replace("$adress$", GetCurrentDirectory);
         }
 
         private static string _currentLogin;

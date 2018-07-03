@@ -36,6 +36,9 @@ namespace SocialMediaInformationAggregator
                 FromYearCB.Items.Add(i.ToString());
                 ToYearCB.Items.Add(i.ToString());
             }
+
+            if (!System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable())
+                MessageBox.Show("Подключение к интернету отсутствует.");
         }
 
         /// <summary>
@@ -106,8 +109,16 @@ namespace SocialMediaInformationAggregator
         {
             NotFoundTextBlock.Visibility = Visibility.Collapsed;
 
+            if (!System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable())
+            {
+                MessageBox.Show("Подключение к интернету отсутствует.");
+                return;
+            }
+
             if (!NameCheck())
                 return;
+
+            TrimAll();
 
             FindPeople.SearchOptions options = new FindPeople.SearchOptions()
             {
@@ -139,6 +150,15 @@ namespace SocialMediaInformationAggregator
                 if (ui is Frame)
                     (ui as Frame).Navigate(new Uri("ListOfPeoplePage.xaml", UriKind.Relative));
             }
+        }
+
+        private void TrimAll()
+        {
+            NameComboBox.Text = NameComboBox.Text.Trim();
+            LastNameComboBox.Text = LastNameComboBox.Text.Trim();
+            CityComboBox.Text = CityComboBox.Text.Trim();
+            UniversityComboBox.Text = UniversityComboBox.Text.Trim();
+            SchoolComboBox.Text = SchoolComboBox.Text.Trim();
         }
 
         private void AddFieldsToDb()

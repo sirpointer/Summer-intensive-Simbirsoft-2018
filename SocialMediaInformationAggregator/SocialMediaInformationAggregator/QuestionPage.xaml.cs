@@ -30,7 +30,7 @@ namespace SocialMediaInformationAggregator
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            SqlConnection conn = new SqlConnection(App.connectionString);
+            SqlConnection conn = new SqlConnection(App.ConnectionString);
             try
             {
                 conn.Open();

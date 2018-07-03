@@ -36,7 +36,7 @@ namespace SocialMediaInformationAggregator
         {
             try
             {
-                SqlConnection conn = new SqlConnection(App.connectionString);
+                SqlConnection conn = new SqlConnection(App.ConnectionString);
                 conn.Open();
                 List<string> k = new List<string>();
                 string query = string.Format("UPDATE Users  SET Password = @pass WHERE Login=@login");
