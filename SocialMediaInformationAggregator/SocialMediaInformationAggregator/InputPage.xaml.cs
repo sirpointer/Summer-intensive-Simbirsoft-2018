@@ -126,7 +126,12 @@ namespace SocialMediaInformationAggregator
                 LastName = LastNameComboBox.Text
             };
             SetSerachOptions(options);
-            AddFieldsToDb();
+
+            try
+            {
+                AddFieldsToDb();
+            }
+            catch { }
 
 
             //try

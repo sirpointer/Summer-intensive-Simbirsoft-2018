@@ -47,10 +47,6 @@ namespace SocialMediaInformationAggregator
                 foreach (var city in person.Cities)
                     CitiesVkStackPanel.Children.Add(GetVkTextBlock(city));
             }
-            else
-            {
-
-            }
 
             if (App.OkPerson != null)
             {
@@ -70,10 +66,6 @@ namespace SocialMediaInformationAggregator
 
                 foreach (var city in person.Cities)
                     CitiesOkStackPanel.Children.Add(GetOkTextBlock(city));
-            }
-            else
-            {
-
             }
         }
 
