@@ -24,7 +24,12 @@ namespace SocialMediaInformationAggregator
         {
             InitializeComponent();
 
+#if DEBUG
             App.CurrentUserLogin = "admin";
+#else
+            App.CurrentUserLogin = null;
+#endif
+            
 
             try
             {
@@ -32,7 +37,6 @@ namespace SocialMediaInformationAggregator
             }
             catch { }
 
-            //App.CurrentUserLogin = null;
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)

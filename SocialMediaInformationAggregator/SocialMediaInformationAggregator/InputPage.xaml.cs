@@ -227,6 +227,7 @@ namespace SocialMediaInformationAggregator
             catch
             {
                 MessageBox.Show("Браузер Google Chrome не найден.");
+
                 return;
             }
 
@@ -234,6 +235,7 @@ namespace SocialMediaInformationAggregator
 
             bool vkIsOk = true;
             bool okIsOk = true;
+
 
             #if DEBUG
 
