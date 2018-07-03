@@ -218,23 +218,23 @@ namespace SocialMediaInformationAggregator
             bool vkIsOk = true;
             bool okIsOk = true;
 
-            try
-            {
+        //    try
+         //   {
                 find.FindPeopleOnVK(webDriver, options);
-            }
-            catch
-            {
-                vkIsOk = false;
-            }
+        //    }
+        //    catch
+        //    {
+               // vkIsOk = false;
+         //   }
             
-            try
-            {
+          //  try
+          //  {
                 find.FindPeopleOnOK(webDriver, options);
-            }
-            catch
-            {
-                okIsOk = false;
-            }
+           // }
+           // catch
+            //{
+            //    okIsOk = false;
+            //}
 
 
             if (vkIsOk && find.PeopleFromVK != null)
@@ -370,6 +370,8 @@ namespace SocialMediaInformationAggregator
 
                 if (cb.Items.Count != 0)
                     (sender as ComboBox).IsDropDownOpen = true;
+                else
+                    (sender as ComboBox).IsDropDownOpen = false;
             }
         }
 
@@ -405,7 +407,13 @@ namespace SocialMediaInformationAggregator
 
         private static void SetLastNameTooltips(ComboBox box)
         {
-            List<string> tips = DatabaseInteraction.PeopleFromDb.GetFoundLastNamea(App.CurrentUserLogin);
+            List<string> tips = new List<string>();
+
+            foreach (var tip in DatabaseInteraction.PeopleFromDb.GetFoundLastNamea(App.CurrentUserLogin))
+            {
+                if (!string.IsNullOrWhiteSpace(tip.Trim()))
+                    tips.Add(tip.Trim());
+            }
 
             box.Items.Clear();
 
@@ -417,7 +425,13 @@ namespace SocialMediaInformationAggregator
 
         private static void SetFirstNameTooltips(ComboBox box)
         {
-            List<string> tips = DatabaseInteraction.PeopleFromDb.GetFoundFirstNames(App.CurrentUserLogin);
+            List<string> tips = new List<string>();
+
+            foreach (var tip in DatabaseInteraction.PeopleFromDb.GetFoundFirstNames(App.CurrentUserLogin))
+            {
+                if (!string.IsNullOrWhiteSpace(tip.Trim()))
+                    tips.Add(tip.Trim());
+            }
 
             box.Items.Clear();
 
@@ -429,7 +443,13 @@ namespace SocialMediaInformationAggregator
 
         private static void SetCityTooltips(ComboBox box)
         {
-            List<string> tips = DatabaseInteraction.PeopleFromDb.GetFoundCities(App.CurrentUserLogin);
+            List<string> tips = new List<string>();
+
+            foreach (var tip in DatabaseInteraction.PeopleFromDb.GetFoundCities(App.CurrentUserLogin))
+            {
+                if (!string.IsNullOrWhiteSpace(tip.Trim()))
+                    tips.Add(tip.Trim());
+            }
 
             box.Items.Clear();
 
@@ -441,7 +461,13 @@ namespace SocialMediaInformationAggregator
 
         private static void SetEducationTooltips(ComboBox box)
         {
-            List<string> tips = DatabaseInteraction.PeopleFromDb.GetFoundUniversities(App.CurrentUserLogin);
+            List<string> tips = new List<string>();
+
+            foreach (var tip in DatabaseInteraction.PeopleFromDb.GetFoundUniversities(App.CurrentUserLogin))
+            {
+                if (!string.IsNullOrWhiteSpace(tip.Trim()))
+                    tips.Add(tip.Trim());
+            }
 
             box.Items.Clear();
 
@@ -453,7 +479,13 @@ namespace SocialMediaInformationAggregator
 
         private static void SetSchoolTooltips(ComboBox box)
         {
-            List<string> tips = DatabaseInteraction.PeopleFromDb.GetFoundSchools(App.CurrentUserLogin);
+            List<string> tips = new List<string>();
+
+            foreach (var tip in DatabaseInteraction.PeopleFromDb.GetFoundSchools(App.CurrentUserLogin))
+            {
+                if (!string.IsNullOrWhiteSpace(tip.Trim()))
+                    tips.Add(tip.Trim());
+            }
 
             box.Items.Clear();
 

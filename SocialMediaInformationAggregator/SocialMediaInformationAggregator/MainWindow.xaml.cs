@@ -24,7 +24,10 @@ namespace SocialMediaInformationAggregator
         {
             InitializeComponent();
 
-            //App.CurrentUserLogin = "admin";
+            App.CurrentUserLogin = "admin";
+            DatabaseInteraction.PeopleFromDb.GetFoundFirstNames(App.CurrentUserLogin);
+
+            //App.CurrentUserLogin = null;
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
