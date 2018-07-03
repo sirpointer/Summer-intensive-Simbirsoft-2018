@@ -74,7 +74,12 @@
 
                 </StackPanel>
 
-                <StackPanel Name="EducationOkStackPanel" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" Margin="5">
+                <StackPanel 
+                    Name="EducationOkStackPanel" 
+                    Grid.Row="1" 
+                    Grid.Column="2" 
+                    HorizontalAlignment="Center" 
+                    Margin="5">
 
                 </StackPanel>
 
