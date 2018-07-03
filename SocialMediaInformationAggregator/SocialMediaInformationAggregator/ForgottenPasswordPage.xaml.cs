@@ -23,17 +23,14 @@ namespace SocialMediaInformationAggregator
     /// </summary>
     public partial class ForgottenPasswordPage : Page
     {
-        public string connectionString;
         public ForgottenPasswordPage()
         {
-            string dataDirectory = Directory.GetCurrentDirectory();
-            AppDomain.CurrentDomain.SetData("DataDirectory", dataDirectory); //Переопределяем |DataDirectory|, директория, откуда загружается база данных
-            connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = " + dataDirectory + @"\SMIA.mdf";
+            App.MakeConnectionString();
             InitializeComponent();
         }
         public SqlConnection ConnectToDb()
         {
-            SqlConnection conn = new SqlConnection(connectionString);
+            SqlConnection conn = new SqlConnection(App.connectionString);
             return conn;
         }
         public void CheckInputInform(SqlDataReader reader)

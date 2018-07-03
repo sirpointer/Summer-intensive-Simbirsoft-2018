@@ -24,12 +24,9 @@ namespace SocialMediaInformationAggregator
     public partial class ChangePasswordPage : Page
     {
         public string Login;
-        public string connectionString;
         public ChangePasswordPage()
         {
-            string dataDirectory = Directory.GetCurrentDirectory();
-            AppDomain.CurrentDomain.SetData("DataDirectory", dataDirectory); //Переопределяем |DataDirectory|, директория, откуда загружается база данных
-            connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = " + dataDirectory + @"\SMIA.mdf";
+            App.MakeConnectionString();
             ForgottenPasswordPage forgottenPasswordPage = new ForgottenPasswordPage();
             Login = App.LoginGlobalVeryForMethod;
             InitializeComponent();
@@ -39,7 +36,7 @@ namespace SocialMediaInformationAggregator
         {
             try
             {
-                SqlConnection conn = new SqlConnection(connectionString);
+                SqlConnection conn = new SqlConnection(App.connectionString);
                 conn.Open();
                 List<string> k = new List<string>();
                 string query = string.Format("UPDATE Users  SET Password = @pass WHERE Login=@login");

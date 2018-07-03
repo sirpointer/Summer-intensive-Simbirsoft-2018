@@ -24,12 +24,9 @@ namespace SocialMediaInformationAggregator
     /// </summary>
     public partial class RegistrationPage : Page
     {
-        public string connectionString;
         public RegistrationPage()
         {
-            string dataDirectory = Directory.GetCurrentDirectory();
-            AppDomain.CurrentDomain.SetData("DataDirectory", dataDirectory); //Переопределяем |DataDirectory|, директория, откуда загружается база данных
-            connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = " + dataDirectory + @"\SMIA.mdf;";
+            App.MakeConnectionString();
             InitializeComponent();
         }
        
@@ -38,7 +35,7 @@ namespace SocialMediaInformationAggregator
         public void InsertUserIntoDb()
         {
             /// подключаемся к базе данны и записываем пользователя в таблицу
-            SqlConnection conn = new SqlConnection(connectionString);
+            SqlConnection conn = new SqlConnection(App.connectionString);
             try
             {
                 conn.Open();
@@ -100,13 +97,15 @@ namespace SocialMediaInformationAggregator
             else
             {
                 MessageBox.Show("Пароль должен состоять минимум из 6 символов!");
+                passwordBox.Password = "";
+                repeatPasswordBox.Password = "";
                 return false;
             }
         }
 
         public bool EmailISUnique()
         {
-            SqlConnection conn = new SqlConnection(connectionString);
+            SqlConnection conn = new SqlConnection(App.connectionString);
             try
             {
                 conn.Open();
@@ -124,10 +123,13 @@ namespace SocialMediaInformationAggregator
                     if (k != 0)
                     {
                         MessageBox.Show("Данный адрес электронной почты уже используется!");
+                        passwordBox.Password = "";
+                        repeatPasswordBox.Password = "";
                         return false;
                     }
                     else
                     {
+                        
                         return true;
                     }
                 }
@@ -143,7 +145,7 @@ namespace SocialMediaInformationAggregator
 
         public bool LoginISUnique()
         {
-            SqlConnection conn = new SqlConnection(connectionString);
+            SqlConnection conn = new SqlConnection(App.connectionString);
             try
             {
                 conn.Open();
@@ -161,6 +163,8 @@ namespace SocialMediaInformationAggregator
                     if (k != 0)
                     {
                         MessageBox.Show("Данный адрес логин уже используется!");
+                        passwordBox.Password = "";
+                        repeatPasswordBox.Password = "";
                         return false;
                     }
                     else
@@ -192,8 +196,11 @@ namespace SocialMediaInformationAggregator
                 else
                 {
                     MessageBox.Show("Пароли не идентичны!");
+                    passwordBox.Password = "";
+                    repeatPasswordBox.Password = "";
                 }
             }
         }
+        
     }
 }
