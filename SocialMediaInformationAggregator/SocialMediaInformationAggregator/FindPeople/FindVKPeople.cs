@@ -106,6 +106,7 @@ namespace SocialMediaInformationAggregator.FindPeople
         {
             if (searchOptions.Education != null && searchOptions.City!= null)
             {
+                Thread.Sleep(1000);
                 new WebDriverWait(webDriver, TimeSpan.FromSeconds(5)).Until(driver => driver.FindElement(By.Id("cUniversity")));
                 if (IsElementExist(By.Id("cUniversity"), webDriver) && !webDriver.FindElement(By.Id("container2")).Text.Contains("Выбор города"))
                 {
@@ -130,7 +131,7 @@ namespace SocialMediaInformationAggregator.FindPeople
                             else
                                 i++;
                         }
-                        webDriver.FindElement(By.Id("cUniversity")).Click();
+                        //webDriver.FindElement(By.Id("cUniversity")).Click();
                     }
                     catch
                     {
@@ -148,7 +149,7 @@ namespace SocialMediaInformationAggregator.FindPeople
             if(searchOptions.Schools != null && searchOptions.City!=null)
             {
                 new WebDriverWait(webDriver, TimeSpan.FromSeconds(5)).Until(driver => driver.FindElement(By.Id("cSchool")));
-
+                Thread.Sleep(1000);
                 if (IsElementExist(By.Id("cSchool"), webDriver) && !webDriver.FindElement(By.Id("container2")).Text.Contains("Выбор города"))
                 {
                     webDriver.FindElement(By.Id("cSchool")).Click();
