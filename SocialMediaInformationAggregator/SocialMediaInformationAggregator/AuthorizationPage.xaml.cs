@@ -55,11 +55,13 @@ namespace SocialMediaInformationAggregator
                         }
                         else
                         {
+                            passwordBox.Password = "";
                             MessageBox.Show("Неверный пароль");
                         }
                     }
                     else
                     {
+                        passwordBox.Password = "";
                         MessageBox.Show("Некорректный логин");
                     }
                 }

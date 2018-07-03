@@ -62,6 +62,8 @@ namespace SocialMediaInformationAggregator
             }
             else
             {
+                passNew.Password = "";
+                repeatPass.Password="";
                 MessageBox.Show("Пароли не идентичны!");
             }
         }
