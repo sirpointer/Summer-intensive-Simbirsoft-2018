@@ -35,7 +35,7 @@ namespace SocialMediaInformationAggregator
         public void InsertUserIntoDb()
         {
             /// подключаемся к базе данны и записываем пользователя в таблицу
-            SqlConnection conn = new SqlConnection(App.ConnectionString);
+            SqlConnection conn = new SqlConnection(App.connectionString);
             try
             {
                 conn.Open();
@@ -105,7 +105,7 @@ namespace SocialMediaInformationAggregator
 
         public bool EmailISUnique()
         {
-            SqlConnection conn = new SqlConnection(App.ConnectionString);
+            SqlConnection conn = new SqlConnection(App.connectionString);
             try
             {
                 conn.Open();
@@ -145,7 +145,7 @@ namespace SocialMediaInformationAggregator
 
         public bool LoginISUnique()
         {
-            SqlConnection conn = new SqlConnection(App.ConnectionString);
+            SqlConnection conn = new SqlConnection(App.connectionString);
             try
             {
                 conn.Open();

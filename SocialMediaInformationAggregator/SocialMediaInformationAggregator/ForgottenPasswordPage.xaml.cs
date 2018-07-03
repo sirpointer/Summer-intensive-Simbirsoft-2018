@@ -30,7 +30,7 @@ namespace SocialMediaInformationAggregator
         }
         public SqlConnection ConnectToDb()
         {
-            SqlConnection conn = new SqlConnection(App.ConnectionString);
+            SqlConnection conn = new SqlConnection(App.connectionString);
             return conn;
         }
         public void CheckInputInform(SqlDataReader reader)
