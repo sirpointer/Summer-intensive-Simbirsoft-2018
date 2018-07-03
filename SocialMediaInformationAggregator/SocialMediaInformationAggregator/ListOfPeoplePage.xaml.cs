@@ -69,7 +69,7 @@ namespace SocialMediaInformationAggregator
             Grid personGrid = new Grid() { HorizontalAlignment = HorizontalAlignment.Stretch, VerticalAlignment = VerticalAlignment.Stretch };
             SetPersonGrid(person, personGrid);
 
-            ListBoxItem item = new ListBoxItem() { Height = 100, Content = personGrid };
+            ListBoxItem item = new ListBoxItem() { Height = 100, Content = personGrid, BorderThickness = new Thickness(0, 1, 0, 1), BorderBrush = Brushes.DarkGray };
 
             PeopleListBox.Items.Add(item);
         }

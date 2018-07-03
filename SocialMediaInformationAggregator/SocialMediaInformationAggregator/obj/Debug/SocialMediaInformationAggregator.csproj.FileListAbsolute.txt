@@ -142,3 +142,4 @@ E:\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\S
 E:\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\SocialMediaInformationAggregator.csproj.CopyComplete
 E:\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\SocialMediaInformationAggregator.exe
 E:\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\SocialMediaInformationAggregator.pdb
+E:\GitHub\Social-media-information-aggregator\SocialMediaInformationAggregator\SocialMediaInformationAggregator\obj\Debug\SocialMediaInformationAggregator.csprojAssemblyReference.cache

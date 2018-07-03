@@ -47,6 +47,11 @@ namespace SocialMediaInformationAggregator
                 foreach (var city in person.Cities)
                     CitiesVkStackPanel.Children.Add(GetVkTextBlock(city));
             }
+            else
+            {
+
+            }
+
             if (App.OkPerson != null)
             {
                 FindPeople.PersonInformation person = App.OkPerson;
@@ -65,6 +70,10 @@ namespace SocialMediaInformationAggregator
 
                 foreach (var city in person.Cities)
                     CitiesOkStackPanel.Children.Add(GetOkTextBlock(city));
+            }
+            else
+            {
+
             }
         }
 

@@ -323,10 +323,10 @@ namespace SocialMediaInformationAggregator
 
         private void YearToCheck(FindPeople.SearchOptions options)
         {
-            if (YearToChecked && !string.IsNullOrWhiteSpace(ToYearCB.Text))
+            if (YearToChecked && !string.IsNullOrWhiteSpace(ToYearCB.Text.Trim()))
             {
-                var firstYear = Convert.ToInt32(ToYearCB.Text);
-                var secondYear = Convert.ToInt32(FromYearCB.Text);
+                var firstYear = Convert.ToInt32(ToYearCB.Text.Trim());
+                var secondYear = Convert.ToInt32(FromYearCB.Text.Trim());
 
                 if (firstYear < secondYear)
                 {
