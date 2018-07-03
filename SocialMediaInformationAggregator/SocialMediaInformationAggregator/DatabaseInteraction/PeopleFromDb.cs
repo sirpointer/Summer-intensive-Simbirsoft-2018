@@ -111,7 +111,7 @@ namespace SocialMediaInformationAggregator.DatabaseInteraction
         }
         public static void SetFoundLastName(string Login, string Val)
         {
-            InsertNewElements(Login, "LastName", Val, "FoundLastName");
+            InsertNewElements(Login, "LastName", Val, "FoundLastNames");
         }
 
         public static void SetFoundSchool(string Login, string Val)
@@ -121,7 +121,7 @@ namespace SocialMediaInformationAggregator.DatabaseInteraction
 
         public static void SetFoundUniversity(string Login, string Val)
         {
-            InsertNewElements(Login, "University", Val, "FoundUniversities");
+            InsertNewElements(Login, "University", Val, "FoundUniversity");
         }
 
         public static List<string> GetFoundCities(string login)
