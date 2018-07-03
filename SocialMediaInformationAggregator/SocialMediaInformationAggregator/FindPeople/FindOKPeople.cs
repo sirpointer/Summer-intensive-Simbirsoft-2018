@@ -40,21 +40,19 @@ namespace SocialMediaInformationAggregator.FindPeople
 
                 //сколько лет от
                 IWebElement from = webDriver.FindElement(By.Id("field_fromage"));
-                var f = (DateTime.Today.Year - searchOptions.ForThisYear);
                 //var selectElement = new SelectElement(from);
                 //Thread.Sleep(1000);
                 //selectElement.SelectByText(f.ToString());
                 from.Click();
-                from.SendKeys(f.ToString());
+                from.SendKeys(searchOptions.YearOfBirth.ToString());
                 Thread.Sleep(500);
                 //до
                 IWebElement to = webDriver.FindElement(By.Name("st.tillAge"));
-                var t = (DateTime.Today.Year - searchOptions.YearOfBirth);
                 //var selectElem2 = new SelectElement(to);
                 //Thread.Sleep(1000);
                 //selectElement.SelectByText(t.ToString());
                 to.Click();
-                to.SendKeys(t.ToString());
+                to.SendKeys(searchOptions.ForThisYear.ToString());
 
                 IWebElement Country = webDriver.FindElement(By.Id("customPlaceItemSpan"));
                 Country.Click();
@@ -67,36 +65,15 @@ namespace SocialMediaInformationAggregator.FindPeople
                 // SearchCountry.SendKeys("Россия");
                 webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
                 //ввод города
-                IWebElement City = webDriver.FindElement(By.Id("field_city"));
-                City.SendKeys(searchOptions.City);
-                // Копирование ссылок
-                //1 человек в списке
-
+                if (IsElementExist(By.Id("field_city"), webDriver))
+                {
+                    IWebElement City = webDriver.FindElement(By.Id("field_city"));
+                    City.SendKeys(searchOptions.City);
+                }
                 Thread.Sleep(1000);
                 from.Click();
-                //if (IsElementExists(By.CssSelector("#gs_result_list > div:nth-child(1) > div > div.caption.gs_result_i > div.gs_result_i_t > div.shortcut-wrap > div.ellip > a")))
-                //{
-                //    IWebElement p1 = webDriver.FindElement(By.CssSelector("#gs_result_list > div:nth-child(1) > div > div.caption.gs_result_i > div.gs_result_i_t > div.shortcut-wrap > div.ellip > a"));
-
-                //    p1.GetAttribute("href");
-
-
-                //}
-                ////2 человек
-                //if (IsElementExists(By.CssSelector("#gs_result_list > div:nth-child(2) > div > div.caption.gs_result_i > div.gs_result_i_t > div.shortcut-wrap > div.ellip > a")))
-                //{
-                //    IWebElement p2 = webDriver.FindElement(By.CssSelector("#gs_result_list > div:nth-child(2) > div > div.caption.gs_result_i > div.gs_result_i_t > div.shortcut-wrap > div.ellip > a"));
-                //    p2.GetAttribute("href");
-
-                //}
-                ////3 человек
-                //if (IsElementExists(By.CssSelector("#gs_result_list > div:nth-child(3) > div > div.caption.gs_result_i > div.gs_result_i_t > div.shortcut-wrap > div.ellip > a")))
-                //{
-                //    IWebElement p3 = webDriver.FindElement(By.CssSelector("#gs_result_list > div:nth-child(3) > div > div.caption.gs_result_i > div.gs_result_i_t > div.shortcut-wrap > div.ellip > a"));
-                //    p3.GetAttribute("href");
-                //}
                 List<string> education1 = new List<string>();
-                for (int i = 1; i < 3; i++)
+                for (int i = 1; i < 6; i++)
                 {
                     if (IsElementExist(By.XPath("//*[@id='gs_result_list']/div[" + i + "]/div/div[2]/div[1]/div[1]/div[1]/a"), webDriver))
                     {
@@ -165,10 +142,6 @@ namespace SocialMediaInformationAggregator.FindPeople
                         PeopleFromOK.Add(personInformation);
 
                         webDriver.Navigate().Back();
-                    }
-                    else
-                    {
-                        System.Windows.MessageBox.Show("QE");
                     }
                 }
 
