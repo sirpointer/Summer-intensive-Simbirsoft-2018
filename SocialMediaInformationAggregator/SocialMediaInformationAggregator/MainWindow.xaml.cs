@@ -25,7 +25,12 @@ namespace SocialMediaInformationAggregator
             InitializeComponent();
 
             App.CurrentUserLogin = "admin";
-            DatabaseInteraction.PeopleFromDb.GetFoundFirstNames(App.CurrentUserLogin);
+
+            try
+            {
+                DatabaseInteraction.PeopleFromDb.GetFoundFirstNames(App.CurrentUserLogin);
+            }
+            catch { }
 
             //App.CurrentUserLogin = null;
         }
@@ -45,7 +50,17 @@ namespace SocialMediaInformationAggregator
         {
             if (App.CurrentUserLogin != null)
             {
-                App.PersonInformation = DatabaseInteraction.PeopleFromDb.GetFoundPeople(App.CurrentUserLogin);
+                try
+                {
+                    App.PersonInformation = DatabaseInteraction.PeopleFromDb.GetFoundPeople(App.CurrentUserLogin);
+                }
+                catch
+                {
+                    App.PersonInformation = new List<FindPeople.PersonInformation>();
+                    MessageBox.Show("Не удалось загрузить историю.");
+                    return;
+                }
+
 
                 if (App.PersonInformation.Count < 1)
                 {

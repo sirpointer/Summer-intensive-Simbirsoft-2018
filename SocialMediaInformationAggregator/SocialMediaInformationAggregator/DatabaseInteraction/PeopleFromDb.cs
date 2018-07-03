@@ -56,7 +56,7 @@ namespace SocialMediaInformationAggregator.DatabaseInteraction
         public static List<FindPeople.PersonInformation> GetFoundPeople(string login)
         {
             List<FindPeople.PersonInformation> PersonsFromVK = GetFoindPeopleFromNetworks(login, "FoundPersonsVK");
-            List<FindPeople.PersonInformation> PersonsFromOK = GetFoindPeopleFromNetworks(login, "FoundPersonOK");
+            List<FindPeople.PersonInformation> PersonsFromOK = GetFoindPeopleFromNetworks(login, "FoundPersonsOK");
             List<FindPeople.PersonInformation> CommonPersons = PersonsFromVK.Concat(PersonsFromOK).ToList();
             return CommonPersons;
         }
