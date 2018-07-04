@@ -38,7 +38,7 @@ namespace SocialMediaInformationAggregator
                 string query = string.Format("SELECT Password FROM Users WHERE Login=@a");
                 using (SqlCommand comm = new SqlCommand(query, conn))
                 {
-                    comm.Parameters.AddWithValue("@a", textBoxLogin.Text);
+                    comm.Parameters.AddWithValue("@a", textBoxLogin.Text.ToLower().Trim(' '));
                     SqlDataReader reader = comm.ExecuteReader();
                     string pass = "";
                     if (reader.HasRows)
@@ -47,10 +47,9 @@ namespace SocialMediaInformationAggregator
                         {
                             pass = (string)reader[0];
                         }
-
-                        if (pass == passwordBox.Password.ToString())
+                        if (pass == passwordBox.Password.GetHashCode().ToString())
                         {
-                            App.CurrentUserLogin = textBoxLogin.Text;
+                            App.CurrentUserLogin = textBoxLogin.Text.ToLower().Trim(' ');
                             this.NavigationService.Navigate(new Uri("InputPage.xaml", UriKind.Relative));
                         }
                         else
@@ -65,7 +64,6 @@ namespace SocialMediaInformationAggregator
                         MessageBox.Show("Некорректный логин");
                     }
                 }
-
                 conn.Close();
             }
             catch (Exception ex)

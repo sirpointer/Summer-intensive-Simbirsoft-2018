@@ -37,7 +37,10 @@ namespace SocialMediaInformationAggregator
 
                 string query = string.Format("UPDATE Users SET [FirstQuestion] = '{0}', [SecondQuestion]='{1}', [ThirdQuestion]='{2}' " +
                                              "WHERE (Login='{3}')",
-                                             textBoxSer.Text, textBoxPet.Text, textBoxHobby.Text, App.LoginGlobalVeryForMethod);
+                                             textBoxSer.Text.ToLower().Trim(' '), 
+                                             textBoxPet.Text.ToLower().Trim(' '), 
+                                             textBoxHobby.Text.ToLower().Trim(' '), 
+                                             App.LoginGlobalVeryForMethod.ToLower().Trim(' '));
                 SqlCommand comm = new SqlCommand(query, conn);
                 comm.ExecuteNonQuery();
                 conn.Close();

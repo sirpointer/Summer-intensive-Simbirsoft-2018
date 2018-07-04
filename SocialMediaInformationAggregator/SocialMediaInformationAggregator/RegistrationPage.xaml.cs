@@ -42,11 +42,11 @@ namespace SocialMediaInformationAggregator
                 string query = string.Format("INSERT INTO Users (Login, Password, [E-mail], FirstName, LastName) VALUES(@login, @password, @mail, @name, @firstname)");
                 using (SqlCommand comm = new SqlCommand(query, conn))
                 {
-                    comm.Parameters.AddWithValue("@login", TextBoxLogin.Text);
-                    comm.Parameters.AddWithValue("@password", passwordBox.Password);
-                    comm.Parameters.AddWithValue("@mail", TextBoxmail.Text);
-                    comm.Parameters.AddWithValue("@name", TextBoxName.Text);
-                    comm.Parameters.AddWithValue("@firstname", TextBoxFirstName.Text);
+                    comm.Parameters.AddWithValue("@login", TextBoxLogin.Text.Trim(' '));
+                    comm.Parameters.AddWithValue("@password", passwordBox.Password.GetHashCode());
+                    comm.Parameters.AddWithValue("@mail", TextBoxmail.Text.Trim(' '));
+                    comm.Parameters.AddWithValue("@name", TextBoxName.Text.Trim(' '));
+                    comm.Parameters.AddWithValue("@firstname", TextBoxFirstName.Text.Trim(' '));
                     comm.ExecuteNonQuery();
                 }
                 conn.Close();
@@ -140,7 +140,7 @@ namespace SocialMediaInformationAggregator
                     }
                     else
                     {
-                        if (TextBoxmail.Text.Count() - dot == 3 || TextBoxmail.Text.Count() - dot == 4)
+                        if (TextBoxmail.Text.Trim(' ').Count() - dot == 3 || TextBoxmail.Text.Trim(' ').Count() - dot == 4)
                         {
                             return true;
                         }
@@ -175,7 +175,7 @@ namespace SocialMediaInformationAggregator
                     {
                         emails.Add(reader.GetValue(0).ToString());
                     }
-                    int k = emails.Where(a => a == TextBoxmail.Text).Count();
+                    int k = emails.Where(a => a == TextBoxmail.Text.Trim(' ')).Count();
                     if (k != 0)
                     {
                         MessageBox.Show("Данный адрес электронной почты уже используется!");
@@ -214,10 +214,10 @@ namespace SocialMediaInformationAggregator
                     {
                         logins.Add(reader.GetValue(0).ToString());
                     }
-                    int k = logins.Where(a => a.ToLower() == TextBoxLogin.Text.ToLower()).Count();
+                    int k = logins.Where(a => a.ToLower().Trim(' ') == TextBoxLogin.Text.ToLower().Trim(' ')).Count();
                     if (k != 0)
                     {
-                        MessageBox.Show("Данный адрес логин уже используется!");
+                        MessageBox.Show("Данный логин уже используется!");
                         passwordBox.Password = "";
                         repeatPasswordBox.Password = "";
                         return false;
@@ -238,7 +238,12 @@ namespace SocialMediaInformationAggregator
 
         private void NextButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!String.IsNullOrWhiteSpace(TextBoxFirstName.Text) && !String.IsNullOrWhiteSpace(TextBoxName.Text))
+            if (!String.IsNullOrWhiteSpace(TextBoxFirstName.Text) 
+                && !String.IsNullOrWhiteSpace(TextBoxName.Text) 
+                && !String.IsNullOrWhiteSpace(TextBoxLogin.Text)
+                && !String.IsNullOrWhiteSpace(passwordBox.Password)
+                && !String.IsNullOrWhiteSpace(repeatPasswordBox.Password)
+                && !String.IsNullOrWhiteSpace(TextBoxmail.Text))
             {
                 if (PasswordIsCorrect() == true && EmailISUnique() == true && LoginISUnique() == true && EmailIsValid() == true)
             {

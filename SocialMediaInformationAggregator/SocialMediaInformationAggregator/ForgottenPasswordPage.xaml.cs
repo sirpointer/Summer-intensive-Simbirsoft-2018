@@ -46,9 +46,11 @@ namespace SocialMediaInformationAggregator
                     secAnsw = (string)reader[6];
                     thirdAnsw = (string)reader[7];
                 }
-                if (frstAnsw == textBoxFrst.Text && secAnsw == textBoxSec.Text && thirdAnsw == textBoxThird.Text)
+                if (frstAnsw.ToLower().Trim(' ') == textBoxFrst.Text.ToLower().Trim(' ') 
+                    && secAnsw.ToLower().Trim(' ') == textBoxSec.Text.ToLower().Trim(' ') 
+                    && thirdAnsw.ToLower().Trim(' ') == textBoxThird.Text.ToLower().Trim(' '))
                 {
-                    App.LoginGlobalVeryForMethod = textBoxLogin.Text;
+                    App.LoginGlobalVeryForMethod = textBoxLogin.Text.ToLower().Trim(' ');
                     this.NavigationService.Navigate(new Uri("ChangePasswordPage.xaml", UriKind.Relative));
                 }
                 else
@@ -64,7 +66,10 @@ namespace SocialMediaInformationAggregator
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (textBoxLogin.Text != "" && textBoxFrst.Text != "" && textBoxSec.Text != "" && textBoxThird.Text != "")
+            if (!String.IsNullOrWhiteSpace(textBoxFrst.Text)
+                && !String.IsNullOrWhiteSpace(textBoxSec.Text)
+                && !String.IsNullOrWhiteSpace(textBoxThird.Text)
+                && !String.IsNullOrWhiteSpace(textBoxLogin.Text))
             {
                 try
                 {
@@ -74,7 +79,7 @@ namespace SocialMediaInformationAggregator
                     string query = string.Format("SELECT * FROM Users WHERE Login=@a");
                     using (SqlCommand comm = new SqlCommand(query, conn))
                     {
-                        comm.Parameters.AddWithValue("@a", textBoxLogin.Text);
+                        comm.Parameters.AddWithValue("@a", textBoxLogin.Text.ToLower().Trim(' '));
                         SqlDataReader reader = comm.ExecuteReader();
                         CheckInputInform(reader);
                     }

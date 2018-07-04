@@ -10,9 +10,9 @@
 
     <Grid>
         <Label x:Name="label" Content="Чтобы восстановить пароль в случае его утраты, ответьте на контрольные вопросы: " HorizontalAlignment="Left" Margin="81,65,-86,0" VerticalAlignment="Top" Height="45" Width="805"/>
-        <TextBox x:Name="textBoxSer" HorizontalAlignment="Left" Height="23" Margin="426,145,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="113"/>
-        <TextBox x:Name="textBoxPet" HorizontalAlignment="Left" Height="23" Margin="426,204,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="113"/>
-        <TextBox x:Name="textBoxHobby" HorizontalAlignment="Left" Height="23" Margin="426,265,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="113"/>
+        <TextBox x:Name="textBoxSer" HorizontalAlignment="Left" Height="23" Margin="426,145,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="113"/>
+        <TextBox x:Name="textBoxPet" HorizontalAlignment="Left" Height="23" Margin="426,204,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="113"/>
+        <TextBox x:Name="textBoxHobby" HorizontalAlignment="Left" Height="23" Margin="426,265,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="113"/>
         <Button x:Name="button" Content="Далее" HorizontalAlignment="Left" Margin="263,336,0,0" VerticalAlignment="Top" Width="70" Click="button_Click"/>
         <Label x:Name="label1" Content="Название Вашего любимого сериала" HorizontalAlignment="Left" Margin="132,142,0,0" VerticalAlignment="Top" Width="201"/>
         <Label x:Name="label2" Content="Имя Вашего домашнего питомца" HorizontalAlignment="Left" Margin="132,204,0,0" VerticalAlignment="Top" Width="182"/>
