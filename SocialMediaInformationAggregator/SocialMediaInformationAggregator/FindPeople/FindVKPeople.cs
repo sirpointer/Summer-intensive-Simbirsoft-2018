@@ -155,7 +155,7 @@ namespace SocialMediaInformationAggregator.FindPeople
             bool ex = true;
             while (ex)
             {
-                if (IsElementExist(by, webDriver))
+                if (IsElementExist(by, webDriver)&&webDriver.FindElement(by).Displayed)
                     ex = false;
                 else
                     Thread.Sleep(100);
