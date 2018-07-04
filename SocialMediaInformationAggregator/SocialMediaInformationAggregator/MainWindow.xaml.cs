@@ -42,7 +42,18 @@ namespace SocialMediaInformationAggregator
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             if (PagesFrame.CanGoBack)
-                PagesFrame.GoBack();
+            {
+                bool isAuthPage = PagesFrame.Source.ToString().Contains("RegistrationPage.xaml") || PagesFrame.Source.ToString().Contains("QuestionPage.xaml")
+                    || PagesFrame.Source.ToString().Contains("MainWindow.xaml") || PagesFrame.Source.ToString().Contains("ForgottenPasswordPage.xaml")
+                    || PagesFrame.Source.ToString().Contains("ChangePasswordPage.xaml") || PagesFrame.Source.ToString().Contains("AuthorizationPage.xaml");
+
+                if (!isAuthPage)
+                    PagesFrame.GoBack();
+                else if (PagesFrame.Source.ToString().Contains("MainWindow.xaml"))
+                    return;
+                else
+                    PagesFrame.Navigate(new Uri("InputPage.xaml", UriKind.Relative));
+            }
         }
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
