@@ -24,9 +24,7 @@ namespace SocialMediaInformationAggregator
         {
             InitializeComponent();
 
-            
             PeopleListBox.Items.Clear();
-            PeopleListBox.SelectedIndex = -1;
             PeopleListBox.SelectionChanged += PeopleListBox_SelectionChanged;
             
             foreach (var person in App.PersonInformation)

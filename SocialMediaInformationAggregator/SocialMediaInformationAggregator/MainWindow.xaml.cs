@@ -65,6 +65,7 @@ namespace SocialMediaInformationAggregator
                     return;
                 }
 
+                List<FindPeople.PersonInformation> l = App.PersonInformation;
 
                 if (App.PersonInformation.Count < 1)
                 {
