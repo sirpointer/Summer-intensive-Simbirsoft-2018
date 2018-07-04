@@ -57,6 +57,10 @@ namespace SocialMediaInformationAggregator.DatabaseInteraction
         {
             List<FindPeople.PersonInformation> PersonsFromVK = GetFoindPeopleFromNetworks(login, "FoundPersonsVK");
             List<FindPeople.PersonInformation> PersonsFromOK = GetFoindPeopleFromNetworks(login, "FoundPersonsOK");
+            foreach (var a in PersonsFromOK)
+            {
+                a.SocialNetwork = FindPeople.SocialNetwork.OK;
+            }
             List<FindPeople.PersonInformation> CommonPersons = PersonsFromVK.Concat(PersonsFromOK).ToList();
             return CommonPersons;
         }
@@ -373,9 +377,9 @@ namespace SocialMediaInformationAggregator.DatabaseInteraction
                     conn.Open();
                     string query = String.Format("INSERT INTO " + tableName +
                         " (UserLogin, FirstName, LastName, BirthData, Cities, " +
-                        "Education, LinkVK) " +
+                        "Education, Link) " +
                         "VALUES (@login, @name, @lastName, @birthData, @cities," +
-                        "@education, @linkVK)");
+                        "@education, @link)");
                     using (SqlCommand comm = new SqlCommand(query, conn))
                     {
                         string cities = "";
@@ -388,7 +392,7 @@ namespace SocialMediaInformationAggregator.DatabaseInteraction
                         education = MakeEducationRow(pers);
                         comm.Parameters.AddWithValue("@cities", cities);
                         comm.Parameters.AddWithValue("@education", education);
-                        comm.Parameters.AddWithValue("@linkVK", pers.SocialNetwork);
+                        comm.Parameters.AddWithValue("@link", pers.SocialNetwork);
                         comm.ExecuteNonQuery();
                     }
                 }
@@ -396,10 +400,6 @@ namespace SocialMediaInformationAggregator.DatabaseInteraction
                 {
                     throw new Exception("Данная запистьв базе уже существует!");
                 }
-            }
-            else
-            {
-                throw new Exception("Обязательные поля не заполнены!");
             }
         }
         private static string MakeEducationRow(FindPeople.PersonInformation pers)
