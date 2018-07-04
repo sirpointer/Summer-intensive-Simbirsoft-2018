@@ -223,6 +223,7 @@ namespace SocialMediaInformationAggregator
             try
             {
                 webDriver = new ChromeDriver();
+                webDriver.Manage().Window.Maximize();
             }
             catch
             {
@@ -235,8 +236,7 @@ namespace SocialMediaInformationAggregator
 
             bool vkIsOk = true;
             bool okIsOk = true;
-
-
+            
             #if DEBUG
 
             find.FindPeopleOnVK(webDriver, options);

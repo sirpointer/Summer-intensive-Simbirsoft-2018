@@ -162,7 +162,7 @@ namespace SocialMediaInformationAggregator.FindPeople
                         {
                             string educat = blocksEducation[j].FindElement(By.XPath("//*[@id='hook_Block_AboutUserSummary']/div/div/div[2]/div["+ i +"]/div/div[2]/div[1]/div/a/span")).Text;
                             education.Add(educat);
-                            System.Windows.MessageBox.Show("Добавил");
+                            //System.Windows.MessageBox.Show("Добавил");
                         }
                     //}
                 }
@@ -178,7 +178,7 @@ namespace SocialMediaInformationAggregator.FindPeople
             {
                 if (IsElementExist(By.XPath("//*[@id='hook_Block_AboutUserSummary']/div/div/div[2]/div[3]/div[" + i + "]/div[2]/div[1]/div/a/span"), webDriver))
                 {
-                    System.Windows.MessageBox.Show("Нашёл школу");
+                    //System.Windows.MessageBox.Show("Нашёл школу");
                     blocksEducation.Add(webDriver.FindElement(By.XPath("//*[@id='hook_Block_AboutUserSummary']/div/div/div[2]/div[3]/div[" + i + "]/div[2]/div[1]/div/a/span")));
                 }
                
