@@ -100,16 +100,19 @@ namespace SocialMediaInformationAggregator
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (PasswordIsCorrect() && passNew.Password.GetHashCode() == repeatPass.Password.GetHashCode())
+            if (PasswordIsCorrect()==true)
             {
-                UpdateDb();
-                this.NavigationService.Navigate(new Uri("InputPage.xaml", UriKind.Relative));
-            }
-            else
-            {
-                passNew.Password = "";
-                repeatPass.Password="";
-                MessageBox.Show("Пароли не идентичны!");
+                if (passNew.Password.GetHashCode() == repeatPass.Password.GetHashCode())
+                {
+                    UpdateDb();
+                    this.NavigationService.Navigate(new Uri("InputPage.xaml", UriKind.Relative));
+                }
+                else
+                {
+                    passNew.Password = "";
+                    repeatPass.Password = "";
+                    MessageBox.Show("Пароли не идентичны!");
+                }
             }
         }
     }
