@@ -161,8 +161,20 @@ namespace SocialMediaInformationAggregator.FindPeople
                     Thread.Sleep(100);
             }
         }
+        /*
+        List<string> Shools(IWebDriver webDriver)
+        {
+            List<IWebElement> schools = new List<IWebElement>();
+            schools = webDriver.FindElements(By.XPath("//*[@id='container6']/div/div")).ToList();
 
-        //+
+            string[] school = schools[0].Text.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);   //"/r/n", StringSplitOptions.RemoveEmptyEntries);
+
+            List<string> vs = school.ToList();
+
+            return vs;
+        }*/
+
+        //
         private void InputSchool(IWebDriver webDriver, SearchOptions searchOptions)
         {
             if (searchOptions.Schools != null && searchOptions.City != null)
@@ -174,8 +186,10 @@ namespace SocialMediaInformationAggregator.FindPeople
                 {
                     webDriver.FindElement(By.Id("cSchool")).Click();
                     Thread.Sleep(500);
+                    //Shools(webDriver);
+
                     bool elemExist = true;
-                    int i = 0;
+                    int i = 1;
                     try
                     {
                         while (elemExist && i < 5000)
@@ -183,17 +197,17 @@ namespace SocialMediaInformationAggregator.FindPeople
                             //if (webDriver is OpenQA.Selenium.Firefox.FirefoxDriver)
                             if (IsElementExist(By.XPath("//*[@id='option_list_options_container_6_" + i + "']"), webDriver))
                             {
-                                IWebElement city = webDriver.FindElement(By.XPath("//*[@id='option_list_options_container_6_" + i + "']"));
+                                IWebElement school = webDriver.FindElement(By.XPath("//*[@id='option_list_options_container_6_" + i + "']"));
                                 i++;
-                                if (city.Text.Contains(searchOptions.Schools))
+                                if (school.Text.Contains(searchOptions.Schools))
                                 {
-                                    city.Click();
+                                    school.Click();
                                     elemExist = false;
                                     break;
                                 }
                             }
                             else
-                                i++;
+                                break;
                         }
                     }
                     catch
@@ -490,21 +504,6 @@ namespace SocialMediaInformationAggregator.FindPeople
             }
             return blocksEducation;
         }
-
-        /*
-        private Image Photo(IWebDriver webDriver, int i)
-        {
-            Thread.Sleep(1000);
-            IWebElement img = webDriver.FindElement(By.XPath("//*[@id='profile_photo_link']/img"));
-            Screenshot screenshot = ((ITakesScreenshot)webDriver.FindElement(By.XPath("//*[@id='profile_photo_link']/img"))).GetScreenshot();// .FindElement(By.XPath("")).
-            string im = @"C:\Users\User\OneDrive\Social-media-information-aggregator-BranchToShow\SocialMediaInformationAggregator\SocialMediaInformationAggregator\Assets\" + i.ToString() + ".png";
-            screenshot.SaveAsFile(im);
-            Image image = new Image();
-            BitmapImage bitmapImage = new BitmapImage();
-            bitmapImage.UriSource = new Uri(@"pack://application:,,,/Assets/"+i+".png");
-            image.Source = bitmapImage;
-            return image;
-        }*/
 
         private bool IsElementExist(By by, IWebDriver webDriver)
         {
