@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.IO;
+using MoreLinq;
 
 namespace SocialMediaInformationAggregator.DatabaseInteraction
 {
@@ -55,8 +56,8 @@ namespace SocialMediaInformationAggregator.DatabaseInteraction
 
         public static List<FindPeople.PersonInformation> GetFoundPeople(string login)
         {
-            List<FindPeople.PersonInformation> PersonsFromVK = GetFoindPeopleFromNetworks(login, "FoundPersonsVK");
-            List<FindPeople.PersonInformation> PersonsFromOK = GetFoindPeopleFromNetworks(login, "FoundPersonsOK");
+            List<FindPeople.PersonInformation> PersonsFromVK = GetFoindPeopleFromNetworks(login, "FoundPersonsVK").DistinctBy(p=>new { p.Name, p.LastName, p.YearOfBirth, p.SocialNetwork, p.ProfileLink }).ToList();
+            List<FindPeople.PersonInformation> PersonsFromOK = GetFoindPeopleFromNetworks(login, "FoundPersonsOK").DistinctBy(p => new { p.Name, p.LastName, p.YearOfBirth, p.SocialNetwork, p.ProfileLink }).ToList();
             foreach (var a in PersonsFromOK)
             {
                 a.SocialNetwork = FindPeople.SocialNetwork.OK;
