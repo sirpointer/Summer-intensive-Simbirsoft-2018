@@ -76,7 +76,10 @@ namespace SocialMediaInformationAggregator
                     return;
                 }
 
-                List<FindPeople.PersonInformation> l = App.PersonInformation;
+                for (int i = 0; i < App.PersonInformation.Count; i++)
+                {
+                    App.PersonInformation[i].RemoveNulls();
+                }
 
                 if (App.PersonInformation.Count < 1)
                 {

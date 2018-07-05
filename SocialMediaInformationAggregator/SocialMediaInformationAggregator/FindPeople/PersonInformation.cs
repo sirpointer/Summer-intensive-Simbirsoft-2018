@@ -64,6 +64,39 @@ namespace SocialMediaInformationAggregator.FindPeople
 
             return copy;
         }
+
+        public void RemoveNulls()
+        {
+            if (this.Name == null)
+                this.Name = string.Empty;
+
+            if (this.LastName == null)
+                this.LastName = string.Empty;
+
+            if (this.Photo == null)
+                this.Photo = new Image();
+
+            if (this.ProfileLink == null)
+                this.ProfileLink = string.Empty;
+
+            if (this.Cities == null)
+                this.Cities = new List<string>();
+            else
+            {
+                for (int i = 0; i < this.Cities.Count; i++)
+                    if (this.Cities[i] == null)
+                        this.Cities[i] = string.Empty;
+            }
+
+            if (this.Education == null)
+                this.Education = new List<string>();
+            else
+            {
+                for (int i = 0; i < this.Education.Count; i++)
+                    if (this.Education[i] == null)
+                        this.Education[i] = string.Empty;
+            }
+        }
     }
 
     public enum SocialNetwork { VK, OK, Facebook }

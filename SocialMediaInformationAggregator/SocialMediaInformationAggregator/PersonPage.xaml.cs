@@ -43,7 +43,12 @@ namespace SocialMediaInformationAggregator
                 FindPeople.PersonInformation person = App.VkPerson;
 
                 this.FullNameTextBlock.Text = person.Name + " " + person.LastName;
-                this.YearTextBlock.Text = person.YearOfBirth.ToString();
+
+                if (person.YearOfBirth == null)
+                    this.YearTextBlock.Text = "Нет данных";
+                else
+                    this.YearTextBlock.Text = person.YearOfBirth.ToString();
+
 
                 if (!string.IsNullOrWhiteSpace(person.ProfileLink))
                 {
@@ -70,7 +75,11 @@ namespace SocialMediaInformationAggregator
                 FindPeople.PersonInformation person = App.OkPerson;
 
                 this.FullNameTextBlock.Text = person.Name + " " + person.LastName;
-                this.YearTextBlock.Text = person.YearOfBirth.ToString() ?? "Нет данных";
+
+                if (person.YearOfBirth == null)
+                    this.YearTextBlock.Text = "Нет данных";
+                else
+                    this.YearTextBlock.Text = person.YearOfBirth.ToString();
 
                 if (!string.IsNullOrWhiteSpace(person.ProfileLink))
                 {
