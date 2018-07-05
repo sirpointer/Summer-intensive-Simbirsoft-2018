@@ -43,6 +43,27 @@ namespace SocialMediaInformationAggregator.FindPeople
         public SocialNetwork SocialNetwork { get; set; }
 
         public string ProfileLink { get; set; }
+
+        public PersonInformation Copy()
+        {
+            PersonInformation copy = new PersonInformation()
+            {
+                Name = this.Name,
+                LastName = this.LastName,
+                Photo = new Image(),
+                ProfileLink = this.ProfileLink,
+                SocialNetwork = this.SocialNetwork,
+                YearOfBirth = this.YearOfBirth
+            };
+
+            foreach (string city in this.Cities)
+                copy.Cities.Add(city);
+
+            foreach (string ed in this.Education)
+                copy.Education.Add(ed);
+
+            return copy;
+        }
     }
 
     public enum SocialNetwork { VK, OK, Facebook }

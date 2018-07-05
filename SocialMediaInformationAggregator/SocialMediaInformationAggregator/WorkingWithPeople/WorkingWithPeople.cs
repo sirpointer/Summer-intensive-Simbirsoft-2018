@@ -36,20 +36,7 @@ namespace SocialMediaInformationAggregator.WorkingWithPeople
 
                 if (similarEducation)
                 {
-                    PersonInformation p = new PersonInformation();
-
-                    foreach (string cit in pers.Cities)
-                        p.Cities.Add(cit);
-
-                    foreach (string ed in pers.Education)
-                        p.Education.Add(ed);
-
-                    p.LastName = pers.LastName;
-                    p.Name = pers.Name;
-                    p.Photo = new System.Windows.Controls.Image();
-                    p.ProfileLink = pers.ProfileLink;
-                    p.SocialNetwork = pers.SocialNetwork;
-                    p.YearOfBirth = pers.YearOfBirth;
+                    return pers.Copy();
                 }
             }
 
@@ -80,15 +67,11 @@ namespace SocialMediaInformationAggregator.WorkingWithPeople
                     {
                         if (SchoolsAreEqual(firstEducation, secondEducation))
                             return true;
-                        else
-                            return false;
                     }
                     else
                     {
-                        if (firstEducation.Equals(secondEducation, StringComparison.CurrentCultureIgnoreCase))
+                        if (firstEducation.Contains(secondEducation) || secondEducation.Contains(firstEducation))
                             return true;
-                        else
-                            return false;
                     }
                 }
             }
