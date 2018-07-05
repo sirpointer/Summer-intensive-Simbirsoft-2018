@@ -182,6 +182,8 @@ namespace SocialMediaInformationAggregator.FindPeople
                 //new WebDriverWait(webDriver, TimeSpan.FromSeconds(5)).Until(driver => driver.FindElement(By.Id("cSchool")));
                 //Thread.Sleep(500);
                 Times(webDriver, By.Id("cSchool"));
+                
+
                 if (IsElementExist(By.Id("cSchool"), webDriver) && !webDriver.FindElement(By.Id("container2")).Text.Contains("Выбор города"))
                 {
                     webDriver.FindElement(By.Id("cSchool")).Click();
@@ -194,6 +196,22 @@ namespace SocialMediaInformationAggregator.FindPeople
                     {
                         while (elemExist && i < 5000)
                         {
+
+                            //bool ex = true;
+                            //int q = 0;
+/*
+                            while (ex && q < 100)
+                            {
+                                if (IsElementExist(By.XPath("//*[@id='option_list_options_container_6_" + i + "']"), webDriver) && webDriver.FindElement(By.XPath("//*[@id='option_list_options_container_6_" + i + "']")).Displayed)
+                                    ex = false;
+                                else
+                                {
+                                    Thread.Sleep(100);
+                                    q++;
+                                }
+                            }
+                            */
+
                             //if (webDriver is OpenQA.Selenium.Firefox.FirefoxDriver)
                             if (IsElementExist(By.XPath("//*[@id='option_list_options_container_6_" + i + "']"), webDriver))
                             {
@@ -207,7 +225,10 @@ namespace SocialMediaInformationAggregator.FindPeople
                                 }
                             }
                             else
+                            {
+                                webDriver.FindElement(By.XPath("//*[@id='school_header']")).Click();
                                 break;
+                            }
                         }
                     }
                     catch
