@@ -27,17 +27,30 @@ namespace SocialMediaInformationAggregator.WorkingWithPeople
                 if (pers.SocialNetwork != person.SocialNetwork)
                     anotherSocialNetworkPersonList.Add(pers);
             }
-
-            //bool similarCity = false;
+            
             bool similarEducation = false;
             
             foreach (var pers in anotherSocialNetworkPersonList)
             {
-                //similarCity = CityAreSimilar(person, pers);
                 similarEducation = EducationAreSimilar(person, pers);
 
-                if (/*similarCity && */similarEducation)
-                    return pers;
+                if (similarEducation)
+                {
+                    PersonInformation p = new PersonInformation();
+
+                    foreach (string cit in pers.Cities)
+                        p.Cities.Add(cit);
+
+                    foreach (string ed in pers.Education)
+                        p.Education.Add(ed);
+
+                    p.LastName = pers.LastName;
+                    p.Name = pers.Name;
+                    p.Photo = new System.Windows.Controls.Image();
+                    p.ProfileLink = pers.ProfileLink;
+                    p.SocialNetwork = pers.SocialNetwork;
+                    p.YearOfBirth = pers.YearOfBirth;
+                }
             }
 
             return null;
