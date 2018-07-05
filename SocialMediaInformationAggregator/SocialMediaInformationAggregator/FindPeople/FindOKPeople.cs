@@ -99,10 +99,10 @@ namespace SocialMediaInformationAggregator.FindPeople
                 {
                     List<string> education1 = new List<string>();
                     
-                    for (int i = 0; i < 10; i++)
+                    for (int i = 0; i < 6; i++)
                     {
                         var iElement = webDriver.FindElements(By.ClassName("gs_result_i_t_name"));
-                        if (i >=0 && i < iElement.Count)
+                        if (i >= 0 && i < iElement.Count)
                         {
                             Thread.Sleep(500);
                             //Переход на конкретного человека
@@ -111,17 +111,21 @@ namespace SocialMediaInformationAggregator.FindPeople
                             people.Click();
                             Thread.Sleep(500);
                             string name = webDriver.FindElement(By.XPath("//*[@id='hook_Block_MiddleColumnTopCardFriend']/div/div/div[1]/div/span[1]/h1")).Text;
-                            string YearB = webDriver.FindElement(By.XPath("//*[@id='hook_Block_AboutUserSummary']/div/div/div[1]/div[1]/div[2]")).Text;
-                            string[] q = YearB.Split(' ');
-                            foreach (var p in q)
+                            string YearB = "";
+                            if (IsElementExist(By.XPath("//*[@id='hook_Block_AboutUserSummary']/div/div/div[1]/div[1]/div[2]"), webDriver) && webDriver.FindElement(By.XPath("//*[@id='hook_Block_AboutUserSummary']/div/div/div[1]/div[1]/div[2]")).Text.Contains("(") &&
+                                 webDriver.FindElement(By.XPath("//*[@id='hook_Block_AboutUserSummary']/div/div/div[1]/div[1]/div[2]")).Text.Contains(")"))
                             {
-                                if (p.Length == 4 && p.All(x => char.IsDigit(x)))
+                                YearB = webDriver.FindElement(By.XPath("//*[@id='hook_Block_AboutUserSummary']/div/div/div[1]/div[1]/div[2]")).Text;
+                                string[] q = YearB.Split(' ');
+                                foreach (var p in q)
                                 {
-                                    YearB = p;
-                                    break;
+                                    if (p.Length == 4 && p.All(x => char.IsDigit(x)))
+                                    {
+                                        YearB = p;
+                                        break;
+                                    }
                                 }
                             }
-
                             Thread.Sleep(500);
 
                             string city = "";
@@ -146,20 +150,33 @@ namespace SocialMediaInformationAggregator.FindPeople
                             }
 
 
-                            PersonInformation personInformation = new PersonInformation
+                            //PersonInformation personInformation = new PersonInformation
+                            //{
+                            //    Name = name.Split(' ')[0],
+                            //    LastName = name.Split(' ')[1],
+                            //    YearOfBirth = Convert.ToInt32(YearB),
+                            //    Cities = new List<string>() { city },
+                            //    Education = education,
+                            //    SocialNetwork = SocialNetwork.OK,
+                            //    // Photo = new Image() { }
+
+
+                            //};
+                            PersonInformation personInformation = new PersonInformation { };
+                            personInformation.Name = name.Split(' ')[0];
+                            personInformation.LastName = name.Split(' ')[1];
+                            if (IsElementExist(By.XPath("//*[@id='hook_Block_AboutUserSummary']/div/div/div[1]/div[1]/div[2]"), webDriver) && webDriver.FindElement(By.XPath("//*[@id='hook_Block_AboutUserSummary']/div/div/div[1]/div[1]/div[2]")).Text.Contains("(") &&
+                                 webDriver.FindElement(By.XPath("//*[@id='hook_Block_AboutUserSummary']/div/div/div[1]/div[1]/div[2]")).Text.Contains(")"))
                             {
-                                Name = name.Split(' ')[0],
-                                LastName = name.Split(' ')[1],
-                                YearOfBirth = Convert.ToInt32(YearB),
-                                Cities = new List<string>() { city },
-                                Education = education,
-                                SocialNetwork = SocialNetwork.OK,
-                                // Photo = new Image() { }
+                                personInformation.YearOfBirth = Convert.ToInt32(YearB);
+                            }
+                            personInformation.Cities = new List<string>() { city };
+                            personInformation.Education = education;
+                            personInformation.SocialNetwork = SocialNetwork.OK;
+                            // Photo = new Image() { }
 
 
-                            };
-
-                            PeopleFromOK.Add(personInformation);
+                        PeopleFromOK.Add(personInformation);
 
                             webDriver.Navigate().Back();
                         }
