@@ -51,11 +51,11 @@ namespace SocialMediaInformationAggregator
                 }
 
                 foreach (var ed in person.Education)
-                    if (ed != null)
+                    if (!string.IsNullOrWhiteSpace(ed))
                         EducationVkStackPanel.Children.Add(GetVkTextBlock(ed));
 
                 foreach (var city in person.Cities)
-                    if (city != null)
+                    if (!string.IsNullOrWhiteSpace(city))
                         CitiesVkStackPanel.Children.Add(GetVkTextBlock(city));
             }
             else
