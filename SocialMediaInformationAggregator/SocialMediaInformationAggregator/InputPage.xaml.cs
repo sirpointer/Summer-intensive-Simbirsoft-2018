@@ -115,11 +115,11 @@ namespace SocialMediaInformationAggregator
                 return;
             }
 
-            if (!NameCheck())
-                return;
-
             TrimAll();
 
+            if (!NameCheck())
+                return;
+            
             FindPeople.SearchOptions options = new FindPeople.SearchOptions()
             {
                 Name = NameComboBox.Text,
@@ -228,7 +228,6 @@ namespace SocialMediaInformationAggregator
             catch
             {
                 MessageBox.Show("Браузер Google Chrome не найден.");
-
                 return;
             }
 
@@ -432,8 +431,18 @@ namespace SocialMediaInformationAggregator
         private static void SetLastNameTooltips(ComboBox box)
         {
             List<string> tips = new List<string>();
+            List<string> tipsFromDB;
 
-            foreach (var tip in DatabaseInteraction.PeopleFromDb.GetFoundLastNamea(App.CurrentUserLogin))
+            try
+            {
+                tipsFromDB = DatabaseInteraction.PeopleFromDb.GetFoundLastNamea(App.CurrentUserLogin);
+            }
+            catch
+            {
+                tipsFromDB = new List<string>();
+            }
+
+            foreach (var tip in tipsFromDB)
             {
                 if (!string.IsNullOrWhiteSpace(tip.Trim()))
                     tips.Add(tip.Trim());
@@ -450,8 +459,18 @@ namespace SocialMediaInformationAggregator
         private static void SetFirstNameTooltips(ComboBox box)
         {
             List<string> tips = new List<string>();
+            List<string> tipsFromDB;
 
-            foreach (var tip in DatabaseInteraction.PeopleFromDb.GetFoundFirstNames(App.CurrentUserLogin))
+            try
+            {
+                tipsFromDB = DatabaseInteraction.PeopleFromDb.GetFoundFirstNames(App.CurrentUserLogin);
+            }
+            catch
+            {
+                tipsFromDB = new List<string>();
+            }
+
+            foreach (var tip in tipsFromDB)
             {
                 if (!string.IsNullOrWhiteSpace(tip.Trim()))
                     tips.Add(tip.Trim());
@@ -468,8 +487,18 @@ namespace SocialMediaInformationAggregator
         private static void SetCityTooltips(ComboBox box)
         {
             List<string> tips = new List<string>();
+            List<string> tipsFromDb;
 
-            foreach (var tip in DatabaseInteraction.PeopleFromDb.GetFoundCities(App.CurrentUserLogin))
+            try
+            {
+                tipsFromDb = DatabaseInteraction.PeopleFromDb.GetFoundCities(App.CurrentUserLogin);
+            }
+            catch
+            {
+                tipsFromDb = new List<string>();
+            }
+
+            foreach (var tip in tipsFromDb)
             {
                 if (!string.IsNullOrWhiteSpace(tip.Trim()))
                     tips.Add(tip.Trim());
@@ -486,8 +515,18 @@ namespace SocialMediaInformationAggregator
         private static void SetEducationTooltips(ComboBox box)
         {
             List<string> tips = new List<string>();
+            List<string> tipsFromDb;
 
-            foreach (var tip in DatabaseInteraction.PeopleFromDb.GetFoundUniversities(App.CurrentUserLogin))
+            try
+            {
+                tipsFromDb = DatabaseInteraction.PeopleFromDb.GetFoundUniversities(App.CurrentUserLogin);
+            }
+            catch
+            {
+                tipsFromDb = new List<string>();
+            }
+
+            foreach (var tip in tipsFromDb)
             {
                 if (!string.IsNullOrWhiteSpace(tip.Trim()))
                     tips.Add(tip.Trim());
@@ -504,8 +543,18 @@ namespace SocialMediaInformationAggregator
         private static void SetSchoolTooltips(ComboBox box)
         {
             List<string> tips = new List<string>();
+            List<string> tipsFromDb;
 
-            foreach (var tip in DatabaseInteraction.PeopleFromDb.GetFoundSchools(App.CurrentUserLogin))
+            try
+            {
+                tipsFromDb = DatabaseInteraction.PeopleFromDb.GetFoundSchools(App.CurrentUserLogin);
+            }
+            catch
+            {
+                tipsFromDb = new List<string>();
+            }
+
+            foreach (var tip in tipsFromDb)
             {
                 if (!string.IsNullOrWhiteSpace(tip.Trim()))
                     tips.Add(tip.Trim());
