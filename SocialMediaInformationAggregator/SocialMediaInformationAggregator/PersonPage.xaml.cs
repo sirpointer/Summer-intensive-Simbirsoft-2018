@@ -50,16 +50,13 @@ namespace SocialMediaInformationAggregator
                     this.VkHyperLink.NavigateUri = new Uri(person.ProfileLink);
                 }
 
-                if (person.Education.Count == 0)
-                {
-
-                }
-
                 foreach (var ed in person.Education)
-                    EducationVkStackPanel.Children.Add(GetVkTextBlock(ed));
+                    if (ed != null)
+                        EducationVkStackPanel.Children.Add(GetVkTextBlock(ed));
 
                 foreach (var city in person.Cities)
-                    CitiesVkStackPanel.Children.Add(GetVkTextBlock(city));
+                    if (city != null)
+                        CitiesVkStackPanel.Children.Add(GetVkTextBlock(city));
             }
             else
             {
@@ -82,11 +79,12 @@ namespace SocialMediaInformationAggregator
 
 
                 foreach (var ed in person.Education)
-                    EducationOkStackPanel.Children.Add(GetOkTextBlock(ed));
-
+                    if (ed != null)
+                        EducationOkStackPanel.Children.Add(GetOkTextBlock(ed));
                 
                 foreach (var city in person.Cities)
-                    CitiesOkStackPanel.Children.Add(GetOkTextBlock(city));
+                    if (city != null)
+                        CitiesOkStackPanel.Children.Add(GetOkTextBlock(city));
             }
             else
             {
@@ -99,7 +97,7 @@ namespace SocialMediaInformationAggregator
         public static TextBlock GetVkTextBlock(string text)
         {
             if (string.IsNullOrWhiteSpace(text))
-                throw new Exception("Поле для образования пустое.");
+                throw new ArgumentNullException(nameof(text));
             else
             {
                 return new TextBlock()
@@ -136,16 +134,20 @@ namespace SocialMediaInformationAggregator
             {
                 SaveTextBlock.Visibility = Visibility.Hidden;
                 SaveErrorTextBlock.Visibility = Visibility.Hidden;
-
-                /*try
-                {*/
+                
+#if DEBUG
+                DatabaseInteraction.PeopleFromDb.AddFoundPerson(App.VkPerson, App.OkPerson);
+#else
+                try
+                {
                     DatabaseInteraction.PeopleFromDb.AddFoundPerson(App.VkPerson, App.OkPerson);
-                /*    SaveTextBlock.Visibility = Visibility.Visible;
+                    SaveTextBlock.Visibility = Visibility.Visible;
                 }
                 catch
                 {
                     SaveErrorTextBlock.Visibility = Visibility.Visible;
-                }*/
+                }
+#endif
             }
             else
                 MessageBox.Show("Для сохранения данных нужно авторизироваться.");
