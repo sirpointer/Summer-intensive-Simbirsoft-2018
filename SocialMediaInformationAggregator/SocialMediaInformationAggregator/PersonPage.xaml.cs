@@ -88,11 +88,11 @@ namespace SocialMediaInformationAggregator
 
 
                 foreach (var ed in person.Education)
-                    if (ed != null)
+                    if (!string.IsNullOrWhiteSpace(ed))
                         EducationOkStackPanel.Children.Add(GetOkTextBlock(ed));
                 
                 foreach (var city in person.Cities)
-                    if (city != null)
+                    if (!string.IsNullOrWhiteSpace(city))
                         CitiesOkStackPanel.Children.Add(GetOkTextBlock(city));
             }
             else
@@ -106,7 +106,7 @@ namespace SocialMediaInformationAggregator
         public static TextBlock GetVkTextBlock(string text)
         {
             if (string.IsNullOrWhiteSpace(text))
-                throw new ArgumentNullException(nameof(text));
+                return new TextBlock() { Text = string.Empty, Visibility = Visibility.Collapsed };
             else
             {
                 return new TextBlock()
@@ -123,7 +123,7 @@ namespace SocialMediaInformationAggregator
         public static TextBlock GetOkTextBlock(string text)
         {
             if (string.IsNullOrWhiteSpace(text))
-                throw new Exception("Поле для образования пустое.");
+                return new TextBlock() { Text = string.Empty, Visibility = Visibility.Collapsed };
             else
             {
                 return new TextBlock()

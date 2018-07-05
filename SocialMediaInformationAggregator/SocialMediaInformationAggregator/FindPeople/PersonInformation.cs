@@ -65,6 +65,47 @@ namespace SocialMediaInformationAggregator.FindPeople
             return copy;
         }
 
+        public override bool Equals(object obj)
+        {
+            var information = obj as PersonInformation;
+
+            bool city = true;
+            bool ed = true;
+
+            for (int i = 0; i < information.Cities.Count; i++)
+            {
+                city = false;
+
+                for (int j = 0; j < Cities.Count; j++)
+                    if (Cities[j] == information.Cities[i])
+                        city = true;
+
+                if (city == false)
+                    break;
+            }
+
+            for (int i = 0; i < information.Education.Count; i++)
+            {
+                ed = false;
+
+                for (int j = 0; j < Education.Count; j++)
+                    if (Education[j] == information.Education[i])
+                        ed = true;
+
+                if (ed == false)
+                    break;
+            }
+
+            return information != null &&
+                   Name == information.Name &&
+                   LastName == information.LastName &&
+                   EqualityComparer<int?>.Default.Equals(YearOfBirth, information.YearOfBirth) &&
+                   city &&
+                   ed &&
+                   SocialNetwork == information.SocialNetwork &&
+                   ProfileLink == information.ProfileLink;
+        }
+
         public void RemoveNulls()
         {
             if (this.Name == null)

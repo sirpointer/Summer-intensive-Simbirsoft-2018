@@ -67,7 +67,7 @@ namespace SocialMediaInformationAggregator
             {
                 try
                 {
-                    App.PersonInformation = DatabaseInteraction.PeopleFromDb.GetFoundPeople(App.CurrentUserLogin);
+                    App.PersonInformation = DatabaseInteraction.PeopleFromDb.GetFoundPeople(App.CurrentUserLogin).Distinct().ToList();
                 }
                 catch
                 {
