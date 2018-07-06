@@ -75,8 +75,8 @@ namespace SocialMediaInformationAggregator.FindPeople
                 if (IsElementExist(By.Id("community1CustomSpan"), webDriver) && searchOptions.Schools != null)
                 {
                     IWebElement School = webDriver.FindElement(By.Id("community1CustomSpan"));
-                    Thread.Sleep(3000);
-                    from.Click();
+                    Thread.Sleep(1000);
+                    Name.Click();
                     School.Click();
                 }
                 if (IsElementExist(By.XPath("//*[@id='community1CityInput']"), webDriver) && searchOptions.City != null && searchOptions.Schools != null)
@@ -234,27 +234,7 @@ namespace SocialMediaInformationAggregator.FindPeople
                 }
 
             }
-            void ScrollToBottom(IWebDriver driver)
-            {
-                long scrollHeight = 0;
-
-                do
-                {
-                    IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
-                    var newScrollHeight = (long)js.ExecuteScript("window.scrollTo(0, document.body.scrollHeight); return document.body.scrollHeight;");
-
-                    if (newScrollHeight == scrollHeight)
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        scrollHeight = newScrollHeight;
-                        Thread.Sleep(400);
-                    }
-                } while (true);
-            }
-
+          
         }
         private Image PersonPhoto(IWebDriver webDriver, int i)
         {
