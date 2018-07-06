@@ -141,7 +141,7 @@ namespace SocialMediaInformationAggregator.FindPeople
                             ((IJavaScriptExecutor)webDriver).ExecuteScript("window.scrollTo(0, document.head.scrollHeight)");
                             Thread.Sleep(1000);
                             people.Click();
-                            Thread.Sleep(500);
+                            Times(webDriver, By.XPath("//*[@id='hook_Block_MiddleColumnTopCardFriend']/div/div/div[1]/div/span[1]/h1"));
                             string name = webDriver.FindElement(By.XPath("//*[@id='hook_Block_MiddleColumnTopCardFriend']/div/div/div[1]/div/span[1]/h1")).Text;
                             string YearB = "";
                             if (IsElementExist(By.XPath("//*[@id='hook_Block_AboutUserSummary']/div/div/div[1]/div[1]/div[2]"), webDriver) && webDriver.FindElement(By.XPath("//*[@id='hook_Block_AboutUserSummary']/div/div/div[1]/div[1]/div[2]")).Text.Contains("(") &&
@@ -236,20 +236,20 @@ namespace SocialMediaInformationAggregator.FindPeople
             }
           
         }
-        private Image PersonPhoto(IWebDriver webDriver, int i)
-        {
-            IWebElement img = webDriver.FindElement(By.Id("viewImageLinkId"));
-            string imageSrc = img.GetAttribute("src");
-            Thread.Sleep(1000);
-            Screenshot screenshot = ((ITakesScreenshot)webDriver.FindElement(By.XPath("//*[@id='viewImageLinkId']"))).GetScreenshot();
-            string im = @"D:\Photo" + i.ToString() + ".png";
-            screenshot.SaveAsFile(im);
-            Image image = new Image();
-            BitmapImage bitmapImage = new BitmapImage();
-            bitmapImage.UriSource = new Uri(imageSrc);
-            image.Source = bitmapImage;
-            return image;
-        }
+        //private Image PersonPhoto(IWebDriver webDriver, int i)
+        //{
+        //    IWebElement img = webDriver.FindElement(By.Id("viewImageLinkId"));
+        //    string imageSrc = img.GetAttribute("src");
+        //    Thread.Sleep(1000);
+        //    Screenshot screenshot = ((ITakesScreenshot)webDriver.FindElement(By.XPath("//*[@id='viewImageLinkId']"))).GetScreenshot();
+        //    string im = @"D:\Photo" + i.ToString() + ".png";
+        //    screenshot.SaveAsFile(im);
+        //    Image image = new Image();
+        //    BitmapImage bitmapImage = new BitmapImage();
+        //    bitmapImage.UriSource = new Uri(imageSrc);
+        //    image.Source = bitmapImage;
+        //    return image;
+        //}
         private List<string> FindEducationOK(IWebDriver webDriver)
         {
             List<string> allEducations = new List<string>();
