@@ -75,8 +75,9 @@ namespace SocialMediaInformationAggregator.FindPeople
                 if (IsElementExist(By.Id("community1CustomSpan"), webDriver) && searchOptions.Schools != null)
                 {
                     IWebElement School = webDriver.FindElement(By.Id("community1CustomSpan"));
-                    Thread.Sleep(1000);
-                    Name.Click();
+                    Thread.Sleep(3000);
+                    //Name.Click();
+                    webDriver.FindElement(By.XPath("//*[@id='locationItems']/li[3]")).Click();
                     School.Click();
                 }
                 if (IsElementExist(By.XPath("//*[@id='community1CityInput']"), webDriver) && searchOptions.City != null && searchOptions.Schools != null)
@@ -137,10 +138,12 @@ namespace SocialMediaInformationAggregator.FindPeople
                         {
                             //Переход на конкретного человека
                             IWebElement people = iElement[i];
+                            Thread.Sleep(1000);
                             //webDriver.FindElement(By.XPath("//*[@id='gs_result_list']/div[" + i + "]/div/div[2]/div[1]/div[1]/div[1]/a")).Click();
                             ((IJavaScriptExecutor)webDriver).ExecuteScript("window.scrollTo(0, document.head.scrollHeight)");
                             Thread.Sleep(1000);
                             people.Click();
+                            Thread.Sleep(500);
                             Times(webDriver, By.XPath("//*[@id='hook_Block_MiddleColumnTopCardFriend']/div/div/div[1]/div/span[1]/h1"));
                             string name = webDriver.FindElement(By.XPath("//*[@id='hook_Block_MiddleColumnTopCardFriend']/div/div/div[1]/div/span[1]/h1")).Text;
                             string YearB = "";
@@ -233,23 +236,22 @@ namespace SocialMediaInformationAggregator.FindPeople
                     }
                 }
 
-            }
-          
+            } 
         }
-        //private Image PersonPhoto(IWebDriver webDriver, int i)
-        //{
-        //    IWebElement img = webDriver.FindElement(By.Id("viewImageLinkId"));
-        //    string imageSrc = img.GetAttribute("src");
-        //    Thread.Sleep(1000);
-        //    Screenshot screenshot = ((ITakesScreenshot)webDriver.FindElement(By.XPath("//*[@id='viewImageLinkId']"))).GetScreenshot();
-        //    string im = @"D:\Photo" + i.ToString() + ".png";
-        //    screenshot.SaveAsFile(im);
-        //    Image image = new Image();
-        //    BitmapImage bitmapImage = new BitmapImage();
-        //    bitmapImage.UriSource = new Uri(imageSrc);
-        //    image.Source = bitmapImage;
-        //    return image;
-        //}
+        private Image PersonPhoto(IWebDriver webDriver, int i)
+        {
+            IWebElement img = webDriver.FindElement(By.Id("viewImageLinkId"));
+            string imageSrc = img.GetAttribute("src");
+            Thread.Sleep(1000);
+            Screenshot screenshot = ((ITakesScreenshot)webDriver.FindElement(By.XPath("//*[@id='viewImageLinkId']"))).GetScreenshot();
+            string im = @"D:\Photo" + i.ToString() + ".png";
+            screenshot.SaveAsFile(im);
+            Image image = new Image();
+            BitmapImage bitmapImage = new BitmapImage();
+            bitmapImage.UriSource = new Uri(imageSrc);
+            image.Source = bitmapImage;
+            return image;
+        }
         private List<string> FindEducationOK(IWebDriver webDriver)
         {
             List<string> allEducations = new List<string>();
